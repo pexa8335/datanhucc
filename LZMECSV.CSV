@@ -220,7 +220,6 @@ LD053,"At two points A and B, separated by 10 cm in the air, two charges q1 = -q
 Step 2: Determine the geometry of points A, B, and C.
 Step 3: Calculate the magnitude of the electric field E1 at C due to charge q1.
 Step 4: Calculate the magnitude of the electric field E2 at C due to charge q2.",3.125 × 10^6,V/m
-
 LD055,"At two points A and B, separated by 10 cm in air, two electric charges q1 = q2 = 16 × 10^-8 C are placed. 
 Determine the electrostatic force acting on charge q3 = 2 × 10^-6 C, which is placed at point C. Given that AC = BC = 8 cm.","Step 1: Identify the given values: q1 = q2 = 16 × 10^-8 C, q3 = 2 × 10^-6 C, AB = 10 cm, AC = BC = 8 cm, and k = 9 × 10^9 N·m²/C².
 Step 2: Convert distances to SI units: AC = BC = 8 cm = 0.08 m and AB = 10 cm = 0.10 m.
@@ -253,7 +252,8 @@ Step 4: Use the electric field formula E = k|q|/r², with k = 9 × 10^9 N·m²/C
 Step 5: Calculate the electric field at C due to q1: E1 = (9 × 10^9 × 1.6 × 10^-6)/(0.08)² = 2.25 × 10^6 V/m. Since q1 is negative, E1 points from C toward A.
 Step 6: Calculate the electric field at C due to q2: E2 = (9 × 10^9 × 2.4 × 10^-6)/(0.06)² = 6.0 × 10^6 V/m. Since q2 is negative, E2 points from C toward B.
 Step 7: Because triangle ABC is right-angled at C, the directions of E1 and E2 are perpendicular to each other.
-Step 8: Find the resultant electric field magnitude: E = √(E1² + E2²) = √((2.25 × 10^6)² + (6.0 × 10^6)²) ≈ 6.408 × 10^6 V/m ≈ 64 × 10^5 V/m.",64 × 10^5,V/m
+Step 8: Find the resultant electric field magnitude: E = √(E1² + E2²) = √((2.25 × 10^6)² + (6.0 × 10^6)²) ≈
+ 6.408 × 10^6 V/m ≈ 64 × 10^5 V/m.",64 × 10^5,V/m
 LD059,"Four charges of the same magnitude q are placed at the four vertices of a square ABCD with side length a. 
 Positive charges are located at A and C, while negative charges are located at B and D.
  Determine the resultant electric field strength at the intersection point of the square's diagonals.","Step 1: Identify the point of interest P as the center of the square, where the diagonals intersect.
