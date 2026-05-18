@@ -1042,7 +1042,7 @@ Step 3: Calculate the magnitude of the electric field produced by each charge at
 Step 4: Determine the direction and components of the electric fields.
 Step 5: Calculate the magnitude of the individual electric fields (E1, E2).
 Step 6: Determine the direction and components.
-Step 7: The magnitude of the electric field vector at point M is (2k|q|h) / (a^2 + h^2)^1.5 V / m.",/frac{2k \abs{q} h}{(a^2 + h^2)^1.5},V/m
+Step 7: The magnitude of the electric field vector at point M is (2kqh) / (a^2 + h^2)^1.5 V / m.",/frac{2k \q h}{(a^2 + h^2)^1.5},V/m
 DT019,"Place four charges of the same magnitude q at the four vertices of a square ABCD with side length a. Positive charges are placed at A and C, and negative charges are placed at B and D. Determine the net electric field at the intersection of the square's two diagonals.","Step 1: Identify the given information. Let P be the intersection of the two diagonals of the square ABCD.
 Step 2: Determine the distance from each charge to point P.
 Step 3: Calculate the magnitude of the electric field due to each charge at P.
@@ -1054,7 +1054,7 @@ Step 3: Calculate the magnitude of the electric field (E_0) produced by a single
 Step 4: Determine the direction of the electric field from each charge at the center. A (+q) and C (-q) are opposite. E_A points away from A (towards C). E_C points towards C. Thus, E_A and E_C both point along the diagonal AC towards C.
 Step 5: Calculate the combined fields along each diagonal.
 Step 6: Determine the direction and geometry of the vectors.
-Step 7: The resultant electric field strength at the intersection point of the two diagonals of the square is 4 × sqrt(2) × k × q / (ε × a^2) V / m.",\frac{4 \sqrt{2} k q}{\epsilon a^2},V/m
+Step 7: The resultant electric field strength at the intersection point of the two diagonals of the square is 4 × sqrt(2) × k × q / (a^2) V / m.",\frac{4 \sqrt{2} k q}{\epsilon a^2},V/m
 DT025,"Given two point charges located along the Ox axis: charge q1 = -9 x 10^-6 C is placed at the origin O, and charge q2 = 4 x 10^-6 C is located 20 cm from the origin. What is the coordinate on the Ox axis where the electric field strength is zero?","Step 1: Identify the given charges and their positions.
 Step 2: Determine the possible regions where the net electric field can be zero.
 Step 3: Set up the equation for the magnitudes of the electric fields.
@@ -1119,7 +1119,7 @@ DT042,"A point charge q is placed in a homogeneous, infinite medium with a diele
 Step 2: The formula for the electric field magnitude E produced by a point charge q in a dielectric medium is E = (1 / (4πε_0ε_r)) × (|q| / r^2), where ε_0 is the permittivity of free space and ε_r is the dielectric constant.
 Step 3: This formula can be written as E = (k_e / ε_r) × (|q| / r^2), where k_e is Coulomb's constant (approximately 9 x 10^9 N m^2/C^2).
 Step 4: Rearrange the formula to solve for the magnitude of the charge |q|: |q| = E × r^2 × (ε_r / k_e).
-Step 5: The charge q is -4 x 10^-5 C.",-0.4 . 10^{-6},C
+Step 5: The charge q is -4 x 10^-5 C.",-0.4 . 10^{-4},C
 DT043,"An electron moves along the electric field lines of a uniform electric field with an electric field strength E = 100 V / m. Its initial velocity is 300 km / s, in the direction of the electric field vector E. What distance does the electron travel before its velocity reduces to zero?","Step 1: Identify the given values from the question: Electric field strength E = 100 V / m, initial velocity v_0 = 300 km / s, and final velocity v_f = 0 m / s.
 Step 2: Convert the initial velocity to standard units: v_0 = 300 × 10^3 m / s.
 Step 3: The electric force (F) on an electron with charge |q| in an electric field E is F = |q|E.
@@ -1213,8 +1213,28 @@ Step 5: The angle of deflection of the string from the vertical is π / 4 rad.",
 DT061,"The electric field strength produced by a point charge at point A is 36 V / m, and at point B is 9 V / m. Points A and B lie on the same electric field line. What is the electric field strength at point C, the midpoint of AB?","Step 1: For a point charge, the electric field strength E is inversely proportional to the square of the distance r from the charge (E ∝ 1/r²).
 Step 2: Given E_A = 36 V/m and E_B = 9 V / m. Using E ∝ 1 / r², we find that E_A / E_B = (r_B / r_A)².
 Step 3: Calculating the ratio: 36 / 9 = 4, so (r_B / r_A)² = 4. Taking the square root (distances are positive), r_B = 2r_A. This means point B is twice as far from the charge as point A.
-Step 4: Points A, B, and the point charge (O) are collinear. Two distinct arrangements are possible for the position of the charge relative to A and B.
-Step 5: The magnitude of the resultant electric field at point C is 16 V / m.",16,V/m
+Step 4: However, the problem does not state whether A and B are on the same side of the charge or on opposite sides of the charge. Therefore, there are two possible cases.
+
+Step 5: Case 1: A and B are on the same side of the charge.
+Let r_A = r, then r_B = 2r.
+Since C is the midpoint of AB, the distance from the charge to C is:
+r_C = (r + 2r) / 2 = 3r/2.
+Thus:
+E_C = k|q| / (3r/2)^2
+    = (4/9) × k|q|/r^2
+    = (4/9) × 36
+    = 16 V/m.
+
+Step 6: Case 2: The charge lies between A and B.
+Let r_A = r and r_B = 2r. Since C is the midpoint of AB, the distance from the charge to C is:
+r_C = r/2.
+Thus:
+E_C = k|q| / (r/2)^2
+    = 4 × k|q|/r^2
+    = 4 × 36
+    = 144 V/m.
+
+Step 7: Therefore, the problem is incomplete. If A and B are on the same side of the charge, E_C = 16 V/m. If the charge lies between A and B, E_C = 144 V/m.",16,V/m
 DT062,"Four points A, B, C, D in air form a rectangle ABCD with sides AD = 3 cm and AB = 4 cm. Charges q1, q2, q3 are placed at A, B, and C respectively. Let vector E2 be the electric field vector produced by q2 at point D, and let vector E13 be the resultant electric field vector produced by charges q1 and q3 at point D. Determine the value of q1. Given that q2 = -12.5 x 10⁻⁸ C and vector E2 = vector E13.","Step 1: Let D be at (0, 0).
 Step 2: Given ABCD is a rectangle with AD = 3 cm and AB = 4 cm. Therefore, A is at (0 cm, 3 cm), B is at (4 cm, 3 cm), and C is at (4 cm, 0 cm). Convert to meters: AD = 0.03 m, AB = 0.04 m.
 Step 3: Distances from charges to D:
@@ -1234,7 +1254,17 @@ DT073,"A thin, non-conducting rod of length L = 10 cm is uniformly charged with 
 Step 2: Recognize that the electric field at point M (r, 0, 0) due to a differential charge element dq = λ dz located at (0, 0, z) on the rod will have components dEx and dEz.
 Step 3: The general formulas for the electric field components due to a uniformly charged rod of length L along the z-axis from z=0 to z=L, at a point (r, 0, 0) are Ex = (kλL) / (r × sqrt(r^2 + L^2)) and Ez = kλ × (1/sqrt(r^2 + L^2) - 1/r).
 Step 4: Substitute the given values: L = 0.10 m, λ = 5 x 10^-6 C / m, r = 0.06 m, and Coulomb's constant k ≈ 8.9875 x 10^9 N m^2/C^2.
-Step 5: The net electric field strength at point M is approximately 7.39 x 10^5 N / C.",6.43 x 10^5,N/C
+Step 5: Calculate the z-component:
+E_z = (8.99 × 10^9)(5 × 10^-6)[1/√(0.06^2 + 0.10^2) - 1/0.06]
+    ≈ -3.64 × 10^5 N/C.
+
+Step 6: Therefore, the electric field vector is:
+E ≈ (6.42 × 10^5)i - (3.64 × 10^5)k N/C.
+
+Step 7: The magnitude of the net electric field is:
+|E| = sqrt(E_x^2 + E_z^2)
+    ≈ sqrt((6.42 × 10^5)^2 + (3.64 × 10^5)^2)
+    ≈ 7.38 × 10^5 N/C.",7.38 x 10^5,N/C
 DT074,"Consider two wide, parallel insulating plates with surface charge densities of σ and (−σ), respectively. The distance between them is very small compared to the dimensions of the plates. What is the magnitude of the electric field at a point located between the two plates, given that σ = 8.85 × 10^-6 C/m^2?","Step 1: Identify the given surface charge density on the plates.
 Step 2: The surface charge density is σ = 8.85 × 10^-6 C/m².
 Step 3: For two wide, parallel insulating plates with surface charge densities of σ and (−σ), the magnitude of the electric field between them is given by the formula: E = σ / ε₀.
@@ -1288,7 +1318,7 @@ DT089,"An infinitely large, flat metal plate is uniformly charged. It was determ
 Step 2: Calculate the surface charge density (σ) using the formula σ = Q / A.
 Step 3: For an infinitely large, uniformly charged conducting plate, the electric field strength (E) outside the plate is given by E = σ / ε₀, where ε₀ is the permittivity of free space. The given distance of 20 cm from the plate is not relevant for an infinitely large plate.
 Step 4: Substitute the calculated surface charge density and the value of ε₀ (approximately 8.854 × 10⁻¹² C²/(N×m²)) into the formula for E.
-Step 5: The magnitude of the resultant electric field at point M is approximately 2.26 × 10^4 V / m.",2.26.10^4,V/m
+Step 5: The magnitude of the resultant electric field at point M is approximately 4.52 × 10^4 V / m.",4.52 x 10^4,V/m
 DT090,"An infinitely long straight wire, placed in the air, is uniformly charged with a linear charge density λ = -6 x 10^-9 C / m. Calculate the electric field strength generated by this wire at point M, which is a distance r = 20 cm from the wire.","Step 1: Identify the given linear charge density λ = -6 x 10⁻⁹ C / m and the distance from the wire r = 20 cm.
 Step 2: The quantity to be calculated is the electric field strength (E) at point M.
 Step 3: Convert the distance to meters: r = 20 cm = 0.20 m.
@@ -1329,11 +1359,38 @@ Step 2: Determine the distances from each charge to point M.
 Step 3: Calculate the magnitude of the electric field produced by each charge at point M.
 Step 4: Determine the direction of the electric field vectors and resolve them into components.
 Step 5: The magnitude of the resultant electric field at point M is approximately 2.3 x 10^4 N / C.",2.3 x 10^4,N/C
-DT098,"Two charges q₁ = +4 × 10^-9 C and q₂ = –4 × 10^-9 C are placed at points A and B, separated by 2 cm. Calculate the magnitude of the electric field strength at point M such that MA = 1 cm and MB = 3 cm.","Step 1: Determine the relative arrangement of points A, B, and M based on the given distances. Since AB = 2 cm, MA = 1 cm, and MB = 3 cm, it implies that point A is between M and B (MA + AB = MB, i.e., 1 cm + 2 cm = 3 cm).
-Step 2: Calculate the magnitude of the electric field E₁ produced by charge q₁ at point M using E = k × |q| / r². E₁ = (9 × 10⁹ N⋅m²/C²) × |+4 × 10⁻⁹ C| / (0.01 m)².
-Step 3: E₁ = 36 N⋅m²/C / 0.0001 m² = 360000 N/C. Since q₁ is positive and A is between M and B, E₁ points away from A, which is towards M (left in the M-A-B line).
-Step 4: Calculate the magnitude of the electric field E₂ produced by charge q₂ at point M. E₂ = (9 × 10⁹ N⋅m²/C²) × |-4 × 10⁻⁹ C| / (0.03 m)².
-Step 5: The magnitude of the resultant electric field at point M is 3.2 x 10⁵ N / C.",4.0 × 10⁴,N/C
+DT098,"Two charges q₁ = +4 × 10^-9 C and q₂ = –4 × 10^-9 C are placed at points A and B, separated by 2 cm. Calculate the magnitude of the electric field strength at point M such that MA = 1 cm and MB = 3 cm.","Step 1: Identify the given values:
+q1 = +4 × 10^-9 C,
+q2 = -4 × 10^-9 C,
+MA = 1 cm,
+MB = 3 cm.
+
+Step 2: Since MA + AB = MB, point A lies between M and B. Therefore, the points are collinear in the order M - A - B.
+
+Step 3: Convert distances to SI units:
+MA = 1 cm = 0.01 m,
+MB = 3 cm = 0.03 m.
+
+Step 4: Calculate the magnitude of the electric field at M due to q1:
+E1 = k|q1| / MA^2
+   = (9 × 10^9)(4 × 10^-9) / (0.01)^2
+   = 3.6 × 10^5 N/C.
+
+Step 5: Since q1 is positive, the electric field due to q1 at M points away from q1. Because M is to the left of A, E1 points to the left.
+
+Step 6: Calculate the magnitude of the electric field at M due to q2:
+E2 = k|q2| / MB^2
+   = (9 × 10^9)(4 × 10^-9) / (0.03)^2
+   = 4.0 × 10^4 N/C.
+
+Step 7: Since q2 is negative, the electric field due to q2 at M points toward q2. Therefore, E2 points to the right.
+
+Step 8: The two electric field vectors are in opposite directions. Since E1 > E2, the resultant field points to the left and has magnitude:
+E = E1 - E2
+  = 3.6 × 10^5 - 4.0 × 10^4
+  = 3.2 × 10^5 N/C.
+
+Step 9: Therefore, the electric field at M has magnitude 3.2 × 10^5 N/C and points to the left.",3.2 × 10^5,N/C
 DT099,Two point charges q₁ = 5 × 10^-9 C and q₂ = 5 × 10^-9 C are placed 10 cm apart. Calculate the magnitude of the electric field at the midpoint between the two charges.,"Step 1: Identify the given charges and the total distance between them.
 Step 2: Determine the distance from each charge to the midpoint, which is half the total distance.
 Step 3: Calculate the magnitude of the electric field (E₁) produced by charge q₁ at the midpoint using the formula E = k|q|/r².
