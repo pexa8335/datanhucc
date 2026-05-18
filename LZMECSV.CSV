@@ -4,37 +4,60 @@ Step 2: Recall the formula for the energy (E) stored in a capacitor, which is E 
 Step 3: Convert the capacitance to Farads: C = 100 μF = 100 × 10^-6 F = 1 × 10^-4 F.
 Step 4: Substitute the values into the formula: E = 0.5 × (1 × 10^-4 F) × (30 V)^2.",0.045,J
 TD402,"Calculate the capacitance C of the capacitor, given that it stores Q = 3 mC when fully charged under U = 30 V.","Step 1: Identify the given values from the question: the charge Q = 3 mC and the voltage U = 30 V.
-Step 2: Recall the formula for capacitance, which is C = Q / U.
-Step 3: Convert the charge to the standard unit (Coulombs): Q = 3 mC = 3 × 10⁻³ C.
-Step 4: Substitute the values into the formula: C = (3 × 10⁻³ C) / (30 V).",100,μF
-LD001,"Two charges, q1 = 6 × 10^-8 C and q2 = -6 × 10^-8 C, are placed at points A and B in air, 8 cm apart. A third charge, q3 = 6 × 10^-8 C, is placed at point C, with CA = 5 cm and CB = 3 cm. Determine the force acting on q3.","Step 1: Identify the given charges and distances.
-Step 2: Determine the geometric arrangement of points A, B, and C.
-Step 3: Calculate the magnitude of the electrostatic force exerted by q1 on q3 (F13) using Coulomb's Law (F = k × |q1×q2| / r^2), where k = 9 × 10^9 N m^2/C^2.
-Step 4: Determine the direction of F13.",0.05,N
-LD002,"Three electric charges are placed at three fixed points, forming a right-angled triangle ABC (right-angled at A), where AB = 4 m and BC = 5 m. The charges are qA = 5.0 μC, qB = -5.0 μC, and qC = 4.0 μC, respectively. Find the net electric force acting on the charge at A.","Step 1: Identify the charges and distances given in the problem.
-Step 2: The charges are qA = 5.0 μC, qB = -5.0 μC, and qC = 4.0 μC.
-Step 3: The known side lengths of the right-angled triangle are AB = 4 m and BC = 5 m.
-Step 4: To find the net electric force on charge A, we need to calculate the force exerted by B on A (F_BA) and the force exerted by C on A (F_CA) using Coulomb's Law.",24.45 × 10^-3,N
+Step 2: Recall the formula for capacitance: C = Q / U.
+Step 3: Convert the charge to Coulombs: Q = 3 mC = 3 × 10^-3 C.
+Step 4: Substitute the values into the formula: C = (3 × 10^-3 C) / (30 V).
+Step 5: Calculate the capacitance: C = 1 × 10^-4 F.
+Step 6: Convert to microfarads: 1 × 10^-4 F = 100 μF.",100,μF
+LD001,"Two charges, q1 = 6 × 10^-8 C and q2 = -6 × 10^-8 C, are placed at points A and B in air, 8 cm apart. A third charge, q3 = 6 × 10^-8 C, is placed at point C, with CA = 5 cm and CB = 3 cm. Determine the force acting on q3.","Step 1: Since CA = 5 cm, CB = 3 cm, and AB = 8 cm, point C lies on segment AB between A and B.
+Step 2: Determine the force directions. Because q1 and q3 are both positive, q1 repels q3 toward B. Because q2 is negative and q3 is positive, q2 attracts q3 toward B. Therefore, both forces act in the same direction.
+Step 3: Calculate the force exerted by q1 on q3 using Coulomb's law: F13 = k × |q1 q3| / CA^2 = 9 × 10^9 × (6 × 10^-8 × 6 × 10^-8) / (0.05)^2 = 0.01296 N.
+Step 4: Calculate the force exerted by q2 on q3: F23 = k × |q2 q3| / CB^2 = 9 × 10^9 × (6 × 10^-8 × 6 × 10^-8) / (0.03)^2 = 0.036 N.
+Step 5: Since the two forces are in the same direction, add them: F = F13 + F23 = 0.01296 + 0.036 = 0.04896 N.
+Step 6: Round the result: F ≈ 0.05 N, directed from C toward B.",0.05,N
+LD002,"Three electric charges are placed at three fixed points, forming a right-angled triangle ABC (right-angled at A), where AB = 4 m and BC = 5 m. The charges are qA = 5.0 μC, qB = -5.0 μC, and qC = 4.0 μC, respectively. Find the net electric force acting on the charge at A.","Step 1: Since triangle ABC is right-angled at A, and AB = 4 m, BC = 5 m, calculate AC using the Pythagorean theorem: AC = √(BC² - AB²) = √(5² - 4²) = 3 m.
+Step 2: Determine the force exerted by qB on qA. Since qA is positive and qB is negative, the force is attractive and directed from A toward B.
+Step 3: Calculate its magnitude using Coulomb's law: F_BA = k × |qA qB| / AB² = 9 × 10^9 × (5.0 × 10^-6 × 5.0 × 10^-6) / 4² = 0.0140625 N.
+Step 4: Determine the force exerted by qC on qA. Since qA and qC are both positive, the force is repulsive and directed away from C along AC.
+Step 5: Calculate its magnitude: F_CA = k × |qA qC| / AC² = 9 × 10^9 × (5.0 × 10^-6 × 4.0 × 10^-6) / 3² = 0.0200 N.
+Step 6: Because AB is perpendicular to AC, the two force vectors are perpendicular. Compute the net force using the Pythagorean theorem: F = √(F_BA² + F_CA²) = √(0.0140625² + 0.0200²) ≈ 0.02445 N.
+Step 7: Express the result in the requested form: F ≈ 24.45 × 10^-3 N.",24.45 × 10^-3,N
 LD003,"Points A and B are separated by 20 cm in air. Charges q1 = -3 × 10^-6 C and q2 = 8 × 10^-6 C are placed at A and B, respectively. A test charge q3 = 2 × 10^-6 C is placed at point C such that AC = 12 cm and BC = 16 cm. Calculate the magnitude of the electric force acting on q3.","Step 1: Identify the given charges and distances.
-Step 2: Convert the given distances from centimeters to meters: AC = 0.12 m, BC = 0.16 m, AB = 0.20 m.
-Step 3: Verify the geometry of points A, B, and C. Since AC² + BC² = (0.12 m)² + (0.16 m)² = 0.0144 m² + 0.0256 m² = 0.0400 m², and AB² = (0.20 m)² = 0.0400 m², it implies that AC² + BC² = AB². Therefore, the points form a right-angled triangle at C, meaning angle ACB is 90 degrees.
-Step 4: The formula for the magnitude of the electric force between two point charges is F = k |q1 q2| / r², where k is Coulomb's constant.",6.76,N
-LD004,"Two point charges q1 = 3 × 10^-8 C and q2 = 2 × 10^-8 C are placed at points A and B in a vacuum, with AB = 5 cm. A charge q0 = -2 × 10^-8 C is placed at M, where MA = 4 cm and MB = 3 cm. Calculate the net electric force acting on q0.","Step 1: Identify the given charges q1 = 3 × 10^-8 C, q2 = 2 × 10^-8 C, and q0 = -2 × 10^-8 C. The distances are MA = 4 cm (0.04 m), MB = 3 cm (0.03 m), and AB = 5 cm (0.05 m). Use Coulomb's constant k = 9 × 10^9 N m^2/C^2.
-Step 2: Verify the geometry of points A, M, and B. Since MA^2 + MB^2 = (4 cm)^2 + (3 cm)^2 = 16 cm^2 + 9 cm^2 = 25 cm^2, and AB^2 = (5 cm)^2 = 25 cm^2, it follows that MA^2 + MB^2 = AB^2. Therefore, triangle AMB is a right-angled triangle with the right angle at M.
-Step 3: Calculate the magnitude of the electric force F10 exerted by q1 on q0 using Coulomb's Law (F = k|q1q0|/r^2).
-Step 4: Determine the direction of F10. Since q1 is positive and q0 is negative, the force F10 is attractive, directed from M towards A.",5.234 × 10^-3,N
-LD005,"Three electric charges, q1 = q2 = q3 = 1.6 × 10^-19 C, are placed at the three vertices of an equilateral triangle ABC with side length 16 cm in air. Determine the net electric force vector acting on q3.","Step 1: Identify the given values: charges q1 = q2 = q3 = 1.6 × 10^-19 C, and the side length of the equilateral triangle, r = 16 cm.
-Step 2: Convert the side length from centimeters to meters: r = 16 cm = 0.16 m.
-Step 3: State Coulomb's Law, F = k × |q_a × q_b| / r^2, and the value of Coulomb's constant for air, k = 8.9875 × 10^9 N m^2/C^2.
-Step 4: Calculate the magnitude of the individual electrostatic forces. The force exerted by q1 on q3 (F13) and by q2 on q3 (F23) will have the same magnitude since q1=q2 and the distances are equal: F = (8.9875 × 10^9 N m^2/C^2) × (1.6 × 10^-19 C)^2 / (0.16 m)^2 = 8.9875 × 10^-27 N.",9\sqrt{3} × 10^-27,N
-LD006,"Two point charges q1 = 10^-8 C and q2 = -3×10^-8 C are placed in air at two points A and B, 8 cm apart. A point charge q = 10^-8 C is placed at point M, which is on the perpendicular bisector of the line segment AB and 3 cm away from AB. Given k = 9×10^9 N.m^2/C^2. What is the magnitude of the net electric force exerted by q1 and q2 on q?","Step 1: Convert all given distances to meters and set up a coordinate system. Let the midpoint of AB be the origin (0,0). Then point A is at (-0.04 m, 0) and point B is at (0.04 m, 0). Point M is on the perpendicular bisector, 3 cm away from AB, so M is at (0, 0.03 m).
-Step 2: Calculate the distances from q1 to q (r1) and from q2 to q (r2).
-Step 3: Calculate the magnitude of the electric force F1 exerted by q1 on q using Coulomb's Law, F = k|q1q|/r1^2.
-Step 4: Calculate the magnitude of the electric force F2 exerted by q2 on q using Coulomb's Law, F = k|q2q|/r2^2.",1.23 × 10^-3,N
-LD007,"Two charges, q1 = +2×10^-6 C and q2 = -2×10^-6 C, are placed at points A and B in a vacuum, 6 cm apart. A third charge, q3 = +2×10^-6 C, is placed on the perpendicular bisector of the line segment AB, 4 cm away from AB. What is the magnitude of the net electric force exerted by q1 and q2 on q3?","Step 1: Identify the given charges and their values: q1 = +2×10^-6 C, q2 = -2×10^-6 C, q3 = +2×10^-6 C.
-Step 2: Determine the positions. The distance between q1 and q2 is 6 cm. q3 is on the perpendicular bisector, 4 cm from the line AB. This forms two right-angled triangles with legs 3 cm (half of 6 cm) and 4 cm.
-Step 3: Calculate the distance from q1 to q3 (r13) and q2 to q3 (r23). Using the Pythagorean theorem, r = sqrt((3 cm)^2 + (4 cm)^2) = sqrt(9 + 16) = sqrt(25) = 5 cm = 0.05 m. So, r13 = r23 = 0.05 m.
-Step 4: Calculate the magnitude of the electric force F13 exerted by q1 on q3 using Coulomb's Law (F = k × |q1 × q3| / r^2, where k = 9×10^9 N m^2/C^2). F13 = (9×10^9 N m^2/C^2) × |(+2×10^-6 C) × (+2×10^-6 C)| / (0.05 m)^2 = (9×10^9 × 4×10^-12) / 0.0025 = (36×10^-3) / (2.5×10^-3) = 14.4 N.",17.28,N
+Step 2: Convert the distances to meters: AC = 0.12 m, BC = 0.16 m, and AB = 0.20 m.
+Step 3: Verify the geometry: AC² + BC² = 0.12² + 0.16² = 0.20², so triangle ACB is right-angled at C.
+Step 4: Determine the force exerted by q1 on q3. Since q1 is negative and q3 is positive, the force is attractive and directed from C toward A.
+Step 5: Calculate its magnitude using Coulomb's law: F13 = k × |q1 q3| / AC² = 9 × 10^9 × (3 × 10^-6 × 2 × 10^-6) / (0.12)² = 3.75 N.
+Step 6: Determine the force exerted by q2 on q3. Since q2 and q3 are both positive, the force is repulsive and directed away from B along line BC.
+Step 7: Calculate its magnitude: F23 = k × |q2 q3| / BC² = 9 × 10^9 × (8 × 10^-6 × 2 × 10^-6) / (0.16)² = 5.625 N.
+Step 8: Since the two forces are perpendicular, compute the net force using the Pythagorean theorem: F = √(F13² + F23²) = √(3.75² + 5.625²) ≈ 6.76 N.",6.76,N
+LD004,"Two point charges q1 = 3 × 10^-8 C and q2 = 2 × 10^-8 C are placed at points A and B in a vacuum, with AB = 5 cm. A charge q0 = -2 × 10^-8 C is placed at M, where MA = 4 cm and MB = 3 cm. Calculate the net electric force acting on q0.","Step 1: Identify the given values: q1 = 3 × 10^-8 C, q2 = 2 × 10^-8 C, q0 = -2 × 10^-8 C, MA = 4 cm = 0.04 m, MB = 3 cm = 0.03 m, and AB = 5 cm = 0.05 m.
+Step 2: Verify the geometry: MA² + MB² = 4² + 3² = 25 = AB², so triangle AMB is right-angled at M.
+Step 3: Since q1 and q2 are positive while q0 is negative, both forces acting on q0 are attractive. Therefore, F10 is directed from M toward A, and F20 is directed from M toward B.
+Step 4: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / MA² = 9 × 10^9 × (3 × 10^-8 × 2 × 10^-8) / (0.04)^2 = 3.375 × 10^-3 N.
+Step 5: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / MB² = 9 × 10^9 × (2 × 10^-8 × 2 × 10^-8) / (0.03)^2 = 4.000 × 10^-3 N.
+Step 6: Since MA is perpendicular to MB, the two force vectors are perpendicular. The net force is F = √(F10² + F20²).
+Step 7: Substitute the values: F = √((3.375 × 10^-3)² + (4.000 × 10^-3)²) ≈ 5.234 × 10^-3 N.",5.234 × 10^-3,N
+LD005,"Three electric charges, q1 = q2 = q3 = 1.6 × 10^-19 C, are placed at the three vertices of an equilateral triangle ABC with side length 16 cm in air. Determine the net electric force vector acting on q3.","Step 1: Identify the given values: q1 = q2 = q3 = 1.6 × 10^-19 C, and the side length of the equilateral triangle is r = 16 cm = 0.16 m.
+Step 2: Since all charges are positive, q1 and q2 both repel q3. The two forces F13 and F23 act along the sides of the equilateral triangle and have equal magnitudes.
+Step 3: Calculate the magnitude of each force using Coulomb's law: F = k × q² / r² = 9 × 10^9 × (1.6 × 10^-19)² / (0.16)² = 9 × 10^-27 N.
+Step 4: Since the triangle is equilateral, the angle between F13 and F23 is 60°.
+Step 5: Combine the two equal force vectors: F_net = √(F² + F² + 2F²cos60°) = F√3.
+Step 6: Substitute F = 9 × 10^-27 N: F_net = 9√3 × 10^-27 N.
+Step 7: The direction of the net force is along the angle bisector at vertex C, pointing outward from the triangle, away from side AB.",9√3 × 10^-27,N
+LD006,"Two point charges q1 = 10^-8 C and q2 = -3×10^-8 C are placed in air at two points A and B, 8 cm apart. A point charge q = 10^-8 C is placed at point M, which is on the perpendicular bisector of the line segment AB and 3 cm away from AB. Given k = 9×10^9 N.m^2/C^2. What is the magnitude of the net electric force exerted by q1 and q2 on q?","Step 1: Set up a coordinate system with the midpoint of AB as the origin. Then A = (-0.04 m, 0), B = (0.04 m, 0), and M = (0, 0.03 m).
+Step 2: Calculate the distances from M to A and B: AM = BM = √(0.04² + 0.03²) = 0.05 m.
+Step 3: Calculate the force exerted by q1 on q: F1 = k × |q1q| / AM² = 9 × 10^9 × (10^-8 × 10^-8) / (0.05)² = 3.6 × 10^-4 N.
+Step 4: Calculate the force exerted by q2 on q: F2 = k × |q2q| / BM² = 9 × 10^9 × (3 × 10^-8 × 10^-8) / (0.05)² = 1.08 × 10^-3 N.
+Step 5: Determine the force directions. Since q1 and q are both positive, F1 is repulsive and points from A to M, with unit direction (0.8, 0.6). Since q2 is negative and q is positive, F2 is attractive and points from M to B, with unit direction (0.8, -0.6).
+Step 6: Add the x-components: Fx = 0.8F1 + 0.8F2 = 0.8(3.6 × 10^-4 + 1.08 × 10^-3) = 1.152 × 10^-3 N.
+Step 7: Add the y-components: Fy = 0.6F1 - 0.6F2 = 0.6(3.6 × 10^-4 - 1.08 × 10^-3) = -4.32 × 10^-4 N.
+Step 8: Calculate the magnitude of the net force: F = √(Fx² + Fy²) = √((1.152 × 10^-3)² + (-4.32 × 10^-4)²) ≈ 1.23 × 10^-3 N.",1.23 × 10^-3,N
+LD007,"Two charges, q1 = +2×10^-6 C and q2 = -2×10^-6 C, are placed at points A and B in a vacuum, 6 cm apart. A third charge, q3 = +2×10^-6 C, is placed on the perpendicular bisector of the line segment AB, 4 cm away from AB. What is the magnitude of the net electric force exerted by q1 and q2 on q3?","Step 1: Identify the given values: q1 = +2×10^-6 C, q2 = -2×10^-6 C, q3 = +2×10^-6 C, and AB = 6 cm.
+Step 2: Since q3 is on the perpendicular bisector of AB and 4 cm from AB, half of AB is 3 cm. Therefore, r13 = r23 = √(3² + 4²) = 5 cm = 0.05 m.
+Step 3: Calculate the magnitude of each force: F13 = F23 = k × |q1q3| / r² = 9 × 10^9 × (2×10^-6 × 2×10^-6) / (0.05)² = 14.4 N.
+Step 4: Determine the force directions. q1 repels q3, while q2 attracts q3. The vertical components of the two forces cancel, and the horizontal components point in the same direction toward q2.
+Step 5: Calculate the horizontal component of each force: Fx = F × 3/5 = 14.4 × 3/5 = 8.64 N.
+Step 6: Add the two horizontal components: F_net = 2Fx = 2 × 8.64 = 17.28 N.",17.28,N
 LD008,"Two electric forces are acting in the same direction, with magnitudes of 3 N and 4 N respectively. What is the resultant force?","Step 1: Identify the magnitudes of the two forces given in the problem.
 Step 2: Note that the problem states both forces are acting in the same direction.
 Step 3: To find the resultant force of multiple forces acting in the same direction, add their magnitudes.
@@ -47,179 +70,293 @@ LD010,"Three charges q1 = +2 μC, q2 = +2 μC, and q3 = -2 μC are placed at the
 Step 2: State Coulomb's Law, F = k × |q1 × q2| / r^2, where k is Coulomb's constant (approximately 8.9875 × 10^9 N m^2/C^2).
 Step 3: Calculate the magnitude of the attractive force F31 exerted by q1 on q3: F31 = (8.9875 × 10^9 N m^2/C^2) × |(2 × 10^-6 C) × (-2 × 10^-6 C)| / (0.10 m)^2 = 3.595 N.
 Step 4: Calculate the magnitude of the attractive force F32 exerted by q2 on q3: F32 = (8.9875 × 10^9 N m^2/C^2) × |(2 × 10^-6 C) × (-2 × 10^-6 C)| / (0.10 m)^2 = 3.595 N.
-Step 5: The two equal forces are separated by 60 degrees, so the net force is F_net = sqrt(F31^2 + F32^2 + 2 × F31 × F32 × cos60°) = 3.595 × sqrt(3) ≈ 6.24 N.", 6.24,N
-LD011,"An electric charge is subjected to two electric forces with magnitudes of 4 N and 3 N, acting at an angle of 90° to each other. Calculate the resultant force. (This is a very direct and clear translation.)","Step 1: Identify the magnitudes of the two electric forces and the angle between them.
-Step 2: Force 1 (F1) has a magnitude of 4 N.
-Step 3: Force 2 (F2) has a magnitude of 3 N.
-Step 4: The forces act at an angle of 90° to each other, meaning they are perpendicular.",5,N
-LD012,"Three charges q1 = +1 μC, q2 = +1 μC, and q3 = -1 μC are placed at the vertices of an equilateral triangle with side a = 20 cm. Calculate the magnitude of the net force acting on q3.","Step 1: Identify the given charges and the side length of the equilateral triangle.
-Step 2: Convert the given values into SI units: q1 = +1 × 10⁻⁶ C, q2 = +1 × 10⁻⁶ C, q3 = -1 × 10⁻⁶ C, and a = 0.20 m.
-Step 3: Calculate the magnitude of the electrostatic force exerted by q1 on q3 (F13) using Coulomb's Law, F = k |q1q3|/r², where k = 9 × 10⁹ N m²/C².
-Step 4: F13 = (9 × 10⁹ N m²/C²) × (1 × 10⁻⁶ C) × (1 × 10⁻⁶ C) / (0.20 m)² = 0.225 N.",0.39,N
-LD013,"Two charges are placed equidistant from point O. The electric forces exerted by these two charges on point O are 6 N and 8 N, respectively, and are perpendicular to each other. Calculate the resultant force at O.","Step 1: Identify the magnitudes of the two electric forces acting on point O.
-Step 2: The first force is 6 N and the second force is 8 N.
-Step 3: Identify that the two forces are perpendicular to each other.
-Step 4: To find the resultant force of two perpendicular forces, use the Pythagorean theorem: Resultant Force = $\sqrt{(\text{Force 1})^2 + (\text{Force 2})^2}$.",10,N
-LD014,"Two charges separated by 15 cm exert a force of 4.8 N. Given that q1 = q2 = q, find q.","Step 1: Identify the given values from the question: The force (F) between the charges is 4.8 N, the separation distance (r) is 15 cm, and the magnitudes of the charges are equal (q1 = q2 = q).
-Step 2: State Coulomb's Law, which describes the magnitude of the electrostatic force between two point charges: F = k × |q1 × q2| / r^2, where k is Coulomb's constant (approximately 9 x 10^9 N m^2/C^2).
-Step 3: Convert the separation distance from centimeters to meters: r = 15 cm = 0.15 m.
-Step 4: Substitute the given values (F = 4.8 N, r = 0.15 m, k = 9 x 10^9 N m^2/C^2) and the condition q1 = q2 = q into Coulomb's Law: 4.8 = (9 x 10^9) × q^2 / (0.15)^2.",3.46,μC
-LD015,Two electric forces with magnitudes of 5 N and 12 N act at an angle of 60° to each other. Calculate the resultant force.,"Step 1: Identify the magnitudes of the two electric forces as 5 N and 12 N.
-Step 2: Identify the angle between the two forces as 60°.
-Step 3: Use the formula for the resultant force: R = sqrt(F1^2 + F2^2 + 2 × F1 × F2 × cos(theta)).
-Step 4: Substitute the given values: R = sqrt(5^2 + 12^2 + 2 × 5 × 12 × cos(60°)).",15.13,N
-LD016,"Three identical charges q = +1 μC are placed at the three vertices of an isosceles right triangle, with sides of length a = 10 cm. Calculate the net force acting on the charge at the right angle vertex.","Step 1: Identify the given values: charges q = +1 x 10^-6 C, leg length a = 0.10 m, and Coulomb's constant k = 8.9875 x 10^9 N m^2/C^2.
-Step 2: Recognize that the charge at the right angle vertex (let's call it C) experiences two forces: one from each of the other two charges (let's call them A and B).
-Step 3: Calculate the magnitude of the force F_AC exerted by charge A on charge C using Coulomb's Law: F = k × q^2 / r^2.
-Step 4: Since charges A and B are identical and equidistant from C (r=a), the force F_BC exerted by charge B on charge C has the same magnitude: F_BC = 0.89875 N.",1.27,N
-LD017,"Three charges: q1 = +3 μC, q2 = -2 μC, and q3 = +1 μC are placed 10 cm apart on a straight line. Calculate the force acting on q2.","Step 1: Identify the given values for charges and distances.
-Step 2: Calculate the force exerted by q1 on q2 (F12).
-Step 3: Determine the magnitude of F12.
-Step 4: Calculate the force exerted by q3 on q2 (F32).",3.6,N
-LD018,Two identical charges q = +2 μC are placed at two vertices of an equilateral triangle with side length a = 0.1 m. A charge q′ = -1 μC is placed at the remaining vertex. Calculate the net electric force acting on q′.,"Step 1: Identify the given values for charges, side length, and Coulomb's constant.
-Step 2: Calculate the magnitude of the electric force (F) exerted by one of the charges 'q' on 'q'' using Coulomb's Law: F = k × |q × q'| / a^2.
-Step 3: Substitute the given values (k = 8.9875 x 10^9 N m^2/C^2, q = 2 x 10^-6 C, q' = -1 x 10^-6 C, a = 0.1 m) into the formula.
-Step 4: Determine the directions of the two forces acting on q'. Since q is positive and q' is negative, both forces are attractive, pointing from q' towards each of the 'q' charges.",3.12,N
-LD019,"Two electric forces have magnitudes of 6 N and 8 N, acting at an angle of 120° to each other. Calculate the resultant force of these two forces.","Step 1: Identify the given magnitudes of the two electric forces and the angle between them.
-Step 2: The formula for the resultant force (R) of two forces (F1 and F2) acting at an angle (θ) is R² = F1² + F2² + 2F1F2 cos(θ).
-Step 3: Substitute the given values: F1 = 6 N, F2 = 8 N, and θ = 120° into the formula.
-Step 4: Calculate R² = (6 N)² + (8 N)² + 2(6 N)(8 N) cos(120°).",7.21,N
-LD020,"A charge is acted upon by two forces, each of magnitude 10 N. Find the angle between the two forces if the resultant force is also 10 N.","Step 1: Identify the magnitudes of the two forces (F1, F2) and the resultant force (R).
-Step 2: F1 = 10 N, F2 = 10 N, R = 10 N.
-Step 3: Use the formula for the resultant of two forces: R² = F₁² + F₂² + 2F₁F₂cosθ.
-Step 4: Substitute the given values into the formula: 10² = 10² + 10² + 2(10)(10)cosθ.",120,degree
-LD021,"A charge q = -1 μC is attracted by two +1 μC charges. These two positive charges are located on opposite sides of q, along the same straight line passing through q, at distances of 5 cm and 12 cm respectively from q. Calculate the magnitude of the net electric force acting on q.","Step 1: Identify the charges: A central charge q = -1 μC, and two positive charges, Q1 = +1 μC and Q2 = +1 μC.
-Step 2: Note their arrangement: The two positive charges are on opposite sides of q, along a straight line.
-Step 3: Identify the distances: The distance from q to one positive charge is r1 = 5 cm, and to the other is r2 = 12 cm.
-Step 4: The problem statement describes a physical setup but does not explicitly ask a question to be solved (e.g., Calculate the net force on q, or Find the electric potential at q).",2.98,N
-LD022,"Two electric charges, q1 = +2 μC and q2 = -2 μC, are placed 10 cm apart. A charge q3 = +1 μC is placed at the midpoint of the line segment connecting q1 and q2. Calculate the net force acting on q3.","Step 1: Identify the given charges and the total distance between q1 and q2.
-Step 2: Determine the distance from q1 to q3 (r13) and from q2 to q3 (r23), since q3 is at the midpoint.
-Step 3: Calculate the magnitude of the force F13 exerted by q1 on q3 using Coulomb's Law (F = k × |q1×q3| / r13^2), where k = 9 × 10^9 N m^2/C^2.
-Step 4: Determine the direction of F13. Since q1 (+2 μC) and q3 (+1 μC) are both positive, the force is repulsive, directed away from q1 towards q2.",14.4,N
-LD023,"Two forces act on a charge. They are collinear and act in opposite directions, with magnitudes of 15 N and 9 N. Calculate the magnitude and direction of the resultant force.","Step 1: The problem states two forces are collinear and act in opposite directions.
-Step 2: To find the magnitude of the resultant force when two forces act in opposite directions, subtract the smaller magnitude from the larger magnitude.
-Step 3: Calculate the magnitude: 15 N9 N = 6 N.
-Step 4: The direction of the resultant force is the same as the direction of the force with the larger magnitude.",6,N
-LD024,"Three charges q1 = +1 μC, q2 = -2 μC, q3 = +3 μC are placed at the vertices of an isosceles right triangle with legs of 0.1 m. Calculate the net force acting on q3.","Step 1: Identify the given charges and their values: q1 = +1 μC, q2 = -2 μC, q3 = +3 μC.
-Step 2: Identify the geometric shape as an isosceles right triangle with legs of 0.1 m.
-Step 3: Recognize that the question does not specify the placement of q1, q2, and q3 at the vertices of the triangle.
-Step 4: To calculate the net force on q3, the specific positions of q1 and q2 relative to q3 are required. This determines the distances and angles between the charges.",06.04,N
-LD025,"Two charges, q1 = +2 μC and q2 = +2 μC, are placed at the ends of a 10 cm long line segment. A third charge, q3 = -1 μC, is positioned along the line connecting q1 and q2. Calculate the net force acting on q3 when it is 4 cm away from q1.","Step 1: Identify the given charges and distances, converting them to SI units, and state Coulomb's constant (k).
-Step 2: Determine the distance between charge q3 and charge q2.
-Step 3: Calculate the magnitude of the electrostatic force exerted by q1 on q3 (F13) using Coulomb's Law (F = k × |q1×q3| / r^2).
-Step 4: Determine the direction of the force F13.",6.25,N
-LD026,"Two electric charges, q1 = 8 × 10^-8 C and q2 = -8 × 10^-8 C, are placed at points A and B respectively, in air (AB = 6 cm). Determine the force acting on a third charge q3 = 8 × 10^-8 C, given that: CA = 4 cm and CB = 2 cm.","Step 1: Identify the given charges (q1 = 8 × 10^-8 C, q2 = -8 × 10^-8 C, q3 = 8 × 10^-8 C) and distances (CA = 4 cm = 0.04 m, CB = 2 cm = 0.02 m). The Coulomb's constant for air is k = 9 × 10^9 N m²/C².
-Step 2: Determine the geometric arrangement: Since CA + CB = 4 cm + 2 cm = 6 cm, which equals the distance AB = 6 cm, point C lies directly between points A and B.
-Step 3: Calculate the magnitude of the force F13 exerted by q1 on q3 using Coulomb's Law: F13 = k × |q1 × q3| / CA² = (9 × 10^9 N m²/C²) × (8 × 10^-8 C × 8 × 10^-8 C) / (0.04 m)² = 0.036 N.
-Step 4: Determine the direction of F13: Since q1 and q3 are both positive, F13 is repulsive, meaning it pushes q3 away from q1 (point A). As C is between A and B, F13 points towards B.",0.18,N
-LD027,"Two charges, q1 = 8×10^-8 C and q2 = -8×10^-8 C, are placed at points A and B in the air (AB = 6 cm). Determine the force acting on a third charge q3 = 8×10^-8 C, if CA = 4 cm and CB = 10 cm.","Step 1: Establish the relative positions of points A, B, and C based on the given distances.
-Step 2: Calculate the magnitude and direction of the force F13 exerted by q1 on q3.
-Step 3: Calculate the magnitude and direction of the force F23 exerted by q2 on q3.
-Step 4: Determine the net force on q3 by vectorially adding F13 and F23.",30.24 × 10^-3,N
+Step 5: The two equal forces are separated by 60 degrees, so the net force is F_net = 
+sqrt(F31^2 + F32^2 + 2 × F31 × F32 × cos60°) = 3.595 × sqrt(3) ≈ 6.24 N.", 6.24,N
+LD011,"An electric charge is subjected to two electric forces with magnitudes of 4 N and 3 N, acting at an angle of 90° to each other. Calculate the resultant force. (This is a very direct and clear translation.)","Step 1: Identify the magnitudes of the two electric forces: F1 = 4 N and F2 = 3 N.
+Step 2: The angle between the two forces is 90°, so the forces are perpendicular.
+Step 3: Use the formula for the resultant of two perpendicular forces: R = √(F1² + F2²).
+Step 4: Substitute the values: R = √(4² + 3²) = √(16 + 9) = √25.
+Step 5: Calculate the result: R = 5 N.",5,N
+LD012,"Three charges q1 = +1 μC, q2 = +1 μC, and q3 = -1 μC are placed at the vertices of an equilateral triangle with side a = 20 cm. Calculate the magnitude of the net force acting on q3.","Step 1: Convert the given values to SI units: q1 = +1 × 10^-6 C, q2 = +1 × 10^-6 C, q3 = -1 × 10^-6 C, and a = 0.20 m.
+Step 2: Since q3 is negative while q1 and q2 are positive, both forces on q3 are attractive.
+Step 3: Because the triangle is equilateral and q1 = q2, the two forces acting on q3 have equal magnitudes and the angle between them is 60°.
+Step 4: Calculate each force: F13 = F23 = k × |q1q3| / a² = 9 × 10^9 × (1 × 10^-6 × 1 × 10^-6) / (0.20)^2 = 0.225 N.
+Step 5: Combine the two equal forces: F_net = √(F² + F² + 2F²cos60°) = F√3.
+Step 6: Substitute F = 0.225 N: F_net = 0.225√3 ≈ 0.3897 N ≈ 0.39 N.",0.39,N
+LD013,"Two charges are placed equidistant from point O. The electric forces exerted by these two charges on point O are 6 N and 8 N, respectively, and are perpendicular to each other. Calculate the resultant force at O.","Step 1: Identify the magnitudes of the two electric forces: F1 = 6 N and F2 = 8 N.
+Step 2: Since the two forces are perpendicular, use the Pythagorean theorem to calculate the resultant force.
+Step 3: Apply the formula: R = √(F1² + F2²).
+Step 4: Substitute the values: R = √(6² + 8²) = √(36 + 64) = √100.
+Step 5: Calculate the result: R = 10 N.",10,N
+LD014,"Two charges separated by 15 cm exert a force of 4.8 N. Given that q1 = q2 = q, find q.","Step 1: Identify the given values: F = 4.8 N, r = 15 cm = 0.15 m, and q1 = q2 = q.
+Step 2: Use Coulomb’s law: F = k × q² / r², where k = 9 × 10^9 N·m²/C².
+Step 3: Substitute the values into the formula: 4.8 = (9 × 10^9 × q²) / (0.15)².
+Step 4: Rearrange to solve for q²: q² = 4.8 × (0.15)² / (9 × 10^9).
+Step 5: Calculate q² = 1.2 × 10^-11.
+Step 6: Take the square root: q = √(1.2 × 10^-11) ≈ 3.46 × 10^-6 C.
+Step 7: Convert to microcoulombs: q ≈ 3.46 μC.",3.46,μC
+LD015,"Two electric forces with magnitudes of 5 N and 12 N act at an angle of 60° to each other. Calculate the resultant force.","Step 1: Identify the magnitudes of the two electric forces: F1 = 5 N and F2 = 12 N.
+Step 2: Identify the angle between the forces: θ = 60°.
+Step 3: Use the formula for the resultant force of two vectors: R = √(F1² + F2² + 2F1F2cosθ).
+Step 4: Substitute the values: R = √(5² + 12² + 2 × 5 × 12 × cos60°).
+Step 5: Since cos60° = 0.5, calculate: R = √(25 + 144 + 60) = √229.
+Step 6: Calculate the final result: R ≈ 15.13 N.",15.13,N
+LD016,"Three identical charges q = +1 μC are placed at the three vertices of an isosceles right triangle, with sides of length a = 10 cm. Calculate the net force acting on the charge at the right angle vertex.","Step 1: Identify the given values: q = +1 × 10^-6 C, a = 10 cm = 0.10 m, and k = 8.9875 × 10^9 N·m²/C².
+Step 2: The charge at the right-angle vertex experiences two repulsive forces from the other two identical positive charges.
+Step 3: Since the two other charges are each a distance a from the right-angle vertex, the two force magnitudes are equal.
+Step 4: Calculate each force using Coulomb’s law: F = kq² / a² = 8.9875 × 10^9 × (1 × 10^-6)² / (0.10)² = 0.89875 N.
+Step 5: Because the two sides of the isosceles right triangle are perpendicular, the two forces are perpendicular.
+Step 6: Calculate the net force: F_net = √(F² + F²) = F√2 = 0.89875√2 ≈ 1.27 N.",1.27,N
+LD017,"Three charges: q1 = +3 μC, q2 = -2 μC, and q3 = +1 μC are placed 10 cm apart on a straight line. Calculate the force acting on q2.","Step 1: Assume the charges are arranged consecutively on a straight line as q1 - q2 - q3, with q1q2 = q2q3 = 10 cm = 0.10 m.
+Step 2: Since q1 is positive and q2 is negative, the force exerted by q1 on q2 is attractive and directed toward q1.
+Step 3: Calculate this force: F12 = k × |q1q2| / r² = 9 × 10^9 × (3 × 10^-6 × 2 × 10^-6) / (0.10)² = 5.4 N.
+Step 4: Since q3 is positive and q2 is negative, the force exerted by q3 on q2 is attractive and directed toward q3.
+Step 5: Calculate this force: F32 = k × |q3q2| / r² = 9 × 10^9 × (1 × 10^-6 × 2 × 10^-6) / (0.10)² = 1.8 N.
+Step 6: The two forces act in opposite directions, so subtract their magnitudes: F_net = 5.4 - 1.8 = 3.6 N.
+Step 7: The net force is directed toward q1 because F12 is larger than F32.",3.6,N
+LD018,Two identical charges q = +2 μC are placed at two vertices of an equilateral triangle with side length a = 0.1 m. A charge q′ = -1 μC is placed at the remaining vertex. Calculate the net electric force acting on q′.,"Corrected COT:
+Step 1: Identify the given values: q = +2 × 10^-6 C, q′ = −1 × 10^-6 C, a = 0.1 m, and k = 8.9875 × 10^9 N·m²/C².
+Step 2: Calculate the magnitude of the force exerted by one +2 μC charge on q′ using Coulomb’s law:
+F = k|qq′|/a²
+Step 3: Substitute the values:
+F = 8.9875 × 10^9 × (2 × 10^-6 × 1 × 10^-6)/(0.1)^2 ≈ 1.7975 N
+Step 4: Since the triangle is equilateral, the angle between the two equal forces acting on q′ is 60°.
+Step 5: Use vector addition to calculate the resultant force:
+F_net = √(F² + F² + 2F²cos60°)
+Step 6: Substitute the value of F:
+F_net = 1.7975√3 ≈ 3.11 N ≈ 3.12 N
+Corrected Answer:
+3.12 N",3.12,N
+LD019,"Two electric forces have magnitudes of 6 N and 8 N, acting at an angle of 120° to each other. Calculate the resultant force of these two forces.","Corrected COT:
+Step 1: Identify the given magnitudes of the two forces and the angle between them:
+F1 = 6 N, F2 = 8 N, θ = 120°.
+Step 2: Use the formula for the resultant of two forces:
+R² = F1² + F2² + 2F1F2cosθ
+Step 3: Substitute the given values:
+R² = 6² + 8² + 2(6)(8)cos120°
+Step 4: Since cos120° = −1/2:
+R² = 36 + 64 − 48
+= 52
+Step 5: Take the square root:
+R = √52 ≈ 7.21 N
+7.21 N",7.21,N
+LD020,"A charge is acted upon by two forces, each of magnitude 10 N. Find the angle between the two forces if the resultant force is also 10 N.","Step 1: Identify the magnitudes of the two forces and the resultant force: F1 = 10 N, F2 = 10 N, and R = 10 N.
+Step 2: Use the formula for the resultant of two forces: R² = F1² + F2² + 2F1F2cosθ.
+Step 3: Substitute the values: 10² = 10² + 10² + 2(10)(10)cosθ.
+Step 4: Simplify the equation: 100 = 200 + 200cosθ.
+Step 5: Solve for cosθ: 200cosθ = -100, so cosθ = -1/2.
+Step 6: Therefore, θ = 120°.",120,degree
+LD021,"A charge q = -1 μC is attracted by two +1 μC charges. These two positive charges are located on opposite sides of q, along the same straight line passing through q, at distances of 5 cm and 12 cm respectively from q. Calculate the magnitude of the net electric force acting on q.","Step 1: Identify the given charges: q = -1 × 10^-6 C, Q1 = +1 × 10^-6 C, and Q2 = +1 × 10^-6 C.
+Step 2: Convert the distances to meters: r1 = 5 cm = 0.05 m and r2 = 12 cm = 0.12 m.
+Step 3: Since q is negative and both other charges are positive, q is attracted toward both charges. Because the two positive charges are on opposite sides of q, the two forces act in opposite directions.
+Step 4: Calculate the force due to the closer charge: F1 = k × |Q1q| / r1² = 9 × 10^9 × (1 × 10^-6 × 1 × 10^-6) / (0.05)² = 3.6 N.
+Step 5: Calculate the force due to the farther charge: F2 = k × |Q2q| / r2² = 9 × 10^9 × (1 × 10^-6 × 1 × 10^-6) / (0.12)² = 0.625 N.
+Step 6: Since the forces are opposite, subtract their magnitudes: F_net = |F1 - F2| = |3.6 - 0.625| = 2.975 N.
+Step 7: Round the result: F_net ≈ 2.98 N.",2.98,N
+LD022,"Two electric charges, q1 = +2 μC and q2 = -2 μC, are placed 10 cm apart. A charge q3 = +1 μC is placed at the midpoint of the line segment connecting q1 and q2. Calculate the net force acting on q3.","Step 1: Identify the given values: q1 = +2 × 10^-6 C, q2 = -2 × 10^-6 C, q3 = +1 × 10^-6 C, and the distance between q1 and q2 is 10 cm.
+Step 2: Since q3 is at the midpoint, r13 = r23 = 5 cm = 0.05 m.
+Step 3: Calculate the force exerted by q1 on q3: F13 = k × |q1q3| / r13² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.05)² = 7.2 N.
+Step 4: Since q1 and q3 are both positive, q1 repels q3 toward q2.
+Step 5: Calculate the force exerted by q2 on q3: F23 = k × |q2q3| / r23² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.05)² = 7.2 N.
+Step 6: Since q2 is negative and q3 is positive, q2 attracts q3 toward q2.
+Step 7: Both forces act in the same direction, so the net force is F = F13 + F23 = 7.2 + 7.2 = 14.4 N.",14.4,N
+LD023,"Two forces act on a charge. They are collinear and act in opposite directions, with magnitudes of 15 N and 9 N. Calculate the magnitude and direction of the resultant force.","Step 1: Identify that the two forces are collinear and act in opposite directions.
+Step 2: For two opposite collinear forces, subtract the smaller magnitude from the larger magnitude.
+Step 3: Calculate the resultant magnitude: R = 15 N - 9 N = 6 N.
+Step 4: The direction of the resultant force is the same as the direction of the larger force, namely the 15 N force.",6,N
+LD024,"Three charges q1 = +1 μC, q2 = -2 μC, q3 = +3 μC are placed at the vertices of an isosceles right triangle with legs of 0.1 m. Assume q3 is placed at the right-angle vertex, while q1 and q2 are placed at the other two vertices. Calculate the net force acting on q3.","Step 1: Identify the given charges: q1 = +1 × 10^-6 C, q2 = -2 × 10^-6 C, and q3 = +3 × 10^-6 C.
+Step 2: Assume q3 is at the right-angle vertex of the isosceles right triangle, so q1 and q2 are each 0.1 m away from q3 and the two force directions are perpendicular.
+Step 3: Calculate the force exerted by q1 on q3: F13 = k × |q1q3| / r² = 9 × 10^9 × (1 × 10^-6 × 3 × 10^-6) / (0.1)² = 2.7 N.
+Step 4: Since q1 and q3 are both positive, F13 is repulsive.
+Step 5: Calculate the force exerted by q2 on q3: F23 = k × |q2q3| / r² = 9 × 10^9 × (2 × 10^-6 × 3 × 10^-6) / (0.1)² = 5.4 N.
+Step 6: Since q2 is negative and q3 is positive, F23 is attractive.
+Step 7: The two force directions are perpendicular, so calculate the net force: F = √(F13² + F23²) = √(2.7² + 5.4²) ≈ 6.04 N.",6.04,N
+LD025,"Two charges, q1 = +2 μC and q2 = +2 μC, are placed at the ends of a 10 cm long line segment. A third charge, q3 = -1 μC, is positioned along the line connecting q1 and q2. Calculate the net force acting on q3 when it is 4 cm away from q1.","Step 1: Convert the charges and distances to SI units: q1 = q2 = +2 × 10^-6 C, q3 = -1 × 10^-6 C, r13 = 4 cm = 0.04 m.
+Step 2: Since the total distance between q1 and q2 is 10 cm, the distance from q3 to q2 is r23 = 10 cm - 4 cm = 6 cm = 0.06 m.
+Step 3: Since q3 is negative and q1 is positive, q1 attracts q3. Calculate F13 = k × |q1q3| / r13² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.04)² = 11.25 N.
+Step 4: Since q3 is negative and q2 is positive, q2 also attracts q3. Calculate F23 = k × |q2q3| / r23² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.06)² = 5 N.
+Step 5: The two forces act in opposite directions, so subtract their magnitudes: F_net = 11.25 - 5 = 6.25 N.
+Step 6: The net force is directed toward q1 because F13 is larger than F23.",6.25,N
+LD026,"Two electric charges, q1 = 8 × 10^-8 C and q2 = -8 × 10^-8 C, are placed at points A and B respectively, in air (AB = 6 cm). Determine the force acting on a third charge q3 = 8 × 10^-8 C, given that: CA = 4 cm and CB = 2 cm.","Step 1: Identify the given values: q1 = 8 × 10^-8 C, q2 = -8 × 10^-8 C, q3 = 8 × 10^-8 C, CA = 4 cm = 0.04 m, and CB = 2 cm = 0.02 m.
+Step 2: Since CA + CB = 6 cm = AB, point C lies between A and B.
+Step 3: Calculate the force exerted by q1 on q3: F13 = k × |q1q3| / CA² = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.04)² = 0.036 N.
+Step 4: Since q1 and q3 are both positive, F13 is repulsive and points from C toward B.
+Step 5: Calculate the force exerted by q2 on q3: F23 = k × |q2q3| / CB² = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.02)² = 0.144 N.
+Step 6: Since q2 is negative and q3 is positive, F23 is attractive and also points from C toward B.
+Step 7: The two forces act in the same direction, so F_net = F13 + F23 = 0.036 + 0.144 = 0.18 N.",0.18,N
+LD027,"Two charges, q1 = 8×10^-8 C and q2 = -8×10^-8 C, are placed at points A and B in the air (AB = 6 cm). Determine the force acting on a third charge q3 = 8×10^-8 C, if CA = 4 cm and CB = 10 cm.","Step 1: Establish the positions of the points. Since CB = 10 cm, CA = 4 cm, and AB = 6 cm, we have CB = CA + AB, so A lies between C and B.
+Step 2: Convert distances to meters: CA = 0.04 m and CB = 0.10 m.
+Step 3: Calculate the force exerted by q1 on q3: F13 = k × |q1q3| / CA² = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.04)² = 0.036 N.
+Step 4: Since q1 and q3 are both positive, F13 is repulsive and pushes q3 away from A.
+Step 5: Calculate the force exerted by q2 on q3: F23 = k × |q2q3| / CB² = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.10)² = 0.00576 N.
+Step 6: Since q2 is negative and q3 is positive, F23 is attractive and pulls q3 toward B.
+Step 7: The two forces act in opposite directions, so subtract their magnitudes: F_net = 0.036 - 0.00576 = 0.03024 N = 30.24 × 10^-3 N.",30.24 × 10^-3,N
 LD028,"Two point charges, q1 = 8 × 10⁻⁸ C and q2 = -8 × 10⁻⁸ C, are placed at points A and B, respectively, in air (AB = 6 cm). Determine the force acting on a third charge q3 = 8 × 10⁻⁸ C if it is placed at point C such that CA = CB = 5 cm.","Step 1: Convert all given distances to meters.
 Step 2: Identify the two electrostatic forces acting on charge q3: F13 due to q1, and F23 due to q2.
 Step 3: Calculate the magnitude of force F13 using Coulomb's Law, F = k |q1 q3| / r².
 Step 4: Calculate the magnitude of force F23 using Coulomb's Law, F = k |q2 q3| / r².",27.65 × 10^-3,N
-LD029,"Three point charges q1 = 4×10^-8 C, q2 = -4×10^-8 C, and q3 = 5×10^-8 C are placed in air at the three vertices A, B, C of an equilateral triangle with side a = 2 cm. Determine the magnitude of the force vector acting on q3.","Step 1: State Coulomb's constant (k) for charges in air.
-Step 2: Identify the given charges and the side length of the equilateral triangle, converting units to meters.
-Step 3: Calculate the magnitude of the force F13 exerted by charge q1 on charge q3 using Coulomb's Law, F = k × |q1×q3| / r^2.
-Step 4: Determine the direction of F13. Since q1 and q3 are both positive, F13 is repulsive, directed along the line segment CA, away from q1.",45 × 10^-3,N
-LD030,"Three charges, q1 = 8×10^-9 C, q2 = q3 = -8×10^-9 C, are placed at the three vertices of an equilateral triangle ABC with side length a = 6 cm, in air. Determine the net force acting on a charge q0 = 6×10^-9 C placed at the center O of the triangle.","Step 1: Identify the given charges: q1 = 8×10^-9 C, q2 = -8×10^-9 C, q3 = -8×10^-9 C, and q0 = 6×10^-9 C. The side length of the equilateral triangle is a = 6 cm = 0.06 m.
-Step 2: State Coulomb's constant for air, k = 9×10^9 N m^2/C^2.
-Step 3: Calculate the distance R from the center O to each vertex (A, B, C) using the formula for an equilateral triangle: R = a / sqrt(3) = 0.06 m / sqrt(3).
-Step 4: Calculate the magnitude F of the electrostatic force exerted by each vertex charge (q_i) on q0 using Coulomb's Law, F = k × (|q_i| × |q0|) / R^2. Since |q1| = |q2| = |q3| = 8×10^-9 C, the magnitude of force from each vertex is the same: F = (9×10^9 N m^2/C^2) × (8×10^-9 C) × (6×10^-9 C) / ( (0.06 m / sqrt(3))^2 ) = 3.6 × 10^-4 N.",7.2 × 10^-4,N
-LD031,"In a vacuum, consider two electric charges q1 = -q2 = 10^-7 C placed at points A and B, separated by 8 cm. Determine the resultant force acting on electric charge q0 = 10^-7 C when q0 is placed at H, which is the midpoint of AB.","Step 1: Identify the given charges and their positions.
-Step 2: Determine the distances involved.
-Step 3: Analyze the direction of forces acting on q0.
-Step 4: State the formula for the magnitude of the electrostatic force.",1.125 × 10^-1,N
-LD032,"In a vacuum, two charges q1 = 10^-7 C and q2 = -10^-7 C are placed at points A and B, separated by 8 cm. Determine the resultant force acting on a third charge q0 = 10^-7 C when q0 is placed at point M, 4 cm from A and 12 cm from B.","Step 1: Identify the given charges and their locations.
-Step 2: Convert all distances from cm to meters: AB = 0.08 m, AM = 0.04 m, BM = 0.12 m.
-Step 3: Determine the relative arrangement of points M, A, and B. Since AM + AB = 0.04 m + 0.08 m = 0.12 m, which equals BM, point A lies on the line segment MB. Thus, M, A, and B are collinear in that order.
-Step 4: Recall Coulomb's Law, F = k × |q1×q2| / r^2, where k (electrostatic constant in vacuum) = 9 x 10^9 N m^2/C^2.",0.05,N
-LD033,"Three charges are placed at the three vertices of an equilateral triangle with side length a = 6 cm, in air: q1 = 6×10^-9 C, q2 = q3 = -8×10^-9 C. Determine the net force acting on a charge q0 = 8×10^-9 C placed at the center of the triangle.","Step 1: Identify the given values and constants: side length a = 0.06 m, charges q1 = 6×10^-9 C, q2 = -8×10^-9 C, q3 = -8×10^-9 C, q0 = 8×10^-9 C, and Coulomb's constant for air k = 9×10^9 N m^2/C^2.
-Step 2: Calculate the distance 'r' from each vertex to the center of the equilateral triangle: r = a / √3 = 0.06 m / √3 ≈ 0.03464 m.
-Step 3: Calculate the magnitude of the force F10 exerted by q1 on q0 using Coulomb's Law (F = k × |q1 × q0| / r^2): F10 = (9×10^9 N m^2/C^2) × (6×10^-9 C) × (8×10^-9 C) / (0.06/√3 m)^2 = 3.6 × 10^-4 N.
-Step 4: Calculate the magnitude of the force F20 exerted by q2 on q0: F20 = (9×10^9 N m^2/C^2) × |-8×10^-9 C| × (8×10^-9 C) / (0.06/√3 m)^2 = 4.8 × 10^-4 N.",8.4 × 10^-4,N
-LD034,"Two point charges q1 = 2×10⁻² µC and q2 = -2×10⁻² µC are placed at points A and B, separated by a distance a = 30 cm in air. What is the magnitude of the electric force exerted on a charge qo = 2×10⁻⁹ C placed at point M, which is equidistant from A and B by a distance equal to 'a'?","Step 1: Convert the given charge values and distances to standard SI units (Coulombs and meters).
-Step 2: Calculate the magnitude of the electric force F1_M exerted by charge q1 on charge qo using Coulomb's Law, given the distance MA = a.
-Step 3: Calculate the magnitude of the electric force F2_M exerted by charge q2 on charge qo using Coulomb's Law, given the distance MB = a.
-Step 4: Determine the angle between the two force vectors, F1_M and F2_M, acting on qo. Since A, B, and M form an equilateral triangle, the angle AMB is 60 degrees. F1_M is repulsive (away from A) and F2_M is attractive (towards B), so the angle between their directions at M is 60 degrees.",4 × 10^-6,N
-LD035,"Two point charges q1 = 4×10^-8 C and q2 = -4×10^-8 C are placed at points A and B, separated by a distance of 4 cm in air. What is the force acting on a charge q = 2×10^-7 C placed at the midpoint O of AB?","Step 1: Identify the given charges and distances.
-Step 2: Calculate the magnitude of the force F1 exerted by q1 on q using Coulomb's Law, F = k × |q1 × q| / r^2.
-Step 3: Determine the direction of F1.
-Step 4: Calculate the magnitude of the force F2 exerted by q2 on q using Coulomb's Law.",0.36,N
-LD036,"Two point charges, q1 and q2, of equal magnitude and the same sign, are placed in air a distance r apart. A third point charge, q3, is placed at the midpoint of the line segment connecting q1 and q2. What is the net force acting on charge q3?","Step 1: The charge q3 is placed at the midpoint between q1 and q2.
-Step 2: The distance from q1 to q3 is r/2, and the distance from q2 to q3 is also r/2.
-Step 3: Coulomb's Law states that the magnitude of the force between two point charges is F = k × |q_a × q_b| / d^2, where k is Coulomb's constant, q_a and q_b are the magnitudes of the charges, and d is the distance between them.
-Step 4: The magnitude of the force exerted by q1 on q3 is F_13 = k × |q1 × q3| / (r/2)^2.",0,N
-LD037,"There are two charges, q1 = 2×10^-6 C and q2 = -2×10^-6 C, placed at points A and B respectively in a vacuum, separated by a distance of 6 cm. A third charge, q3 = 4×10^-6 C, is placed on the perpendicular bisector of AB, at a distance of 4 cm from the line segment AB. What is the magnitude of the net electric force exerted by charges q1 and q2 on charge q3?","Step 1: Identify the given charges and their values.
-Step 2: Determine the distances between the charges.
-Step 3: Calculate the magnitude of the electric force F13 exerted by q1 on q3 using Coulomb's Law.
-Step 4: Calculate the magnitude of the electric force F23 exerted by q2 on q3.",34.56,N
-LD038,"At the three vertices of right-angled triangle ABC (right-angled at A), with AB = 30 cm, AC = 40 cm, and BC = 50 cm, charges q1 = q2 = q3 = 10^-9 C are placed. Determine the magnitude of the net electric force acting on a charge q = 10^-9 C placed at point H, which is the foot of the altitude from A.","Step 1: Identify the given information regarding the triangle ABC, its dimensions, and the charges placed at its vertices.
-Step 2: Calculate the length of the altitude AH from vertex A to the hypotenuse BC using the area formula for a right-angled triangle.
-Step 3: Calculate the lengths of the segments BH and CH on the hypotenuse BC using the properties of a right-angled triangle with an altitude.
-Step 4: Establish a coordinate system by placing point H at the origin (0,0) and aligning the hypotenuse BC with the x-axis, with A along the y-axis.",2.45 × 10^-7,N
-LD039,"Four identical charges q1, q2, q3, q4 are placed at the four vertices of a square ABCD, with a side length of 4 cm, respectively. Find the electric force acting on a charge q0 = 2×10^-8 C placed at the center of the square.","Step 1: Identify the four identical charges q1, q2, q3, q4 placed at the vertices A, B, C, D of a square.
-Step 2: Identify the charge q0 = 2×10^-8 C placed at the center of the square.
-Step 3: Note that all four charges q1, q2, q3, q4 are identical, meaning they have the same magnitude and the same sign.
-Step 4: The distance from each vertex (A, B, C, D) to the center of the square is equal.",0,N
-LD040,"Two point charges q1 = 3 μC and q2 = -2 μC are placed at points A and B, separated by 6 cm. Find the magnitude of the electric force acting on q1 by q2? (Take k = 9×10^9 N×m²/C²)","Step 1: Identify the given values from the question and convert them to SI units.
-Step 2: State Coulomb's Law for the magnitude of the electric force between two point charges.
-Step 3: Substitute the given values into Coulomb's Law formula.
-Step 4: Calculate the magnitude of the electric force.",15,N
-LD041,"Two charges of the same magnitude q are placed at two adjacent vertices of an isosceles right triangle with side length a = 10 cm. Find the magnitude of the total electric force acting on a test charge q0 placed at the remaining vertex, given F0 = kqq0/a^2.","Step 1: An isosceles right triangle has two equal sides and a 90-degree angle between them. Let the vertex with the right angle be P_right, and the other two vertices be P1 and P2. The lengths of the sides P_right-P1 and P_right-P2 are both 'a'.
-Step 2: The problem states two charges 'q' are placed at two adjacent vertices, and a test charge 'q0' is placed at the remaining vertex. For the simplest geometry leading to a well-defined `F0` in the final result, the two charges 'q' are placed at P1 and P2, and the test charge 'q0' is placed at P_right.
-Step 3: The distance from charge 'q' at P1 to 'q0' at P_right is 'a'. The magnitude of the force (let's call it F1) is `kqq0/a^2`.
-Step 4: The distance from charge 'q' at P2 to 'q0' at P_right is also 'a'. The magnitude of the force (let's call it F2) is `kqq0/a^2`.",\sqrt{2} × F₀,N
-LD042,"Two charges, q1 = +1 μC and q2 = +1 μC, are placed at points A and B, separated by 4 cm. Find the net force acting on a test charge q0 = +2 μC placed at point M, which is located precisely at the midpoint between A and B.","Step 1: Identify the given charges and their values: q1 = +1 μC, q2 = +1 μC, and test charge q0 = +2 μC.
-Step 2: Determine the positions and distances: Charges q1 and q2 are separated by 4 cm. Point M is the midpoint between A and B, so the distance from q1 to q0 (AM) is 4 cm / 2 = 2 cm, and the distance from q2 to q0 (BM) is 4 cm / 2 = 2 cm.
-Step 3: Convert units to SI: q1 = 1 x 10^-6 C, q2 = 1 x 10^-6 C, q0 = 2 x 10^-6 C, and distance r = 0.02 m. Use Coulomb's constant k = 9 x 10^9 N×m^2/C^2.
-Step 4: Calculate the magnitude of the force F10 exerted by q1 on q0 using Coulomb's Law (F = k|q1q0|/r^2). F10 = (9 x 10^9 N×m^2/C^2) × |(1 x 10^-6 C) × (2 x 10^-6 C)| / (0.02 m)^2 = 45 N.",0,N
-LD043,Three identical charges 'q' are placed at the three vertices of an equilateral triangle with side length 'a'. Find the net electric force acting on a test charge placed at the center of the triangle?,"Step 1: Identify the charges and their positions: Three identical charges 'q' are placed at the vertices of an equilateral triangle, and a test charge is placed at the center.
-Step 2: Each of the three identical charges 'q' exerts an electric force on the test charge at the center, according to Coulomb's Law.
-Step 3: Due to the properties of an equilateral triangle, the distance from each vertex to the center is exactly the same.
-Step 4: Since the charges 'q' are identical (same magnitude and sign) and the distance to the center from each is the same, the magnitude of the electric force exerted by each vertex charge on the test charge is identical.",0,N
-LD044,"Two point charges q1 = +2 μC and q2 = -2 μC are placed at two points A and B, separated by 6 cm. A test charge q0 = +1 μC is placed at point M, located on the extension of line AB, 4 cm from A and 10 cm from B. Calculate the magnitude of the net force acting on q0?","Step 1: Identify the given charges and distances. q1 = +2 μC = +2 × 10⁻⁶ C, q2 = -2 μC = -2 × 10⁻⁶ C, q0 = +1 μC = +1 × 10⁻⁶ C. The distance between A and B is 6 cm. Point M is 4 cm from A and 10 cm from B, located on the extension of line AB. This implies the order of points is MAB.
-Step 2: Determine the distances from the test charge q0 to q1 and q2. The distance from q0 (at M) to q1 (at A) is r₁₀ = AM = 4 cm = 0.04 m. The distance from q0 (at M) to q2 (at B) is r₂₀ = BM = 10 cm = 0.10 m.
-Step 3: Calculate the magnitude of the electrostatic force F₁₀ exerted by q1 on q0 using Coulomb's Law (F = k|q₁q₂|/r²), where k = 9 × 10⁹ N×m²/C². F₁₀ = (9 × 10⁹ N×m²/C²) × |(+2 × 10⁻⁶ C) × (+1 × 10⁻⁶ C)| / (0.04 m)² = (9 × 10⁹ × 2 × 10⁻¹² N×m²) / (0.0016 m²) = 0.018 N×m² / 0.0016 m² = 11.25 N.
-Step 4: Determine the direction of F₁₀. Since q1 (+2 μC) and q0 (+1 μC) are both positive charges, they repel each other. Therefore, F₁₀ acts on q0 in the direction away from q1 (i.e., from A towards M, or to the left along the line M-A-B).",9.45,N
-LD045,"Two point charges, q1 = +1 μC and q2 = -4 μC, are placed 6 cm apart. Point M is located on the line segment connecting the two charges, 2 cm away from qCalculate the magnitude of the net force acting on a test charge placed at M, if q0 = +1 μC.","Step 1: Identify the given charges and distances, and convert units to SI.
-Step 2: Calculate the distance from charge q2 to point M (r2M).
-Step 3: Calculate the magnitude of the force F10 exerted by q1 on q0 using Coulomb's Law (F = k × |q1×q0| / r^2).
-Step 4: Determine the direction of force F10; since q1 and q0 are both positive, F10 is repulsive, acting away from q1 towards q2.",45,N
-LD046,Two electric charges q1 = +2 μC and q2 = +3 μC are placed at two points 5 cm apart. A test charge q0 = +1 μC is placed at a point 3 cm from q1 and 4 cm from q2. What is the net electric force acting on q0? (Use k = 9×10^9),"Step 1: Convert all given charge values to Coulombs and distances to meters.
-Step 2: Calculate the magnitude of the electric force F10 exerted by q1 on q0 using Coulomb's Law.
-Step 3: Determine the direction of F10.
-Step 4: Calculate the magnitude of the electric force F20 exerted by q2 on q0 using Coulomb's Law.",26.2,N
+LD029,"Three point charges q1 = 4×10^-8 C, q2 = -4×10^-8 C, and q3 = 5×10^-8 C are placed in air at the three vertices A, B, C of an equilateral triangle with side a = 2 cm. Determine the magnitude of the force vector acting on q3.","Step 1: Identify the given values: q1 = 4 × 10^-8 C, q2 = -4 × 10^-8 C, q3 = 5 × 10^-8 C, and a = 2 cm = 0.02 m.
+Step 2: Calculate the magnitude of the force exerted by q1 on q3: F13 = k × |q1q3| / a² = 9 × 10^9 × (4 × 10^-8 × 5 × 10^-8) / (0.02)² = 45 × 10^-3 N.
+Step 3: Since q1 and q3 are both positive, F13 is repulsive and directed away from q1 along AC.
+Step 4: Calculate the magnitude of the force exerted by q2 on q3: F23 = k × |q2q3| / a² = 9 × 10^9 × (4 × 10^-8 × 5 × 10^-8) / (0.02)² = 45 × 10^-3 N.
+Step 5: Since q2 is negative and q3 is positive, F23 is attractive and directed from C toward B.
+Step 6: The two forces have equal magnitudes and form a 120° angle, so F_net = √(F² + F² + 2F²cos120°) = F.
+Step 7: Therefore, F_net = 45 × 10^-3 N.",45 × 10^-3,N
+LD030,"Three charges, q1 = 8×10^-9 C, q2 = q3 = -8×10^-9 C, are placed at the three vertices of an equilateral triangle ABC with side length a = 6 cm, in air. Determine the net force acting on a charge q0 = 6×10^-9 C placed at the center O of the triangle.","Step 1: Identify the given values: q1 = 8 × 10^-9 C, q2 = q3 = -8 × 10^-9 C, q0 = 6 × 10^-9 C, and a = 6 cm = 0.06 m.
+Step 2: Calculate the distance from the center O to each vertex of the equilateral triangle: R = a / √3 = 0.06 / √3 m.
+Step 3: Calculate the magnitude of the force exerted by each vertex charge on q0: F = k × |qiq0| / R² = 9 × 10^9 × (8 × 10^-9 × 6 × 10^-9) / (0.06 / √3)² = 3.6 × 10^-4 N.
+Step 4: Determine the force directions. q1 is positive and q0 is positive, so q1 repels q0 away from vertex A. q2 and q3 are negative while q0 is positive, so q2 and q3 attract q0 toward vertices B and C.
+Step 5: By symmetry of the equilateral triangle, the vector sum of these three equal-magnitude forces has magnitude 2F.
+Step 6: Therefore, F_net = 2 × 3.6 × 10^-4 = 7.2 × 10^-4 N.",7.2 × 10^-4,N
+LD031,"In a vacuum, consider two electric charges q1 = -q2 = 10^-7 C placed at points A and B, separated by 8 cm. Determine the resultant force acting on electric charge q0 = 10^-7 C when q0 is placed at H, which is the midpoint of AB.","Step 1: Interpret q1 = -q2 = 10^-7 C as q1 = +10^-7 C and q2 = -10^-7 C. The charge q0 = +10^-7 C is placed at the midpoint H of AB.
+Step 2: Since AB = 8 cm and H is the midpoint, AH = BH = 4 cm = 0.04 m.
+Step 3: Since q1 and q0 are both positive, q1 repels q0 away from A. Since q2 is negative and q0 is positive, q2 attracts q0 toward B. Therefore, both forces on q0 point in the same direction.
+Step 4: Calculate the force due to each charge: F = k × |qq0| / r² = 9 × 10^9 × (10^-7 × 10^-7) / (0.04)² = 0.05625 N.
+Step 5: Add the two forces: F_net = 2F = 2 × 0.05625 = 0.1125 N = 1.125 × 10^-1 N.",1.125 × 10^-1,N
+LD032,"In a vacuum, two charges q1 = 10^-7 C and q2 = -10^-7 C are placed at points A and B, separated by 8 cm. Determine the resultant force acting on a third charge q0 = 10^-7 C when q0 is placed at point M, 4 cm from A and 12 cm from B.","Step 1: Identify the given values: q1 = +10^-7 C, q2 = -10^-7 C, q0 = +10^-7 C, AM = 4 cm = 0.04 m, and BM = 12 cm = 0.12 m.
+Step 2: Since AM + AB = 4 cm + 8 cm = 12 cm = BM, the points are collinear in the order M - A - B.
+Step 3: Since q1 and q0 are both positive, q1 repels q0 away from A. Since M is outside segment AB, this force points away from B.
+Step 4: Calculate the force due to q1: F1 = k × |q1q0| / AM² = 9 × 10^9 × (10^-7 × 10^-7) / (0.04)² = 0.05625 N.
+Step 5: Since q2 is negative and q0 is positive, q2 attracts q0 toward B.
+Step 6: Calculate the force due to q2: F2 = k × |q2q0| / BM² = 9 × 10^9 × (10^-7 × 10^-7) / (0.12)² = 0.00625 N.
+Step 7: The two forces act in opposite directions, so subtract their magnitudes: F_net = 0.05625 - 0.00625 = 0.050 N.",0.05,N
+LD033,"Three charges are placed at the three vertices of an equilateral triangle with side length a = 6 cm, in air: q1 = 6×10^-9 C, q2 = q3 = -8×10^-9 C. Determine the net force acting on a charge q0 = 8×10^-9 C placed at the center of the triangle.","Step 1: Identify the given values: q1 = 6 × 10^-9 C, q2 = q3 = -8 × 10^-9 C, q0 = 8 × 10^-9 C, and a = 6 cm = 0.06 m.
+Step 2: Calculate the distance from the center to each vertex: r = a / √3 = 0.06 / √3 m.
+Step 3: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / r² = 9 × 10^9 × (6 × 10^-9 × 8 × 10^-9) / (0.06/√3)² = 3.6 × 10^-4 N.
+Step 4: Calculate the forces exerted by q2 and q3 on q0: F20 = F30 = k × |q2q0| / r² = 9 × 10^9 × (8 × 10^-9 × 8 × 10^-9) / (0.06/√3)² = 4.8 × 10^-4 N.
+Step 5: q1 repels q0 away from vertex A, while q2 and q3 attract q0 toward vertices B and C. By symmetry, the resultant of F20 and F30 points opposite vertex A and has magnitude 4.8 × 10^-4 N.
+Step 6: This resultant has the same direction as F10, so add the magnitudes: F_net = 3.6 × 10^-4 + 4.8 × 10^-4 = 8.4 × 10^-4 N.",8.4 × 10^-4,N
+LD034,"Two point charges q1 = 2×10⁻² µC and q2 = -2×10⁻² µC are placed at points A and B, separated by a distance a = 30 cm in air. What is the magnitude of the electric force exerted on a charge qo = 2×10⁻⁹ C placed at point M, which is equidistant from A and B by a distance equal to 'a'?","Step 1: Convert the given values to SI units: q1 = 2 × 10^-2 μC = 2 × 10^-8 C, q2 = -2 × 10^-8 C, q0 = 2 × 10^-9 C, and a = 30 cm = 0.30 m.
+Step 2: Since MA = MB = AB = a, triangle AMB is equilateral.
+Step 3: Calculate the magnitude of the force exerted by q1 on q0: F1 = k × |q1q0| / a² = 9 × 10^9 × (2 × 10^-8 × 2 × 10^-9) / (0.30)² = 4 × 10^-7 N.
+Step 4: Calculate the magnitude of the force exerted by q2 on q0: F2 = k × |q2q0| / a² = 9 × 10^9 × (2 × 10^-8 × 2 × 10^-9) / (0.30)² = 4 × 10^-7 N.
+Step 5: Since q1 is positive and q0 is positive, F1 is repulsive, directed away from A. Since q2 is negative and q0 is positive, F2 is attractive, directed toward B.
+Step 6: The angle between the two force vectors is 120°.
+Step 7: Calculate the resultant force: F_net = √(F1² + F2² + 2F1F2cos120°) = F1 = 4 × 10^-7 N.",4 × 10^-7,N
+LD035,"Two point charges q1 = 4×10^-8 C and q2 = -4×10^-8 C are placed at points A and B, separated by a distance of 4 cm in air. What is the force acting on a charge q = 2×10^-7 C placed at the midpoint O of AB?","Step 1: Since q is placed at the midpoint O of AB, the distance from q to each charge is 2 cm = 0.02 m.
+Step 2: Calculate the force exerted by q1 on q: F1 = k × |q1q| / r² = 9 × 10^9 × (4 × 10^-8 × 2 × 10^-7) / (0.02)² = 0.18 N.
+Step 3: Since q1 and q are both positive, F1 is repulsive and points away from q1, toward q2.
+Step 4: Calculate the force exerted by q2 on q: F2 = k × |q2q| / r² = 9 × 10^9 × (4 × 10^-8 × 2 × 10^-7) / (0.02)² = 0.18 N.
+Step 5: Since q2 is negative and q is positive, F2 is attractive and also points toward q2.
+Step 6: The two forces act in the same direction, so F_net = F1 + F2 = 0.18 + 0.18 = 0.36 N.",0.36,N
+LD036,"Two point charges, q1 and q2, of equal magnitude and the same sign, are placed in air a distance r apart. A third point charge, q3, is placed at the midpoint of the line segment connecting q1 and q2. What is the net force acting on charge q3?","Step 1: Since q3 is placed at the midpoint between q1 and q2, its distance from each charge is r/2.
+Step 2: Because q1 and q2 have equal magnitude and the same sign, the forces they exert on q3 have equal magnitudes.
+Step 3: The magnitude of each force is F = k × |q1q3| / (r/2)².
+Step 4: The two forces act along the same line but in opposite directions.
+Step 5: Since the forces are equal in magnitude and opposite in direction, they cancel each other.
+Step 6: Therefore, the net force acting on q3 is 0 N.",0,N
+LD037,"There are two charges, q1 = 2×10^-6 C and q2 = -2×10^-6 C, placed at points A and B respectively in a vacuum, separated by a distance of 6 cm. A third charge, q3 = 4×10^-6 C, is placed on the perpendicular bisector of AB, at a distance of 4 cm from the line segment AB. What is the magnitude of the net electric force exerted by charges q1 and q2 on charge q3?","Step 1: Since q3 is on the perpendicular bisector of AB, half of AB is 3 cm, and the distance from q3 to AB is 4 cm.
+Step 2: Calculate the distance from q3 to each charge: r13 = r23 = √(3² + 4²) = 5 cm = 0.05 m.
+Step 3: Calculate the magnitude of each force: F13 = F23 = k × |q1q3| / r² = 9 × 10^9 × (2 × 10^-6 × 4 × 10^-6) / (0.05)² = 28.8 N.
+Step 4: Since q1 is positive and q3 is positive, q1 repels q3. Since q2 is negative and q3 is positive, q2 attracts q3.
+Step 5: The vertical components of the two forces cancel, while the horizontal components point in the same direction.
+Step 6: Calculate each horizontal component: Fx = F × 3/5 = 28.8 × 3/5 = 17.28 N.
+Step 7: Add the two horizontal components: F_net = 2Fx = 2 × 17.28 = 34.56 N.",34.56,N
+LD038,"At the three vertices of right-angled triangle ABC (right-angled at A), with AB = 30 cm, AC = 40 cm, and BC = 50 cm, charges q1 = q2 = q3 = 10^-9 C are placed. Determine the magnitude of the net electric force acting on a charge q = 10^-9 C placed at point H, which is the foot of the altitude from A.","Step 1: Convert the triangle sides to meters: AB = 0.30 m, AC = 0.40 m, and BC = 0.50 m.
+Step 2: Calculate the altitude and hypotenuse segments: AH = AB × AC / BC = 0.30 × 0.40 / 0.50 = 0.24 m, BH = AB² / BC = 0.30² / 0.50 = 0.18 m, and CH = AC² / BC = 0.40² / 0.50 = 0.32 m.
+Step 3: Calculate the force from charge B on q at H: FB = kq² / BH² = 9 × 10^9 × 10^-18 / 0.18² ≈ 2.78 × 10^-7 N.
+Step 4: Calculate the force from charge C on q at H: FC = kq² / CH² = 9 × 10^9 × 10^-18 / 0.32² ≈ 8.79 × 10^-8 N.
+Step 5: Calculate the force from charge A on q at H: FA = kq² / AH² = 9 × 10^9 × 10^-18 / 0.24² ≈ 1.56 × 10^-7 N.
+Step 6: Since all charges have the same sign, the force from B and the force from C act in opposite horizontal directions, while the force from A acts perpendicular to BC.
+Step 7: Calculate the horizontal component: Fx = FB - FC ≈ 2.78 × 10^-7 - 8.79 × 10^-8 = 1.90 × 10^-7 N.
+Step 8: Calculate the resultant force: F = √(Fx² + FA²) = √((1.90 × 10^-7)² + (1.56 × 10^-7)²) ≈ 2.45 × 10^-7 N.",2.45 × 10^-7,N
+LD039,"Four identical charges q1, q2, q3, q4 are placed at the four vertices of a square ABCD, with a side length of 4 cm, respectively. Find the electric force acting on a charge q0 = 2×10^-8 C placed at the center of the square.","Step 1: The four charges q1, q2, q3, and q4 are identical and placed at the four vertices of a square.
+Step 2: The charge q0 is placed at the center of the square.
+Step 3: The center is equidistant from all four vertices, so the four forces acting on q0 have equal magnitudes.
+Step 4: The forces from opposite vertices act along the same diagonal but in opposite directions.
+Step 5: Therefore, the force from q1 cancels the force from q3, and the force from q2 cancels the force from q4.
+Step 6: Hence, the net electric force acting on q0 is 0 N.",0,N
+LD040,"Two point charges q1 = 3 μC and q2 = -2 μC are placed at points A and B, separated by 6 cm. Find the magnitude of the electric force acting on q1 by q2? (Take k = 9×10^9 N×m²/C²)","Step 1: Identify the given values: q1 = 3 μC = 3 × 10^-6 C, q2 = -2 μC = -2 × 10^-6 C, r = 6 cm = 0.06 m, and k = 9 × 10^9 N·m²/C².
+Step 2: Use Coulomb’s law for the magnitude of the electric force: F = k × |q1q2| / r².
+Step 3: Substitute the values into the formula: F = 9 × 10^9 × (3 × 10^-6 × 2 × 10^-6) / (0.06)².
+Step 4: Calculate the result: F = 15 N.",15,N
+LD041,"Two charges of the same magnitude q are placed at two adjacent vertices of an isosceles right triangle with side length a = 10 cm. Find the magnitude of the total electric force acting on a test charge q0 placed at the remaining vertex, given F0 = kqq0/a^2.","Step 1: Consider the arrangement where q0 is placed at the right-angle vertex of the isosceles right triangle, and the two equal charges q are placed at the other two vertices.
+Step 2: The distance from q0 to each charge q is a, so each force has magnitude F0 = kqq0/a².
+Step 3: The two forces act along the two legs of the isosceles right triangle, which are perpendicular to each other.
+Step 4: Therefore, the resultant force is F = √(F0² + F0²).
+Step 5: Simplify the result: F = √2 × F0.","√2 × F0",N
+LD042,"Two charges, q1 = +1 μC and q2 = +1 μC, are placed at points A and B, separated by 4 cm. Find the net force acting on a test charge q0 = +2 μC placed at point M, which is located precisely at the midpoint between A and B.","Step 1: Identify the given values: q1 = +1 × 10^-6 C, q2 = +1 × 10^-6 C, q0 = +2 × 10^-6 C, and AB = 4 cm.
+Step 2: Since M is the midpoint of AB, AM = BM = 2 cm = 0.02 m.
+Step 3: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / AM² = 9 × 10^9 × (1 × 10^-6 × 2 × 10^-6) / (0.02)² = 45 N.
+Step 4: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / BM² = 9 × 10^9 × (1 × 10^-6 × 2 × 10^-6) / (0.02)² = 45 N.
+Step 5: Since all charges are positive, q1 and q2 repel q0 in opposite directions.
+Step 6: The two forces are equal in magnitude and opposite in direction, so they cancel each other.
+Step 7: Therefore, the net force acting on q0 is 0 N.",0,N
+LD043,"Three identical charges 'q' are placed at the three vertices of an equilateral triangle with side length 'a'. Find the net electric force acting on a test charge placed at the center of the triangle?","Step 1: Three identical charges q are placed at the vertices of an equilateral triangle, and the test charge is placed at the center.
+Step 2: The center of an equilateral triangle is equidistant from all three vertices.
+Step 3: Since the three vertex charges are identical, the three forces acting on the test charge have equal magnitudes.
+Step 4: The directions of these three forces are symmetrically separated by 120°.
+Step 5: Three equal vectors separated by 120° cancel each other.
+Step 6: Therefore, the net electric force acting on the test charge is 0 N.",0,N
+LD044,"Two point charges q1 = +2 μC and q2 = -2 μC are placed at two points A and B, separated by 6 cm. A test charge q0 = +1 μC is placed at point M, located on the extension of line AB, 4 cm from A and 10 cm from B. Calculate the magnitude of the net force acting on q0?","Step 1: Identify the given values: q1 = +2 × 10^-6 C, q2 = -2 × 10^-6 C, q0 = +1 × 10^-6 C, AM = 4 cm = 0.04 m, and BM = 10 cm = 0.10 m.
+Step 2: Since AM + AB = BM, the points are collinear in the order M-A-B.
+Step 3: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / AM² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.04)² = 11.25 N.
+Step 4: Since q1 and q0 are both positive, F10 repels q0 away from A, toward M.
+Step 5: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / BM² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.10)² = 1.8 N.
+Step 6: Since q2 is negative and q0 is positive, F20 attracts q0 toward B.
+Step 7: The two forces act in opposite directions, so subtract their magnitudes: F_net = 11.25 - 1.8 = 9.45 N.",9.45,N
+LD045,"Two point charges, q1 = +1 μC and q2 = -4 μC, are placed 6 cm apart. Point M is located on the line segment connecting the two charges, 2 cm away from q1. Calculate the magnitude of the net force acting on a test charge placed at M, if q0 = +1 μC.","Step 1: Identify the given values: q1 = +1 × 10^-6 C, q2 = -4 × 10^-6 C, q0 = +1 × 10^-6 C, and q1q2 = 6 cm.
+Step 2: Since M is 2 cm from q1, the distance from M to q2 is 6 cm - 2 cm = 4 cm.
+Step 3: Convert distances to meters: r10 = 0.02 m and r20 = 0.04 m.
+Step 4: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / r10² = 9 × 10^9 × (1 × 10^-6 × 1 × 10^-6) / (0.02)² = 22.5 N.
+Step 5: Since q1 and q0 are both positive, F10 is repulsive and points toward q2.
+Step 6: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / r20² = 9 × 10^9 × (4 × 10^-6 × 1 × 10^-6) / (0.04)² = 22.5 N.
+Step 7: Since q2 is negative and q0 is positive, F20 is attractive and also points toward q2.
+Step 8: The two forces act in the same direction, so F_net = F10 + F20 = 22.5 + 22.5 = 45 N.",45,N
+LD046,"Two electric charges q1 = +2 μC and q2 = +3 μC are placed at two points 5 cm apart. A test charge q0 = +1 μC is placed at a point 3 cm from q1 and 4 cm from q2. What is the net electric force acting on q0? (Use k = 9×10^9)","Step 1: Convert the given values to SI units: q1 = +2 × 10^-6 C, q2 = +3 × 10^-6 C, q0 = +1 × 10^-6 C, r10 = 3 cm = 0.03 m, and r20 = 4 cm = 0.04 m.
+Step 2: Since 3² + 4² = 5², the triangle formed by q1, q2, and q0 is right-angled at q0.
+Step 3: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / r10² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.03)² = 20 N.
+Step 4: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / r20² = 9 × 10^9 × (3 × 10^-6 × 1 × 10^-6) / (0.04)² = 16.875 N.
+Step 5: Since all charges are positive, both forces on q0 are repulsive.
+Step 6: The two forces are perpendicular, so calculate the resultant force: F_net = √(F10² + F20²).
+Step 7: Substitute the values: F_net = √(20² + 16.875²) ≈ 26.2 N.",26.2,N
 LD047,"A test charge is placed at a point whose distances to the two charges q1 = +2 μC and q2 = -3 μC are 3 cm and 4 cm, respectively. The two charges are fixed and separated by 7 cm. What is the direction of the net electric force acting on the test charge?","Step 1: Identify the given charges and their positions relative to the test charge.
 Step 2: Note that the distance from q1 to the test charge (3 cm) plus the distance from q2 to the test charge (4 cm) equals the separation between q1 and q2 (7 cm).
 Step 3: This indicates that the test charge is placed on the straight line connecting q1 and q2, specifically between them.
-Step 4: Determine the direction of the force exerted by q1 (+2 μC) on the positive test charge. Since both are positive, this force is repulsive, pushing the test charge away from q1, which means towards q2.",Hướng về phía q₂,-
-LD048,"A charge q1 = +2 μC is at A and q2 = -2 μC is at B, separated by 10 cm. A test charge is placed at the midpoint of AB. Calculate the net force acting on the test charge? If q0 = +1 μC.","Step 1: Identify the given charges and their values: q1 = +2 μC = +2 x 10^-6 C, q2 = -2 μC = -2 x 10^-6 C, and the test charge q0 = +1 μC = +1 x 10^-6 C.
-Step 2: Identify the total separation between q1 and q2 as 10 cm = 0.10 m. Since the test charge q0 is at the midpoint, its distance from q1 (r1) and from q2 (r2) is 0.10 m / 2 = 0.05 m.
-Step 3: Recall Coulomb's Law, F = k × |q_a × q_b| / r^2, where k is Coulomb's constant (approximately 8.9875 x 10^9 N m^2/C^2).
-Step 4: Calculate the magnitude of the force F1 exerted by q1 on q0: F1 = (8.9875 x 10^9 N m^2/C^2) × |(+2 x 10^-6 C) × (+1 x 10^-6 C)| / (0.05 m)^2 = 7.19 N. Since q1 and q0 are both positive, F1 is repulsive, acting away from q1 (towards q2).",14.4,N
-LD049,"Two charges, q1 = +5 μC and q2 = +5 μC, are placed at points A and B, 10 cm apart. Calculate the magnitude of the force acting on a test charge q0 = +1 μC placed at a point 6 cm from A and 8 cm from B.","Step 1: Identify the given charges and distances.
-Step 2: Determine the geometry of the charge placement.
-Step 3: Calculate the magnitude of the force F10 exerted by q1 on q0.
-Step 4: Calculate the magnitude of the force F20 exerted by q2 on q0.",14.34,N
-LD050,"Two charges, q1 = +1 μC and q2 = -1 μC, are placed at two points 10 cm apart. A test charge q0 = +2 μC is placed at a point equidistant from the two charges and located on the line connecting q1 and q2. What is the magnitude of the net electric force acting on q0?","Step 1: Identify the given charges and the initial separation between q1 and q2.
-Step 2: Determine the position of the test charge q0.
-Step 3: Calculate the distance from q1 to q0 (r10) and from q2 to q0 (r20).
-Step 4: Determine the direction of the electric force F10 exerted by q1 on q0.",14.4,N
-LD051,"Two point charges, q1 = q2 = 16 × 10⁻⁸ C, are placed at points A and B, which are 10 cm apart in the air. Determine the electric field strength (or intensity) caused by these two point charges at point N, where NA = 5 cm and NB = 15 cm.","Step 1: Identify the given values and relevant constant.
-Step 2: Determine the relative positions of points N, A, and B.
-Step 3: Calculate the magnitude of the electric field E1 at point N due to charge q1 at A.
-Step 4: Determine the direction of E1.",6.4 × 10^5,V/m
-LD052,"Two point charges, q1 = q2 = 16 × 10⁻⁸ C, are placed at points A and B, which are 10 cm apart in air. Determine the electric field strength produced by these two point charges at point C, given that AC = BC = 8 cm.","Step 1: Identify the given values and relevant physical constants.
-Step 2: Determine the geometry of the points A, B, and C.
-Step 3: Calculate the magnitude of the electric field produced by each charge at point C.
-Step 4: Determine the direction of the electric fields and their vector sum.",3.51 × 10^5,V/m
-LD053,"At two points A and B, separated by 10 cm in the air, two charges q1 = -q2 = 6 × 10^-6 C are placed. Determine the electric field strength caused by these two point charges at point C, knowing that AC = BC = 12 cm.","Step 1: Identify the given values and the electrostatic constant.
-Step 2: Determine the geometry of points A, B, and C.
-Step 3: Calculate the magnitude of the electric field E1 at C due to charge q1.
-Step 4: Calculate the magnitude of the electric field E2 at C due to charge q2.",3.125 × 10^6,V/m
+Step 4: Determine the direction of the force exerted by q1 (+2 μC) on the positive test charge. 
+Since both are positive, this force is repulsive, pushing the test charge away from q1, which means towards q2.",Towards q₂,-
+LD048,"A charge q1 = +2 μC is at A and q2 = -2 μC is at B, separated by 10 cm. A test charge is placed at the midpoint of AB. Calculate the net force acting on the test charge? If q0 = +1 μC.","Step 1: Identify the given values: q1 = +2 × 10^-6 C, q2 = -2 × 10^-6 C, q0 = +1 × 10^-6 C, and AB = 10 cm = 0.10 m.
+Step 2: Since q0 is placed at the midpoint of AB, its distance from each charge is r = 5 cm = 0.05 m.
+Step 3: Calculate the force exerted by q1 on q0: F1 = k × |q1q0| / r² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.05)² = 7.2 N.
+Step 4: Since q1 and q0 are both positive, F1 is repulsive and points toward q2.
+Step 5: Calculate the force exerted by q2 on q0: F2 = k × |q2q0| / r² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.05)² = 7.2 N.
+Step 6: Since q2 is negative and q0 is positive, F2 is attractive and also points toward q2.
+Step 7: Since both forces act in the same direction, F_net = F1 + F2 = 7.2 + 7.2 = 14.4 N.",14.4,N
+LD049,"Two charges, q1 = +5 μC and q2 = +5 μC, are placed at points A and B, 10 cm apart. Calculate the magnitude of the force acting on a test charge q0 = +1 μC placed at a point 6 cm from A and 8 cm from B.","Step 1: Identify the given values: q1 = q2 = +5 × 10^-6 C, q0 = +1 × 10^-6 C, r10 = 6 cm = 0.06 m, r20 = 8 cm = 0.08 m, and AB = 10 cm = 0.10 m.
+Step 2: Since 6² + 8² = 10², the triangle formed by q1, q2, and q0 is right-angled at q0.
+Step 3: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / r10² = 9 × 10^9 × (5 × 10^-6 × 1 × 10^-6) / (0.06)² = 12.5 N.
+Step 4: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / r20² = 9 × 10^9 × (5 × 10^-6 × 1 × 10^-6) / (0.08)² = 7.03125 N.
+Step 5: Since all charges are positive, both forces on q0 are repulsive.
+Step 6: Since the two force directions are perpendicular, calculate the resultant force: F_net = √(F10² + F20²).
+Step 7: Substitute the values: F_net = √(12.5² + 7.03125²) ≈ 14.34 N.",14.34,N
+LD050,"Two charges, q1 = +1 μC and q2 = -1 μC, are placed at two points 10 cm apart. A test charge q0 = +2 μC is placed at a point equidistant from the two charges and located on the line connecting q1 and q2. What is the magnitude of the net electric force acting on q0?","Step 1: Identify the given values: q1 = +1 × 10^-6 C, q2 = -1 × 10^-6 C, q0 = +2 × 10^-6 C, and the distance between q1 and q2 is 10 cm.
+Step 2: Since q0 is equidistant from q1 and q2 on the line connecting them, q0 is at the midpoint, so r10 = r20 = 5 cm = 0.05 m.
+Step 3: Calculate the force exerted by q1 on q0: F10 = k × |q1q0| / r10² = 9 × 10^9 × (1 × 10^-6 × 2 × 10^-6) / (0.05)² = 7.2 N.
+Step 4: Since q1 and q0 are both positive, q1 repels q0.
+Step 5: Calculate the force exerted by q2 on q0: F20 = k × |q2q0| / r20² = 9 × 10^9 × (1 × 10^-6 × 2 × 10^-6) / (0.05)² = 7.2 N.
+Step 6: Since q2 is negative and q0 is positive, q2 attracts q0.
+Step 7: Both forces act in the same direction, so the net force is F = F10 + F20 = 7.2 + 7.2 = 14.4 N.",14.4,N
+LD051,"Two point charges, q1 = q2 = 16 × 10⁻⁸ C, are placed at points A and B, which are 10 cm apart in the air. Determine the electric field strength (or intensity) caused by these two point charges at point N, where NA = 5 cm and NB = 15 cm.","Step 1: Identify the given values: q1 = q2 = 16 × 10^-8 C, AB = 10 cm, NA = 5 cm = 0.05 m, and NB = 15 cm = 0.15 m.
+Step 2: Since NA + AB = NB, point A lies between N and B.
+Step 3: Calculate the electric field at N due to q1: E1 = k × |q1| / NA² = 9 × 10^9 × 16 × 10^-8 / (0.05)² = 5.76 × 10^5 V/m.
+Step 4: Since q1 is positive, E1 points away from q1.
+Step 5: Calculate the electric field at N due to q2: E2 = k × |q2| / NB² = 9 × 10^9 × 16 × 10^-8 / (0.15)² = 6.4 × 10^4 V/m.
+Step 6: Since q2 is also positive, E2 also points away from q2. At point N, E1 and E2 are in the same direction.
+Step 7: Add the two fields: E = E1 + E2 = 5.76 × 10^5 + 6.4 × 10^4 = 6.4 × 10^5 V/m.",6.4 × 10^5,V/m
+LD052,"Two point charges, q1 = q2 = 16 × 10⁻⁸ C, are placed at points A and B, which are 10 cm apart in air. Determine the electric field strength produced by these two point charges at point C, given that AC = BC = 8 cm.","Step 1: Identify the given values: q1 = q2 = 16 × 10^-8 C, AB = 10 cm, and AC = BC = 8 cm = 0.08 m.
+Step 2: Since AC = BC, point C lies on the perpendicular bisector of AB. The midpoint of AB is 5 cm from each charge.
+Step 3: Calculate the height from C to AB: h = √(8² - 5²) = √39 cm.
+Step 4: Calculate the electric field magnitude due to each charge at C: E0 = kq / r² = 9 × 10^9 × 16 × 10^-8 / (0.08)² = 2.25 × 10^5 V/m.
+Step 5: Since the two charges are equal and positive, the horizontal components of the two electric fields cancel by symmetry.
+Step 6: The components along the perpendicular bisector add: E = 2E0 × h / 8 = 2 × 2.25 × 10^5 × √39 / 8.
+Step 7: Calculate the result: E ≈ 3.51 × 10^5 V/m.",3.51 × 10^5,V/m
+LD053,"At two points A and B, separated by 10 cm in the air, two charges q1 = -q2 = 6 × 10^-6 C are placed. Determine the electric field strength caused by these two point charges at point C, knowing that AC = BC = 12 cm.","Step 1: Interpret q1 = -q2 = 6 × 10^-6 C as two charges with equal magnitudes and opposite signs: q1 = +6 × 10^-6 C and q2 = -6 × 10^-6 C.
+Step 2: Convert the distances to meters: AB = 10 cm = 0.10 m and AC = BC = 12 cm = 0.12 m.
+Step 3: Since AC = BC, point C lies on the perpendicular bisector of AB. Half of AB is 5 cm.
+Step 4: Calculate the electric field magnitude due to each charge at C: E0 = k × |q| / r² = 9 × 10^9 × 6 × 10^-6 / (0.12)² = 3.75 × 10^6 V/m.
+Step 5: Because the charges have opposite signs, the components perpendicular to AB cancel, while the components parallel to AB add.
+Step 6: The parallel component factor for each field is 5/12, so E_net = 2E0 × 5/12.
+Step 7: Substitute the value: E_net = 2 × 3.75 × 10^6 × 5/12 = 3.125 × 10^6 V/m.",3.125 × 10^6,V/m
 LD055,"At two points A and B, separated by 10 cm in air, two electric charges q1 = q2 = 16 × 10^-8 C are placed. 
 Determine the electrostatic force acting on charge q3 = 2 × 10^-6 C, which is placed at point C. Given that AC = BC = 8 cm.","Step 1: Identify the given values: q1 = q2 = 16 × 10^-8 C, q3 = 2 × 10^-6 C, AB = 10 cm, AC = BC = 8 cm, and k = 9 × 10^9 N·m²/C².
 Step 2: Convert distances to SI units: AC = BC = 8 cm = 0.08 m and AB = 10 cm = 0.10 m.
@@ -291,10 +428,13 @@ LD063,"Two electric charges, q1 = 5 × 10^-16 C and q2 = –5 × 10^-16 C, are p
 Step 2: Convert side length to meters: r = 8 cm = 0.08 m.
 Step 3: Calculate E1 = k × |q1| / r^2 = (9 × 10^9 N m^2/C^2) × (5 × 10^-16 C) / (0.08 m)^2 = (45 × 10^-7) / (0.0064) N/C = 7.03125 × 10^-4 N/C.
 Step 4: Calculate E2 = k × |q2| / r^2 = (9 × 10^9 N m^2/C^2) × (5 × 10^-16 C) / (0.08 m)^2 = 7.03125 × 10^-4 N/C. So, E1 = E2.",0.7031 × 10^-3,V/m
-LD064,"Two point charges, q1 = 0.5 nC and q2 = –0.5 nC, are placed at points A and B, 6 cm apart in air. What is the magnitude of the electric field strength at the midpoint of AB?","Step 1: Identify the given charges and distance. q1 = 0.5 nC = 0.5 x 10⁻⁹ C, q2 = -0.5 nC = -0.5 x 10⁻⁹ C, and the separation between A and B is 6 cm.
-Step 2: Determine the distance from each charge to the midpoint. The midpoint is halfway between A and B, so the distance from q1 to the midpoint (r1) and from q2 to the midpoint (r2) is r = 6 cm / 2 = 3 cm = 0.03 m.
-Step 3: Calculate the magnitude of the electric field (E1) due to q1 at the midpoint using the formula E = k|q|/r², where k ≈ 9 x 10⁹ N×m²/C². E1 = (9 x 10⁹ N×m²/C²) × (0.5 x 10⁻⁹ C) / (0.03 m)² = 5000 N/C.
-Step 4: Determine the direction of E1.Since q1 is a positive charge, the electric field E1 at the midpoint points away from q1 (i.e., from A towards B).",10000,V/m
+LD064,"Two point charges, q1 = 0.5 nC and q2 = –0.5 nC, are placed at points A and B, 6 cm apart in air. What is the magnitude of the electric field strength at the midpoint of AB?","Step 1: Convert the given values to SI units: q1 = +0.5 × 10^-9 C, q2 = -0.5 × 10^-9 C, and AB = 6 cm = 0.06 m.
+Step 2: The midpoint is halfway between A and B, so the distance from each charge to the midpoint is r = 3 cm = 0.03 m.
+Step 3: Calculate the electric field due to q1: E1 = k|q1| / r² = 9 × 10^9 × 0.5 × 10^-9 / (0.03)² = 5000 V/m.
+Step 4: Since q1 is positive, E1 points away from q1, toward B.
+Step 5: Calculate the electric field due to q2: E2 = k|q2| / r² = 9 × 10^9 × 0.5 × 10^-9 / (0.03)² = 5000 V/m.
+Step 6: Since q2 is negative, E2 points toward q2, which is also toward B.
+Step 7: The two electric fields are in the same direction, so add them: E = E1 + E2 = 5000 + 5000 = 10000 V/m.",10000,V/m
 LD065,"Two point charges, q1 = 0.5 nC and q2 = –0.5 nC, are placed at two points A and B, separated by 6 cm in air. What is the magnitude of the electric field strength at point M, which is located on the perpendicular bisector of AB, at a distance ℓ = 4 cm from the midpoint of AB?","Step 1: Identify the given values and convert them to SI units.
 Step 2: Determine the distances from each charge to point M.
 Step 3: Calculate the magnitude of the electric field due to each charge at point M.
