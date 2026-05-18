@@ -3690,13 +3690,17 @@ Step 2: Identify the new system with 3 identical capacitors (each 12 μF) connec
 Step 3: Total capacitance: C_total = 3 × 12 μF = 36 μF.
 Step 4: Use the total charge to find the final total energy: W = Q² / (2 × C_total).
 Step 5: Calculate: W = (1200 × 10⁻⁶)² / (2 × 36 × 10⁻⁶) = 20000 μJ = 20 mJ = 0.02 J",0.020,J
-THCB001,"An ammeter has a measuring range of 2 A and a least count of 0.1 A. When measuring the current through a light bulb, the reading is 1.2 A. What is the absolute error?","Step 1: Identify the given least count of the ammeter.
- Step 2: The least count of a measuring instrument represents the smallest division it can accurately read, and for aStep 1: Identify the least count of the instrument, which is given as 0.1 A.
-Step 2: In measurement theory, when a specific absolute error is not otherwise provided, the absolute error (ΔI) is taken to be equal to the least count of the instrument.
-Step 3: Note the reading of 1.2 A.
-Step 4: Determine the absolute error: ΔI = 0.1 A. single measurement, this value is typically considered the absolute error or uncertainty associated with the instrument's precision.
- Step 3: The least count of the ammeter is given as 0.1 A.
- Step 4: Therefore, the absolute error is 0.1 A.",0.1,A
+THCB001,"An ammeter has a measuring range of 2 A and a least count of 0.1 A. When measuring the current through a light bulb, the reading is 1.2 A. What is the absolute error?","Step 1: Identify the least count of the ammeter:
+LC = 0.1 A.
+
+Step 2: For a single measurement, if no other uncertainty is given, the absolute error is taken to be equal to the least count of the instrument.
+
+Step 3: Therefore, the absolute error of the current measurement is:
+ΔI = LC = 0.1 A.
+
+Step 4: The reading 1.2 A is the measured value, but it does not change the absolute error in this question.
+
+Step 5: Therefore, the absolute error is 0.1 A.",0.1,A
 THCB002,A voltmeter with a least count of 0.2 V reads 5.6 V. What is the relative error of the measurement?,"Step 1: Identify the measured value V = 5.6 V.
 Step 2: Identify the absolute error (ΔV), which is equal to the least count of 0.2 V.
 Step 3: Apply the formula for relative error: δV = ΔV / V.
@@ -3719,10 +3723,21 @@ THCB006,"If the actual resistance is 10.2 Ω but the measured value is 9.8 Ω, w
 Step 2: Use the formula for absolute error: ΔR = |Actual Value - Measured Value|.
 Step 3: Substitute the values: ΔR = |10.2 - 9.8|.
 Step 4: Final calculation: ΔR = 0.4 Ω.",0.4,Ω
-THCB007,"A student measures the current 3 times and obtains the values: 1.8 A, 2.0 A, 2.2 A. What is the random error?","Step 1: List the measurements: 1.8 A, 2.0 A, 2.2 A.
-Step 2: Calculate the mean value (I_avg): (1.8 + 2.0 + 2.2) / 3 = 6.0 / 3 = 2.0 A.
-Step 3: Find the maximum absolute deviation from the mean: ΔI1 = |1.8 - 2.0| = 0.2 A; ΔI2 = |2.0 - 2.0| = 0 A; ΔI3 = |2.2 - 2.0| = 0.2 A.
-Step 4: The random error (often represented by the average or maximum deviation) is ΔI = 0.2 A.",0.2,A
+THCB007,"A student measures the current 3 times and obtains the values: 1.8 A, 2.0 A, 2.2 A. What is the random error?","Step 1: List the three current measurements:
+I1 = 1.8 A, I2 = 2.0 A, I3 = 2.2 A.
+
+Step 2: Calculate the mean current:
+I_avg = (1.8 + 2.0 + 2.2) / 3 = 2.0 A.
+
+Step 3: Calculate the absolute deviations from the mean:
+|I1 - I_avg| = |1.8 - 2.0| = 0.2 A,
+|I2 - I_avg| = |2.0 - 2.0| = 0 A,
+|I3 - I_avg| = |2.2 - 2.0| = 0.2 A.
+
+Step 4: Calculate the mean absolute random error:
+ΔI_avg = (0.2 + 0 + 0.2) / 3 = 0.133... A.
+
+Step 5: Therefore, the random error is approximately 0.13 A.",0.13,A
 THCB008,"When measuring voltage with a voltmeter, the result is 6.3 ± 0.1 V. If this is used to calculate power with a current of 0.6 ± 0.02 A, what is the absolute error of the power?","Step 1: Identify values: V = 6.3 V, ΔV = 0.1 V, I = 0.6 A, ΔI = 0.02 A.
 Step 2: Use the absolute error propagation formula for a product P = V ⋅ I: ΔP = V ⋅ ΔI + I ⋅ ΔV.
 Step 3: Calculate the first term: 6.3 ⋅ 0.02 = 0.126.
@@ -3830,10 +3845,22 @@ THCB091,The measured value is 8.00 ± 0.05 cm. Calculate the percentage relative
 Step 2: Calculate relative error: 0.05 / 8.00 = 0.00625.
 Step 3: Convert to percentage: 0.00625 × 100%.
 Step 4: Final calculation: 0.625%.",0.63,%
-THCB092,The instrument has a least count of 0.1 cm. The measured value is 5.0 cm. Calculate the percentage relative error.,"Step 1: Identify the least count (LC) = 0.1 cm and measured value = 5.0 cm.
-Step 2: Determine absolute error for a single reading (half-least-count rule): 0.1 / 2 = 0.05 cm.
-Step 3: Calculate percentage relative error: (0.05 / 5.0) × 100%.
-Step 4: Final calculation: 1.0%.",1.0,%
+THCB092,The instrument has a least count of 0.1 cm. The measured value is 5.0 cm. Calculate the percentage relative error.,"Step 1: Identify the least count of the instrument:
+LC = 0.1 cm.
+
+Step 2: The measured value is:
+L = 5.0 cm.
+
+Step 3: For a single measurement, using the same convention as the other least-count questions in this dataset, the absolute error is taken to be equal to the least count:
+ΔL = 0.1 cm.
+
+Step 4: Calculate the percentage relative error:
+δL = (ΔL / L) × 100%.
+
+Step 5: Substitute the values:
+δL = (0.1 / 5.0) × 100% = 2.0%.
+
+Step 6: Therefore, the percentage relative error is 2.0%.",2.0,%
 THCB093,"The true value is 30.0 cm, the measured result is 29.7 cm. Calculate the absolute error and the relative error.","Step 1: Identify true value = 30.0 cm and measured result = 29.7 cm.
 Step 2: Calculate absolute error: |29.7 - 30.0| = 0.3 cm.
 Step 3: Calculate relative error: 0.3 / 30.0.
@@ -3871,7 +3898,7 @@ Step 2: Calculate relative uncertainty: 0.3 / 60.0 = 0.005.
 Step 3: Convert to percentage: 0.005 × 100%.
 Step 4: Final calculation: 0.5%.",0.5,%
 THCB102,A pressure gauge has a least count of 0.2 atm. It measures a pressure of 2.0 atm. Calculate the percentage relative error.,"Step 1: Identify measured pressure P = 2.0 atm. Use the least count as the absolute uncertainty for a single reading: ΔP = 0.2 .
-Step 2: Calculate relative error: ΔP / P = 0.1 / 2.0.
+Step 2: Calculate relative error: ΔP / P = 0.2 / 2.0.
 Step 3: Convert to percentage: (0.2 / 2.0) × 100%.
 Step 4: Final calculation: 10.0%.",10.0,%
 THCB103,"The measured value is 100.0 cm, and the absolute error is 0.5 cm. Calculate the percentage relative error.","Step 1: Identify values: Measured value x = 100.0 cm, Absolute error Δx = 0.5 cm.
@@ -3974,10 +4001,28 @@ THCB127,The measured value is 39.5 cm while the true value is 40.0 cm. Calculate
 Step 2: Calculate the relative error using the true value: 0.5 / 40.0.
 Step 3: Convert to percentage: (0.5 / 40.0) × 100%.
 Step 4: Final calculation: 1.25%",0.5; 1.25,cm; %
-THCB128,"Three mass measurements were taken: 200.5 g, 200.3 g, and 200.2 g. Calculate the average mass and the average absolute error.","Step 1: Calculate the mean mass: (200.5 + 200.3 + 200.2) / 3 = 200.33 g.
-Step 2: Calculate deviations from mean: |200.5 - 200.33| = 0.17; |200.3 - 200.33| = 0.03; |200.2 - 200.33| = 0.13.
-Step 3: Calculate the average absolute error: (0.17 + 0.03 + 0.13) / 3.
-Step 4: Final calculation: 0.11 g.",200.3; 0.133,g; g
+THCB128,"Three mass measurements were taken: 200.5 g, 200.3 g, and 200.2 g. Calculate the average mass and the average absolute error.","Step 1: List the three mass measurements:
+m1 = 200.5 g,
+m2 = 200.3 g,
+m3 = 200.2 g.
+
+Step 2: Calculate the mean mass:
+m_avg = (200.5 + 200.3 + 200.2) / 3
+      = 601.0 / 3
+      = 200.333... g
+      ≈ 200.3 g.
+
+Step 3: Calculate the absolute deviations from the mean:
+|m1 - m_avg| = |200.5 - 200.333...| ≈ 0.167 g,
+|m2 - m_avg| = |200.3 - 200.333...| ≈ 0.033 g,
+|m3 - m_avg| = |200.2 - 200.333...| ≈ 0.133 g.
+
+Step 4: Calculate the average absolute error:
+Δm_avg = (0.167 + 0.033 + 0.133) / 3
+       ≈ 0.111 g
+       ≈ 0.11 g.
+
+Step 5: Therefore, the average mass is approximately 200.3 g, and the average absolute error is approximately 0.11 g.",200.3; 0.11,g; g
 THCB129,Voltage measurement result: 220.0 ± 1.0 V. Calculate the percentage relative error.,"Step 1: Identify measured voltage V = 220.0 V and absolute uncertainty delta V = 1.0 V.
 Step 2: Apply the formula for percentage relative error: (delta V / V) × 100%.
 Step 3: Substitute the values: (1.0 / 220.0) × 100%.
