@@ -2,17 +2,13 @@ id,question,cot,answer,unit
 TD401,Calculate the energy stored in capacitor C when C = 100 μF and U = 30 V.,"Step 1: Identify the given values for capacitance (C) and voltage (U).
 Step 2: Recall the formula for the energy (E) stored in a capacitor, which is E = 0.5 × C × U^2.
 Step 3: Convert the capacitance to Farads: C = 100 μF = 100 × 10^-6 F = 1 × 10^-4 F.
-Step 4: Substitute the values into the formula: E = 0.5 × (1 × 10^-4 F) × (30 V)^2.",0.045,J
-TD402,"Calculate the capacitance C of the capacitor, given that it stores Q = 3 mC when fully charged under U = 30 V.","Step 1: Identify the given values from the question: the charge Q = 3 mC and the voltage U = 30 V.
-Step 2: Recall the formula for capacitance, which is C = Q / U.
-Step 3: Convert the charge to the standard unit (Coulombs): Q = 3 mC = 3 × 10⁻³ C.
-Step 4: Substitute the values into the formula: C = (3 × 10⁻³ C) / (30 V).",100,μF
+Step 4: Substitute the values into the formula: E = 0.5 × (1 × 10^-4 F) × (30 V)^2. = 0.045 J",0.045,J
 TD402,"Calculate the capacitance C of the capacitor, given that it stores Q = 3 mC when fully charged under U = 30 V.","Step 1: Identify the given values from the question: the charge Q = 3 mC and the voltage U = 30 V.
 Step 2: Recall the formula for capacitance: C = Q / U.
 Step 3: Convert the charge to Coulombs: Q = 3 mC = 3 × 10^-3 C.
 Step 4: Substitute the values into the formula: C = (3 × 10^-3 C) / (30 V).
 Step 5: Calculate the capacitance: C = 1 × 10^-4 F.
-Step 6: Convert to microfarads: 1 × 10^-4 F = 100 μF.",100,μF
+Step 6: Convert to microfarads: 1 × 10^-4 F = 100 μF.",100,μ
 LD001,"Two charges, q1 = 6 × 10^-8 C and q2 = -6 × 10^-8 C, are placed at points A and B in air, 8 cm apart. A third charge, q3 = 6 × 10^-8 C, is placed at point C, with CA = 5 cm and CB = 3 cm. Determine the force acting on q3.","Step 1: Since CA = 5 cm, CB = 3 cm, and AB = 8 cm, point C lies on segment AB between A and B.
 Step 2: Determine the force directions. Because q1 and q3 are both positive, q1 repels q3 toward B. Because q2 is negative and q3 is positive, q2 attracts q3 toward B. Therefore, both forces act in the same direction.
 Step 3: Calculate the force exerted by q1 on q3 using Coulomb's law: F13 = k × |q1 q3| / CA^2 = 9 × 10^9 × (6 × 10^-8 × 6 × 10^-8) / (0.05)^2 = 0.01296 N.
@@ -74,11 +70,27 @@ Step 6: Add the two horizontal components: F_net = 2Fx = 2 × 8.64 = 17.28 N.",1
 LD008,"Two electric forces are acting in the same direction, with magnitudes of 3 N and 4 N respectively. What is the resultant force?","Step 1: Identify the magnitudes of the two forces given in the problem.
 Step 2: Note that the problem states both forces are acting in the same direction.
 Step 3: To find the resultant force of multiple forces acting in the same direction, add their magnitudes.
-Step 4: Calculate the resultant force by adding the given magnitudes: 3 N + 4 N.",7,N
+Step 4: Calculate the resultant force by adding the given magnitudes: 3 N + 4 N = 7 N",7,N
 LD009,"Two electric forces, each with a magnitude of 5 N, act at an angle of 60° to each other. What is the resultant force?","Step 1: The magnitudes of the two electric forces are F1 = 5 N and F2 = 5 N.
+
 Step 2: The angle between the two forces is θ = 60°.
-Step 3: The formula for the resultant force (R) of two forces F1 and F2 with an angle θ between them is R = √(F1² + F2² + 2F1F2cosθ).
-Step 4: Substitute the given values into the formula: R = √(5² + 5² + 2 × 5 × 5 × cos(60°)).",8.66,N
+
+Step 3: The formula for the resultant force of two forces with an angle θ between them is:
+
+R = sqrt(F1^2 + F2^2 + 2F1F2cosθ)
+
+Step 4: Substitute the given values:
+
+R = sqrt(5^2 + 5^2 + 2 × 5 × 5 × cos60°)
+
+Step 5: Since cos60° = 0.5:
+
+R = sqrt(25 + 25 + 50 × 0.5)
+  = sqrt(25 + 25 + 25)
+  = sqrt(75)
+  ≈ 8.66 N
+
+Step 6: Therefore, the resultant force is approximately 8.66 N.",8.66,N
 LD010,"Three charges q1 = +2 μC, q2 = +2 μC, and q3 = -2 μC are placed at the three vertices of an equilateral triangle with a side length of 10 cm. Calculate the magnitude of the net electric force acting on q3.","Step 1: Identify the given charges and the side length of the equilateral triangle.
 Step 2: State Coulomb's Law, F = k × |q1 × q2| / r^2, where k is Coulomb's constant (approximately 8.9875 × 10^9 N m^2/C^2).
 Step 3: Calculate the magnitude of the attractive force F31 exerted by q1 on q3: F31 = (8.9875 × 10^9 N m^2/C^2) × |(2 × 10^-6 C) × (-2 × 10^-6 C)| / (0.10 m)^2 = 3.595 N.
@@ -204,10 +216,46 @@ Step 4: Since q1 and q3 are both positive, F13 is repulsive and pushes q3 away f
 Step 5: Calculate the force exerted by q2 on q3: F23 = k × |q2q3| / CB² = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.10)² = 0.00576 N.
 Step 6: Since q2 is negative and q3 is positive, F23 is attractive and pulls q3 toward B.
 Step 7: The two forces act in opposite directions, so subtract their magnitudes: F_net = 0.036 - 0.00576 = 0.03024 N = 30.24 × 10^-3 N.",30.24 × 10^-3,N
-LD028,"Two point charges, q1 = 8 × 10⁻⁸ C and q2 = -8 × 10⁻⁸ C, are placed at points A and B, respectively, in air (AB = 6 cm). Determine the force acting on a third charge q3 = 8 × 10⁻⁸ C if it is placed at point C such that CA = CB = 5 cm.","Step 1: Convert all given distances to meters.
-Step 2: Identify the two electrostatic forces acting on charge q3: F13 due to q1, and F23 due to q2.
-Step 3: Calculate the magnitude of force F13 using Coulomb's Law, F = k |q1 q3| / r².
-Step 4: Calculate the magnitude of force F23 using Coulomb's Law, F = k |q2 q3| / r².",27.65 × 10^-3,N
+LD028,"Two point charges, q1 = 8 × 10⁻⁸ C and q2 = -8 × 10⁻⁸ C, are placed at points A and B, respectively, 
+in air (AB = 6 cm). Determine the force acting on a third charge q3 = 8 × 10⁻⁸ C if 
+it is placed at point C such that CA = CB = 5 cm.","Step 1: Convert distances to meters:
+
+AB = 6 cm = 0.06 m
+CA = CB = 5 cm = 0.05 m
+
+Step 2: Identify the forces acting on q3.
+
+q1 = +8 × 10^-8 C and q3 = +8 × 10^-8 C, so F13 is repulsive and acts along AC, away from A.
+
+q2 = -8 × 10^-8 C and q3 = +8 × 10^-8 C, so F23 is attractive and acts along CB, toward B.
+
+Step 3: Calculate the magnitudes of the two forces.
+
+F13 = k|q1q3| / CA^2
+    = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.05)^2
+    = 23.04 × 10^-3 N
+
+F23 = k|q2q3| / CB^2
+    = 9 × 10^9 × (8 × 10^-8 × 8 × 10^-8) / (0.05)^2
+    = 23.04 × 10^-3 N
+
+Step 4: Since CA = CB = 5 cm and AB = 6 cm, triangle ABC is isosceles. The altitude from C to AB bisects AB, so half of AB is 3 cm.
+
+For each force direction, the horizontal component ratio is:
+
+3 / 5
+
+The vertical components of F13 and F23 cancel each other, while the horizontal components point in the same direction from A to B.
+
+Step 5: Calculate the resultant force.
+
+Fnet = 2 × F × (3/5)
+     = 2 × 23.04 × 10^-3 × 3/5
+     = 27.648 × 10^-3 N
+
+Step 6: Therefore, the force acting on q3 is approximately:
+
+27.65 × 10^-3 N",27.65 × 10^-3,N
 LD029,"Three point charges q1 = 4×10^-8 C, q2 = -4×10^-8 C, and q3 = 5×10^-8 C are placed in air at the three vertices A, B, C of an equilateral triangle with side a = 2 cm. Determine the magnitude of the force vector acting on q3.","Step 1: Identify the given values: q1 = 4 × 10^-8 C, q2 = -4 × 10^-8 C, q3 = 5 × 10^-8 C, and a = 2 cm = 0.02 m.
 Step 2: Calculate the magnitude of the force exerted by q1 on q3: F13 = k × |q1q3| / a² = 9 × 10^9 × (4 × 10^-8 × 5 × 10^-8) / (0.02)² = 45 × 10^-3 N.
 Step 3: Since q1 and q3 are both positive, F13 is repulsive and directed away from q1 along AC.
@@ -658,7 +706,8 @@ Step 3: Calculate the magnitude and direction of the electric field E1 due to q1
 Step 4: Calculate the magnitude and direction of the electric field E2 due to q2 at M.
 Step 5: Determine the net electric field direction: Since both E1 and E2 point in the same direction (from A to B), they add up. E_M = E1 + E2
 Step 6: The magnitude of the net electric field at point M is 5.625 × 10^7 V/m.",5.625 × 10^7,V/m
-LD095,"Two electric charges, q1 = +1 × 10^-6 C and q2 = +1 × 10^-6 C, are placed at points A and B, separated by 8 cm. Calculate the total (or net) electric field strength at the midpoint of AB.","Step 1: Identify the given charges q1 = +1 × 10^-6 C and q2 = +1 × 10^-6 C, and the separation distance between points A and B as 8 cm.
+LD095,"Two electric charges, q1 = +1 × 10^-6 C and q2 = +1 × 10^-6 C, are placed at points A and B, 
+separated by 8 cm. Calculate the total (or net) electric field strength at the midpoint of AB.","Step 1: Identify the given charges q1 = +1 × 10^-6 C and q2 = +1 × 10^-6 C, and the separation distance between points A and B as 8 cm.
 Step 2: Convert the distance to meters: 8 cm = 0.08 m. The midpoint of AB is located at a distance r = 0.08 m / 2 = 0.04 m from each charge.
 Step 3: Calculate the magnitude of the electric field E1 produced by charge q1 at the midpoint using the formula E = k|q|/r^2, where k = 9 × 10^9 N×m²/C².
 Step 4: E1 = (9 × 10^9 N×m²/C²) × (1 × 10^-6 C) / (0.04 m)² = (9 × 10^3) / (0.0016) N/C = 5.625 × 10^6 N/C.
@@ -1568,7 +1617,7 @@ LD103,"Two point charges q1 = -4 × 10^-8 C and q2 = -9 × 10^-8 C are placed at
 Step 2: Calculate the magnitude of force F13 (on q3 due to q1) using Coulomb's Law F = k × |q1×q3| / r_CA². F13 = (9 × 10^9) × |-4 × 10^-8 C × -1 × 10^-8 C| / (0.10 m)² = 3.6 × 10^-3 N. This force is repulsive, directed away from A along line CA.
 Step 3: Calculate the magnitude of force F23 (on q3 due to q2) using Coulomb's Law F = k × |q2×q3| / r_CB². F23 = (9 × 10^9) × |-9 × 10^-8 C × -1 × 10^-8 C| / (0.08 m)² = 1.265625 × 10^-3 N. This force is repulsive, directed away from B along line CB.
 Step 4: Use the Law of Cosines to find the angle θ_C at point C in triangle ABC: r_AB² = r_CA² + r_CB² - 2 × r_CA × r_CB × cos(θ_C).
-Step 5: The magnitude of the net electric force acting on q3 is approximately 1.48 × 10^-3 N.",1.480,N
+Step 5: The magnitude of the net electric force acting on q3 is approximately 1.48 × 10^-3 N.",0.001480,N
 LD104,"Two charges q1 = -8 × 10^-7 C and q2 = -9 × 10^-7 C are placed at points A and B, respectively, 12 cm apart in air. A charge q3 = +7 × 10^-7 C is placed at point C, such that the distance from C to A is 6 cm and from C to B is 6 cm. Calculate the net electric force acting on q3.","Step 1: Identify the given charges and distances.
 Step 2: Convert distances from centimeters to meters.
 Step 3: Recognize that points A, C, and B are collinear since AC + CB = AB (6 cm + 6 cm = 12 cm).
@@ -1579,11 +1628,55 @@ Step 2: Check the geometric relationship between points A, B, and C using the gi
 Step 3: Calculate the magnitude of the electrostatic force (F13) exerted by q1 on q3 using Coulomb's Law.
 Step 4: Calculate the magnitude of the electrostatic force (F23) exerted by q2 on q3 using Coulomb's Law.
 Step 5: The magnitude of the net electrostatic force acting on q3 is approximately 0.058 N.",0.058,N
-LD106,"Two electric charges, q1 = +8 × 10^-8 C and q2 = +8 × 10^-8 C, are placed at two points A and B, separated by 6 cm in the air. A third charge, q3 = -8 × 10^-8 C, is placed at point C. Given that the distance from C to A is 8 cm and from C to B is 3 cm. Calculate the net electric force acting on q3.","Step 1: Coulomb's Law states that the magnitude of the electric force between two point charges is F = k × |q1 × q2| / r^2, where k is Coulomb's constant (approximately 9 × 10^9 N m^2/C^2), q1 and q2 are the magnitudes of the charges, and r is the distance between them.
-Step 2: The given charges are q1 = +8 × 10^-8 C, q2 = +8 × 10^-8 C, and q3 = -8 × 10^-8 C. The distance between q1 and q3 (r13) is 8 cm = 0.08 m. The distance between q2 and q3 (r23) is 3 cm = 0.03 m.
-Step 3: Calculate the magnitude of the force (F13) exerted by q1 on q3: F13 = (9 × 10^9 N m^2/C^2) × |(8 × 10^-8 C) × (-8 × 10^-8 C)| / (0.08 m)^2 = (9 × 10^9) × (64 × 10^-16) / (0.0064) = 9 × 10^-3 N.
-Step 4: Since q1 is positive and q3 is negative, the force F13 is attractive, directed from point C towards point A.
-Step 5: The magnitude of the net electric force acting on q3 is approximately 0.071 × 10^-3 N.",0.071,N
+LD106,"Two electric charges, q1 = +8 × 10^-8 C and q2 = +8 × 10^-8 C, are placed at two points A and B, 
+separated by 6 cm in the air. A third charge, q3 = -8 × 10^-8 C, is placed at point C. 
+Given that the distance from C to A is 8 cm and from C to B is 3 cm. Calculate the net electric
+ force acting on q3.","Step 1: Apply Coulomb’s law:
+
+F = k|q_i q_j| / r^2
+
+where k = 9 × 10^9 N·m²/C².
+
+Step 2: Convert distances to meters:
+
+CA = 8 cm = 0.08 m
+CB = 3 cm = 0.03 m
+AB = 6 cm = 0.06 m
+
+Given:
+q1 = q2 = +8 × 10^-8 C
+q3 = -8 × 10^-8 C
+
+Step 3: Calculate the force exerted by q1 on q3:
+
+F13 = (9 × 10^9 × (8 × 10^-8)(8 × 10^-8)) / (0.08)^2
+    = 9.0 × 10^-3 N
+
+Since q1 is positive and q3 is negative, the force is attractive and directed from C toward A.
+
+Step 4: Calculate the force exerted by q2 on q3:
+
+F23 = (9 × 10^9 × (8 × 10^-8)(8 × 10^-8)) / (0.03)^2
+    = 6.4 × 10^-2 N
+
+This force is also attractive and directed from C toward B.
+
+Step 5: Determine the angle between the two forces using the cosine law in triangle ABC:
+
+cos(C) = (8^2 + 3^2 - 6^2) / (2 × 8 × 3)
+       = 37 / 48
+
+Step 6: Calculate the net force on q3 using vector addition:
+
+Fnet = sqrt(F13^2 + F23^2 + 2F13F23cos(C))
+
+Substituting values:
+
+Fnet ≈ 0.0717 N
+
+Step 7: Therefore, the net electric force acting on q3 is approximately:
+
+0.072 N",0.072,N
 LD107,"Two electric charges q1 = -6 × 10^-8 C and q2 = +5 × 10^-8 C are placed at two points A and B, 8 cm apart, in air. A charge q3 = +2 × 10^-8 C is placed at point C, knowing that the distance from C to A is 10 cm and from C to B is 8 cm. Calculate the net electric force acting on q3.","Step 1: Identify the given charges and distances. The charges are q1 = -6 × 10^-8 C, q2 = +5 × 10^-8 C, and q3 = +2 × 10^-8 C. The distances are d_CA = 10 cm = 0.10 m, d_CB = 8 cm = 0.08 m, and d_AB = 8 cm = 0.08 m. The electrostatic constant in air (k) is approximately 9 × 10^9 N m^2/C^2.
 Step 2: Calculate the magnitude of the electrostatic force F13 exerted by q1 on q3 using Coulomb's Law. F13 = k × |q1 × q3| / d_CA^2 = (9 × 10^9 N m^2/C^2) × |-6 × 10^-8 C × 2 × 10^-8 C| / (0.10 m)^2 = (9 × 10^9 × 12 × 10^-16) / 0.01 N = 1.08 × 10^-3 N.
 Step 3: Determine the direction of force F13. Since q1 is negative and q3 is positive, the force F13 is attractive, directed from point C towards point A.
