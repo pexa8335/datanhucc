@@ -293,3 +293,97 @@ single-formula PoT
 
 Do not jump directly into end-to-end Qwen reasoning. The deterministic family solvers are becoming teacher/oracle systems, not a pile of row-specific hacks.
 
+## 9. V2 Implementation Status - 2026-05-22
+
+Main implementation file:
+
+```text
+D:\Project\EXACT2026\datanhucc\physics_baseline\physics_baseline_solver.py
+```
+
+Generated artifacts:
+
+```text
+D:\Project\EXACT2026\results\physics_baseline\baseline_results.csv
+D:\Project\EXACT2026\results\physics_baseline\dataset_profile.csv
+D:\Project\EXACT2026\results\physics_baseline\family_summary.csv
+D:\Project\EXACT2026\results\physics_baseline\failure_taxonomy.md
+D:\Project\EXACT2026\results\physics_baseline\wrong_review.csv
+D:\Project\EXACT2026\results\physics_baseline\validator_failed_review.csv
+D:\Project\EXACT2026\results\physics_baseline\unsupported_clusters.csv
+D:\Project\EXACT2026\results\physics_baseline\next_abstractions.md
+```
+
+Latest full run:
+
+```text
+python datanhucc\physics_baseline\physics_baseline_solver.py datanhucc/physic.CSV --output-dir results/physics_baseline
+
+rows: 1352
+ok: 386
+unsupported: 886
+wrong: 25
+validator_failed: 55
+```
+
+Gate result:
+
+- `wrong` decreased from 31 to 25, so V2 passed the first acceptance gate.
+- `ok` increased from 276 to 386.
+- `unsupported` decreased from 1031 to 886.
+- `validator_failed` increased from 14 to 55 because the solver now exposes more geometry grounding failures explicitly instead of leaving them in broad unsupported buckets.
+
+Implemented V2 review pass:
+
+- `wrong_review.csv`: confident-but-wrong rows clustered by review bucket.
+- `validator_failed_review.csv`: geometry grounding failures with sample question snippets and trace summaries.
+- `unsupported_clusters.csv`: unsupported rows grouped by reasoning shape.
+- `next_abstractions.md`: generated next-step summary from the current run.
+
+Implemented V2 solver improvements:
+
+- stricter target detection for capacitor questions so givens like `voltage U = ...` are not mistaken as a voltage target;
+- capacitor dielectric energy state;
+- distance-doubled capacitance target;
+- percentage of remaining capacitor energy;
+- LC magnetic energy from total energy minus capacitor electric energy;
+- time-dependent inductor energy from `I(t) = I0 cos(omega t)`;
+- RLC target guards for impedance/current/power/power factor;
+- measurement least-count and uncertainty propagation;
+- evaluator support for multi-value numeric answers with units embedded in the answer text.
+
+Remaining `wrong` taxonomy after V2:
+
+- 24 rows: `electrostatics_target_geometry_or_vector`
+- 1 row: `capacitor_voltage_capacitance_target_ambiguity`
+
+Important note on the remaining capacitor wrong:
+
+- `TD364` asks "Calculate the capacitance" from `Q = 20 μC`, `U = 5 V`.
+- Solver predicts `4 μF`, matching `C = Q/U` and the row COT.
+- Dataset answer is `0.100 nC`, which is dimensionally not capacitance.
+- Treat this as a suspicious label candidate, not a formula patch target.
+
+Top unsupported clusters after V2:
+
+- `magnetic_induction_primitives`: 108 rows
+- `electrostatics_relation_or_vector_gap`: 97 force rows
+- `capacitor_energy_state`: 72 rows
+- `rlc_resonance`: 59 rows
+- `unknown_unsupported`: 53 rows
+- `rlc_formula_family`: 45 rows
+- `capacitor_network`: 43 rows
+- `energy_power_primitives`: 41 rows
+
+Next implementation priority:
+
+1. Keep attacking `wrong` first, especially the 24 electrostatics geometry/vector rows.
+2. Add deterministic geometry/vector abstractions for:
+   - consecutive collinear three-charge layouts;
+   - isosceles triangle force/field composition;
+   - perpendicular-bisector field components;
+   - point-finding targets where output is a distance/location, not field magnitude.
+3. Then unlock high-frequency unsupported clusters by primitive family:
+   - magnetic induction;
+   - capacitor networks and energy state variants;
+   - broader RLC resonance/formula routing.
