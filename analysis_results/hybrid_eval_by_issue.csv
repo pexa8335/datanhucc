@@ -1,0 +1,7 @@
+﻿prediction_source,issue_type,rows
+deterministic_solver,answer_only,7
+deterministic_solver,answer_and_unit,2
+deterministic_solver,unit_only,1
+qwen_fallback,answer_only,34
+qwen_fallback,answer_and_unit,11
+qwen_fallback,pair_only_metric_mismatch,2

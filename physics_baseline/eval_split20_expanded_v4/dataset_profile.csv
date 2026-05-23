@@ -1,0 +1,272 @@
+id,prefix,family,gold_answer_type,gold_subshape,gold_answer,gold_unit,n_observations,n_relations,needs_unit_conversion,needs_geometry_relation,needs_vector_composition,needs_circuit_relation,needs_measurement_error,needs_qualitative_text
+TD357,TD,capacitor,numeric,scalar,50,μC,2,0,1,0,0,1,0,0
+TD371,TD,capacitor,numeric,scalar,9,times,1,0,0,0,0,1,0,0
+TD386,TD,capacitor,text,text,decreases by half,-,3,0,1,0,0,1,0,1
+TD061,TD,capacitor,numeric,scalar,20.8,nJ,2,0,1,0,1,1,0,0
+TD052,TD,capacitor,numeric,scalar,93.23,nJ,2,0,1,0,1,1,0,0
+TD165,TD,capacitor,numeric,scalar,27.720,pF,3,0,1,0,0,1,0,0
+TD048,TD,capacitor,numeric,scalar,8.16,nC,2,0,1,0,0,1,0,0
+TD398,TD,capacitor,numeric,scalar,1.66,nJ,3,0,1,0,1,1,0,0
+TD056,TD,capacitor,numeric,scalar,31.75,pF,3,0,1,1,0,1,0,0
+TD046,TD,capacitor,numeric,scalar,124.36,nJ,2,0,1,0,1,1,0,0
+TD086,TD,capacitor,numeric,scalar,27.59,pF,3,0,1,0,0,1,0,0
+TD019,TD,capacitor,numeric,scalar,66.16,nJ,2,0,1,0,1,1,0,0
+TD055,TD,capacitor,numeric,scalar,506.62,nJ,2,0,1,0,1,1,0,0
+TD395,TD,capacitor,numeric,scalar,20.33,mN,3,0,1,1,0,1,0,0
+TD187,TD,capacitor,numeric,scalar,2.97,nC,2,0,1,0,0,1,0,0
+TD035,TD,capacitor,numeric,scalar,17.99,pF,3,0,1,0,0,1,0,0
+TD380,TD,capacitor,text,text,decreases by 4 times,-,3,0,1,0,0,1,0,1
+TD391,TD,capacitor,numeric,scalar,-1.77,μJ,3,0,1,0,0,1,0,0
+TD402,TD,capacitor,numeric,scalar,100,μF,2,0,1,0,0,1,0,1
+TD050,TD,capacitor,numeric,scalar,4.67,pF,3,0,1,1,0,1,0,0
+TD372,TD,capacitor,numeric,scalar,14.14,V,2,0,1,0,0,1,0,0
+TD188,TD,capacitor,numeric,scalar,163.3,nJ,2,0,1,0,1,1,0,0
+TD374,TD,capacitor,numeric,multi_value,0; 0,μC; μJ,2,0,1,0,0,1,0,0
+TD101,TD,capacitor,numeric,scalar,3,nC,3,0,1,1,0,1,0,0
+TD097,TD,capacitor,numeric,scalar,2.52,μC,3,0,1,0,1,1,0,0
+TD174,TD,capacitor,numeric,scalar,23.900,pF,3,0,1,0,0,1,0,0
+TD085,TD,capacitor,numeric,scalar,202.36,nJ,2,0,1,0,1,1,0,0
+TD072,TD,capacitor,numeric,scalar,6.46,nC,2,0,1,0,0,1,0,0
+TD179,TD,capacitor,numeric,scalar,283.1,nJ,2,0,1,0,1,1,0,0
+TD400,TD,capacitor,numeric,scalar,0.020,J,2,0,1,0,0,1,0,0
+TD018,TD,capacitor,numeric,scalar,1.44,nC,2,0,1,0,0,1,0,1
+TD069,TD,capacitor,numeric,scalar,5.27,nC,2,0,1,0,0,1,0,0
+TD164,TD,capacitor,numeric,scalar,275.26,nJ,2,0,1,0,1,1,0,0
+TD012,TD,capacitor,numeric,scalar,3,μC,3,0,1,1,1,1,0,0
+TD090,TD,capacitor,numeric,scalar,2.38,nC,2,0,1,0,0,1,0,0
+TD100,TD,capacitor,numeric,scalar,10.89,—,3,0,1,1,0,1,0,0
+LD215,LD,electrostatics_force,numeric,scalar,0.566,N,5,6,1,1,1,1,0,1
+LD298,LD,electrostatics_field,numeric,scalar,8.14 × 10^6,V/m,3,15,1,1,1,1,0,1
+LD365,LD,electrostatics_field,numeric,scalar,57.41 × 10^6,V/m,3,0,1,1,1,1,0,0
+LD254,LD,electrostatics_force,numeric,scientific,1.144*10^-3,N,2,1,1,1,1,1,0,0
+LD391,LD,electrostatics_field,numeric,scientific,2.89*10^6,V/m,4,1,1,1,1,1,0,1
+LD366,LD,electrostatics_field,numeric,scalar,13.48 × 10^6,V/m,3,0,1,1,1,1,0,0
+LD306,LD,electrostatics_field,numeric,scalar,1.99 × 10^6,V/m,4,7,1,1,1,1,0,1
+LD272,LD,electrostatics_force,numeric,scalar,2.273,N,5,7,1,1,1,1,0,1
+LD204,LD,electrostatics_force,numeric,scalar,9.1125,N,4,15,1,1,1,1,0,0
+LD164,LD,electrostatics_force,numeric,scalar,11.4018,N,2,0,0,1,1,1,1,1
+LD044,LD,electrostatics_force,numeric,scalar,9.45,N,6,7,1,1,1,1,0,1
+LD220,LD,electrostatics_force,numeric,scientific,0.509*10^-3,N,5,6,1,1,1,1,0,1
+LD193,LD,electrostatics_force,numeric,scalar,8.0,N,1,0,0,1,1,1,0,1
+LD312,LD,electrostatics_field,numeric,scalar,3.2 × 10^7,V/m,3,9,1,1,1,1,0,1
+LD262,LD,electrostatics_force,numeric,scalar,2.55 × 10^-4,N,5,6,1,1,1,1,0,1
+LD108,LD,electrostatics_force,numeric,scalar,0.842,N,6,6,1,1,1,1,0,0
+LD055,LD,electrostatics_force,numeric,scalar,0.7,N,5,2,1,1,1,1,0,1
+LD002,LD,electrostatics_force,numeric,scalar,24.45 × 10^-3,N,5,8,1,1,1,1,0,0
+LD050,LD,electrostatics_force,numeric,scalar,14.4,N,5,1,1,1,1,1,0,1
+LD082,LD,electrostatics_field,numeric,scalar,389,kV/m,4,2,1,1,1,1,0,0
+LD208,LD,electrostatics_force,numeric,scalar,7.2,N,4,15,1,1,1,1,0,0
+LD035,LD,electrostatics_force,numeric,scalar,0.36,N,4,8,1,1,1,1,0,1
+LD266,LD,electrostatics_force,numeric,scientific,32.16*10^-3,N,5,6,1,1,1,1,0,1
+LD094,LD,electrostatics_field,numeric,scalar,5.625 × 10^7,V/m,4,1,1,1,1,1,0,1
+LD342,LD,electrostatics_field,numeric,scientific,2.1*10^6,V/m,4,2,1,1,1,1,0,1
+LD053,LD,electrostatics_field,numeric,scalar,3.125 × 10^6,V/m,3,2,1,1,1,1,0,1
+LD267,LD,electrostatics_force,numeric,scalar,352.8,N,4,15,1,1,1,1,0,0
+LD244,LD,electrostatics_force,numeric,scientific,56.57*10^-6,N,2,1,1,1,1,1,0,1
+LD014,LD,electrostatics_force,numeric,scalar,3.46,μC,2,1,1,0,0,0,0,0
+LD318,LD,electrostatics_field,numeric,scalar,5.8 × 10^6,V/m,4,7,1,1,1,1,0,1
+LD090,LD,electrostatics_field,numeric,scalar,9 × 10^3,V/m,3,2,1,1,1,1,0,1
+LD276,LD,electrostatics_force,numeric,scalar,9.1125,N,4,15,1,1,1,1,0,0
+LD169,LD,electrostatics_force,numeric,scalar,18.354,N,2,0,0,1,1,1,0,0
+LD331,LD,electrostatics_field,numeric,scientific,9.932*10^6,V/m,4,7,1,1,1,1,0,0
+LD394,LD,electrostatics_field,numeric,scalar,14.03 × 10⁶,V/m,4,7,1,1,1,1,0,0
+LD137,LD,electrostatics_force,numeric,scalar,0.115,N,5,6,1,1,1,1,0,1
+LD309,LD,electrostatics_field,numeric,scalar,3.12 × 10^6,V/m,2,1,1,1,1,1,0,1
+LD384,LD,electrostatics_field,numeric,scientific,5.27*10^6,V/m,4,1,1,1,1,1,0,0
+LD322,LD,electrostatics_field,numeric,scalar,6.92 × 10^6,V/m,4,7,1,1,1,1,0,1
+LD246,LD,electrostatics_force,numeric,scalar,20.360,N,2,1,1,1,1,1,0,0
+LD056,LD,electrostatics_field,numeric,scalar,33.6 × 10^5,V/m,6,6,1,1,1,1,0,1
+LD051,LD,electrostatics_field,numeric,scalar,6.4 × 10^5,V/m,5,7,1,1,1,1,0,1
+LD177,LD,electrostatics_force,numeric,scalar,13.892,N,2,0,0,1,1,1,1,1
+LD192,LD,electrostatics_force,numeric,scalar,8.2594,N,2,0,0,1,1,1,0,0
+LD398,LD,electrostatics_field,numeric,scalar,11.41 × 10^6,V/m,3,2,1,1,1,1,0,1
+LD190,LD,electrostatics_force,numeric,scalar,6.5085,N,2,0,0,1,1,1,0,0
+LD172,LD,electrostatics_force,numeric,scalar,4.3589,N,2,0,0,1,1,1,0,1
+LD060,LD,electrostatics_field,numeric,scalar,36000,V/m,3,12,1,1,1,1,0,1
+LD049,LD,electrostatics_force,numeric,scalar,14.34,N,6,1,1,1,1,1,0,1
+LD347,LD,electrostatics_field,numeric,scientific,4.725*10^7,V/m,6,1,1,1,1,1,0,1
+LD238,LD,electrostatics_force,numeric,scalar,11.0851,N,4,7,1,1,1,1,0,0
+LD255,LD,electrostatics_force,numeric,scientific,12.71*10^-3,N,7,6,1,1,1,1,0,1
+LD022,LD,electrostatics_force,numeric,scalar,14.4,N,5,9,1,1,1,1,0,1
+LD316,LD,electrostatics_field,numeric,scientific,1.684*10^7,V/m,4,6,1,1,1,1,0,1
+LD163,LD,electrostatics_force,numeric,scalar,15.593,N,2,0,0,1,1,1,0,0
+LD279,LD,electrostatics_force,numeric,scalar,2.7713,N,5,7,1,1,1,1,0,1
+LD194,LD,electrostatics_force,numeric,scalar,8.2594,N,2,0,0,1,1,1,0,0
+LD296,LD,electrostatics_field,numeric,scalar,7.05 × 10^6,V/m,4,7,1,1,1,1,0,1
+LD346,LD,electrostatics_field,numeric,scientific,8.11*10^6,V/m,4,2,1,1,1,1,0,1
+LD260,LD,electrostatics_force,numeric,scientific,0.226*10^-3,N,2,1,1,1,1,1,0,0
+LD311,LD,electrostatics_field,numeric,scalar,1.76 × 10^6,V/m,4,7,1,1,1,1,0,1
+LD152,LD,electrostatics_force,numeric,scalar,3.82,N,6,6,1,1,1,1,0,1
+LD133,LD,electrostatics_force,numeric,scalar,0.434,N,2,1,1,1,1,1,0,0
+LD154,LD,electrostatics_force,numeric,scalar,0.098,N,4,15,1,1,1,1,0,0
+LD364,LD,electrostatics_field,numeric,scalar,7.32 × 10^6,V/m,3,0,1,1,1,1,0,0
+LD102,LD,electrostatics_force,numeric,scalar,0.238,N,6,6,1,1,1,1,0,1
+LD377,LD,electrostatics_field,numeric,scalar,8.44 × 10^6,V/m,4,7,1,1,1,1,0,0
+LD089,LD,electrostatics_field,numeric,scalar,3.28 × 10^4,V/m,5,7,1,1,1,1,0,1
+LD333,LD,electrostatics_field,numeric,scalar,9.18 × 10^6,V/m,3,15,1,1,1,1,0,1
+LD217,LD,electrostatics_force,numeric,scalar,0.815,N,2,1,1,1,1,1,0,1
+LD124,LD,electrostatics_force,numeric,scientific,1.82*10^-3,N,6,7,1,1,1,1,0,1
+LD400,LD,electrostatics_field,numeric,scientific,2.01*10^7,V/m,4,1,1,1,1,1,0,1
+LD021,LD,electrostatics_force,numeric,scalar,2.98,N,4,0,1,0,1,1,0,1
+LD191,LD,electrostatics_force,numeric,scalar,15.533,N,2,0,0,1,1,1,0,0
+LD073,LD,electrostatics_field,numeric,scalar,937.5,V/m,4,1,1,1,1,1,0,1
+LD109,LD,electrostatics_force,numeric,scientific,3.5*10^-3,N,6,6,1,1,1,1,0,0
+LD273,LD,electrostatics_force,numeric,scalar,980.0,N,4,15,1,1,1,1,0,0
+LD353,LD,electrostatics_field,numeric,scalar,6.02 × 10^7,V/m,3,0,1,1,1,1,0,0
+LD105,LD,electrostatics_force,numeric,scalar,0.058,N,6,2,1,1,1,1,0,0
+DT059,DT,electrostatics_field,numeric,scalar,7500,V/m,3,0,1,1,1,1,0,0
+DT055,DT,electrostatics_field,numeric,scalar,538,N/C,4,0,1,1,1,1,0,0
+DT084,DT,electrostatics_field,numeric,scalar,245.91,N/C,6,1,1,1,1,1,0,1
+DT043,DT,electrostatics_field,numeric,scalar,2.56,mm,1,0,1,0,1,1,0,1
+DT092,DT,electrostatics_field,numeric,scalar,1.23 . 10^6,V/m,4,1,1,1,1,1,0,1
+DT025,DT,electrostatics_field,numeric,scalar,60,cm,3,0,1,1,1,1,0,0
+DT042,DT,electrostatics_field,numeric,scalar,-0.4 . 10^{-4},C,2,0,1,1,1,1,0,1
+DT036,DT,electrostatics_field,numeric,scalar,12,cm,3,1,1,1,1,1,0,1
+DT090,DT,electrostatics_field,numeric,scalar,540,V/m,2,0,1,1,1,1,0,1
+DT058,DT,electrostatics_field,text,text,8E,V/m,0,0,0,1,1,1,0,0
+DT040,DT,electrostatics_field,numeric,scalar,4 . 10^{-9},C,3,1,1,1,1,1,0,1
+DT093,DT,electrostatics_field,numeric,scalar,4.25 . 10^5,V/m,4,1,1,1,1,1,0,1
+DT030,DT,electrostatics_field,numeric,scalar,48,cm,3,1,1,1,1,1,0,0
+DT083,DT,electrostatics_field,numeric,scalar,156154.35,V/m,3,0,1,1,1,1,0,0
+THCB115,THCB,measurement,numeric,scalar,2.0,%,1,0,0,0,0,0,1,0
+THCB119,THCB,measurement,numeric,scalar,1.67,%,1,0,0,0,0,0,1,0
+THCB125,THCB,measurement,numeric,scalar,0.83,%,2,0,0,0,0,0,1,0
+THCB093,THCB,measurement,numeric,multi_value,0.3; 1.0,cm; %,2,0,1,0,0,0,1,0
+THCB085,THCB,unknown,text,text,I₃ = 0.6,A,2,0,0,0,0,0,0,0
+THCB002,THCB,measurement,numeric,scalar,3.57,%,2,0,0,0,0,0,1,1
+THCB108,THCB,measurement,numeric,multi_value,120.0; 0.133,cm; cm,3,0,1,0,0,0,1,0
+THCB077,THCB,energy_power,text,text,P_total = 30,W,3,0,0,0,0,0,0,0
+THCB003,THCB,measurement,numeric,scalar,1.0,Ω,2,0,0,0,0,0,1,1
+THCB079,THCB,unknown,text,text,I_total = 2.0,A,2,0,0,0,0,1,0,0
+THCB130,THCB,measurement,numeric,multi_value,1.0; 0.61,cm; %,2,0,1,0,0,0,1,0
+THCB076,THCB,unknown,text,multi_value,I₁ = 0.5; I₂ = 1.0,A; A,3,0,0,0,0,1,0,0
+THCB116,THCB,measurement,numeric,scalar,0.5,%,1,0,1,0,0,0,1,0
+THCB127,THCB,measurement,numeric,multi_value,0.5; 1.25,cm; %,2,0,1,0,0,0,1,0
+THCB070,THCB,unknown,text,text,I_total_new = 0.5,A,2,0,0,0,0,1,0,0
+THCB107,THCB,measurement,numeric,multi_value,1.5; 1.5,°C; %,2,0,0,0,0,0,1,0
+NL345,NL,energy_power,numeric,scalar,2,J,3,0,0,0,1,0,0,1
+NL369,NL,energy_power,numeric,scalar,2,H,2,0,0,0,1,0,0,1
+NL385,NL,capacitor,numeric,scalar,0.25,J,2,0,1,0,1,1,0,1
+NL104,NL,magnetic_induction,numeric,scalar,0.04,A,2,0,1,0,1,1,0,0
+NL095,NL,energy_power,text,text,all the energy is stored in the electric field of the capacitor.,—,1,0,0,1,1,1,0,0
+NL318,NL,magnetic_induction,text,text,Half of the total energy,J,0,0,0,0,1,0,0,0
+NL091,NL,capacitor,numeric,scalar,25,%,3,0,1,0,1,1,0,1
+NL397,NL,capacitor,numeric,scalar,200,V,3,0,1,0,1,1,0,0
+NL099,NL,capacitor,numeric,scalar,0.50,μF,2,0,1,0,0,1,0,0
+NL089,NL,capacitor,numeric,scalar,0.25,μF,2,0,1,0,1,1,0,0
+NL129,NL,capacitor,numeric,scalar,16.00,mJ,2,0,1,0,1,1,0,0
+NL022,NL,capacitor,numeric,scalar,0.40,mJ,3,0,1,1,0,1,0,0
+NL098,NL,magnetic_induction,numeric,scalar,0.0006,H,2,0,1,0,1,0,0,0
+NL371,NL,capacitor,numeric,scalar,0.0432,J,2,0,1,0,1,1,0,0
+NL394,NL,energy_power,numeric,scalar,0.0047,J,2,0,0,0,1,0,0,0
+NL340,NL,electrostatics_field,numeric,scalar,0.2,J,4,0,1,0,1,0,0,1
+NL038,NL,capacitor,numeric,scalar,1.33,μF,2,0,1,0,0,1,0,0
+NL368,NL,capacitor,numeric,scalar,0.1,J,4,0,1,0,1,1,0,1
+NL399,NL,capacitor,numeric,scalar,0.25,J,2,0,1,0,1,1,0,0
+NL002,NL,capacitor,numeric,scalar,90.00,mJ,2,0,1,0,1,1,0,0
+NL093,NL,magnetic_induction,numeric,scalar,0.07,A,2,0,1,0,1,1,0,0
+NL360,NL,magnetic_induction,numeric,scalar,2.83,A,2,0,0,0,1,1,0,0
+NL341,NL,capacitor,numeric,scalar,0.045,J,2,0,1,0,1,1,0,0
+NL362,NL,capacitor,numeric,scalar,0.15,J,2,0,1,0,1,1,0,1
+NL314,NL,capacitor,numeric,scalar,0.05,J,2,0,1,0,1,1,0,0
+NL310,NL,energy_power,text,text,"Equal, unchanged",J,0,0,0,0,1,1,1,1
+NL327,NL,capacitor,text,text,Conservation of energy,-,0,0,0,1,1,1,0,1
+NL128,NL,capacitor,numeric,scalar,67,%,0,0,0,0,0,1,0,0
+NL115,NL,capacitor,numeric,scalar,0.20,μF,2,0,1,0,1,1,0,1
+NL332,NL,energy_power,numeric,scalar,5,J,2,0,0,0,1,0,0,1
+NL400,NL,energy_power,numeric,scalar,1.8,J,2,0,0,0,1,1,0,0
+NL021,NL,capacitor,numeric,scalar,400,mJ,3,0,1,0,1,1,0,1
+NL112,NL,magnetic_induction,numeric,scalar,1800.00,mJ,2,0,1,0,1,0,0,0
+NL317,NL,energy_power,math_expression,math_expression,Reduced to 1/4,-,0,0,0,0,1,0,1,0
+NL015,NL,magnetic_induction,numeric,scalar,0.09,A,2,0,1,0,1,1,0,0
+NL303,NL,magnetic_induction,math_expression,math_expression,W = 1/2 · L · I²,-,0,0,0,0,1,0,0,0
+NL390,NL,energy_power,numeric,scalar,0.08,H,2,0,0,0,1,0,0,0
+NL313,NL,magnetic_induction,numeric,scalar,2,A,2,0,0,0,1,0,0,0
+DDT380,DDT,magnetic_induction,numeric,scalar,0.02,H,3,0,0,0,0,0,0,1
+DDT208,DDT,magnetic_induction,numeric,scalar,20.0,mJ,2,0,1,0,1,0,0,1
+DDT160,DDT,magnetic_induction,numeric,scalar,0.6,V,1,0,0,0,1,0,1,1
+DDT378,DDT,magnetic_induction,numeric,scalar,2.5×10⁻³,Wb,2,0,1,0,1,1,0,1
+DDT387,DDT,magnetic_induction,numeric,scalar,0.2,J,2,0,0,0,1,0,0,0
+DDT132,DDT,magnetic_induction,numeric,scalar,0.00754,T,3,0,1,0,1,1,0,1
+DDT323,DDT,ac_rlc,numeric,scalar,10.0,A,2,0,0,0,0,1,0,0
+DDT152,DDT,magnetic_induction,text,text,Current through the solenoid,—,0,0,1,0,1,1,0,1
+DDT133,DDT,magnetic_induction,numeric,scalar,1.508,mH,3,0,1,0,0,1,0,1
+DDT154,DDT,magnetic_induction,numeric,scalar,20.0,V,3,0,0,0,0,0,1,1
+DDT374,DDT,magnetic_induction,numeric,scalar,2.01×10⁻⁶,Wb,4,0,1,0,1,0,0,1
+DDT370,DDT,capacitor,numeric,scalar,0.0125,J,2,0,1,0,1,1,0,1
+DDT358,DDT,unknown,text,text,Simple Harmonic Motion (SHM),—,0,0,0,1,1,1,0,1
+DDT389,DDT,magnetic_induction,numeric,scalar,0.006,H,3,0,0,0,0,0,0,0
+DDT345,DDT,ac_rlc,numeric,scalar,35.37,Ω,3,0,1,0,0,1,0,1
+DDT357,DDT,capacitor,numeric,scalar,0,V,0,0,0,1,1,1,1,1
+DDT353,DDT,energy_power,math_expression,math_expression,U = 0.5*L*I_max²,J,0,0,0,1,1,1,0,0
+DDT392,DDT,magnetic_induction,numeric,scalar,1.01×10⁻²,T,2,0,1,0,1,1,0,1
+DDT400,DDT,magnetic_induction,numeric,scalar,7.54×10⁻³,T,2,0,1,0,1,1,0,1
+DDT151,DDT,magnetic_induction,numeric,scalar,400.0,mJ,2,0,1,0,1,0,0,1
+DDT331,DDT,ac_rlc,numeric,scalar,10.03,Ω,4,0,1,1,0,1,0,0
+DDT342,DDT,ac_rlc,numeric,scalar,2.0,A,2,0,0,1,0,1,0,0
+DDT377,DDT,magnetic_induction,numeric,scalar,1.26×10⁻³,J,4,0,1,0,1,0,0,1
+DDT145,DDT,magnetic_induction,text,text,Current intensity,—,0,0,1,0,1,0,0,1
+DDT363,DDT,energy_power,numeric,scalar,1,H,2,0,0,0,1,1,0,0
+DDT373,DDT,magnetic_induction,numeric,scalar,3.77×10⁻³,T,3,0,1,0,1,0,0,1
+CHLT015,CHLT,capacitor,yes_no,yes_no,No,-,4,0,1,0,0,1,0,1
+CH028,CH,ac_rlc,numeric,scalar,63.66,Hz,2,0,1,0,0,1,0,1
+CH075,CH,capacitor,numeric,scalar,2.5,μF,2,0,1,0,0,1,0,0
+CH342,CH,unknown,numeric,scalar,39.79,Hz,2,0,1,0,0,1,0,0
+CH238,CH,ac_rlc,numeric,scalar,69.28,V,3,0,0,1,0,1,0,0
+CH353,CH,unknown,numeric,scalar,105.54,µF,2,0,1,0,0,1,0,1
+CH212,CH,ac_rlc,numeric,scalar,0.707,-,3,0,0,0,0,1,0,0
+CH172,CH,ac_rlc,numeric,scalar,225,W,2,0,0,0,0,1,0,0
+CH024,CH,ac_rlc,numeric,scalar,225.08,Hz,2,0,1,0,0,1,0,1
+CH228,CH,ac_rlc,numeric,scalar,50.0,Ω,4,0,0,1,0,1,0,0
+CH201,CH,ac_rlc,numeric,scalar,3.0,-,3,0,0,0,0,1,0,0
+CH086,CH,capacitor,numeric,scalar,316.63,mH,2,0,1,0,0,1,0,0
+CH034,CH,capacitor,numeric,scalar,79.58,Hz,2,0,1,0,0,1,0,0
+CHLT002,CHLT,rlc_resonance_yes_no,yes_no,yes_no,Yes,-,4,0,1,0,0,1,0,1
+CH030,CH,capacitor,numeric,scalar,159.15,Hz,2,0,1,0,0,1,0,0
+CH061,CH,ac_rlc,numeric,scalar,10.13,μF,2,0,1,1,0,1,0,0
+CH216,CH,ac_rlc,numeric,scalar,205.71,W,4,0,0,1,0,1,1,1
+CH015,CH,ac_rlc,numeric,scalar,180,Ω,1,0,0,0,0,1,0,0
+CH274,CH,ac_rlc,numeric,scalar,3,A,5,2,0,0,0,1,0,0
+CH072,CH,capacitor,numeric,scalar,10.13,μF,2,0,1,0,0,1,0,0
+CH033,CH,ac_rlc,numeric,scalar,75.03,Hz,2,0,1,0,0,1,0,1
+CH275,CH,ac_rlc,numeric,scalar,360,W,4,2,0,0,0,1,0,0
+CH252,CH,ac_rlc,numeric,scalar,150,V,3,2,0,0,0,1,0,0
+CHLT014,CHLT,ac_rlc,yes_no,yes_no,Yes,-,4,0,1,0,0,1,0,1
+CH069,CH,capacitor,numeric,scalar,101.32,mH,2,0,1,0,0,1,0,1
+CH344,CH,unknown,numeric,scalar,56.27,Hz,2,0,1,0,0,1,0,0
+CH177,CH,ac_rlc,numeric,scalar,1,-,0,0,0,0,1,1,1,0
+CH375,CH,ac_rlc,numeric,scalar,360,W,2,0,0,0,0,1,0,0
+CH145,CH,ac_rlc,numeric,scalar,99.5,V,2,0,0,0,1,1,0,0
+CH368,CH,ac_rlc,numeric,scalar,113.14,V,4,0,1,0,0,1,0,0
+CH254,CH,ac_rlc,numeric,scalar,100,V,3,2,0,0,0,1,1,1
+CH035,CH,unknown,numeric,scalar,159.15,Hz,2,0,1,0,0,1,0,1
+CH031,CH,capacitor,numeric,scalar,39.79,Hz,2,0,1,0,0,1,0,0
+CH185,CH,ac_rlc,numeric,scalar,100,Ω,1,0,0,1,0,1,1,0
+CH200,CH,ac_rlc,numeric,scalar,1.414,-,2,0,0,0,0,1,0,0
+CH379,CH,ac_rlc,numeric,scalar,58.31,Ω,3,2,0,1,0,1,0,1
+CH198,CH,ac_rlc,numeric,scalar,1.0,-,2,2,0,0,0,1,0,1
+CH180,CH,rlc_resonance_yes_no,numeric,scalar,1,-,0,0,0,0,0,1,1,1
+CH039,CH,unknown,numeric,scalar,100.66,Hz,2,0,1,0,0,1,0,0
+CH029,CH,capacitor,numeric,scalar,100.66,Hz,2,0,1,0,0,1,0,0
+CH246,CH,ac_rlc,numeric,scalar,1,-,2,0,0,0,0,1,0,0
+CH263,CH,ac_rlc,numeric,scalar,80,V,3,2,0,0,1,1,0,0
+CH002,CH,ac_rlc,numeric,scalar,80,Ω,3,0,1,1,0,1,0,0
+CH171,CH,ac_rlc,numeric,scalar,202.5,W,2,0,0,0,0,1,0,0
+CH347,CH,unknown,numeric,scalar,100.66,Hz,2,0,1,0,0,1,0,0
+CH202,CH,ac_rlc,numeric,scalar,2.0,-,2,0,0,0,0,1,0,0
+CH364,CH,ac_rlc,numeric,scalar,3.00,A,2,0,0,0,0,1,0,0
+CH268,CH,ac_rlc,numeric,scalar,3,A,4,2,0,0,0,1,0,0
+CH160,CH,ac_rlc,numeric,scalar,1.5,A,2,0,0,0,0,1,0,0
+CH141,CH,ac_rlc,numeric,scalar,84.85,V,3,0,0,0,0,1,1,1
+CH162,CH,ac_rlc,numeric,scalar,1.5,A,2,0,0,0,0,1,0,1
+CH080,CH,ac_rlc,numeric,scalar,12.51,μF,2,0,1,0,0,1,0,0
+CH068,CH,unknown,numeric,scalar,351.8,mH,2,0,1,0,0,1,0,0
+CH225,CH,unknown,numeric,scalar,1.2,A,3,0,0,0,0,1,0,1
+CH102,CH,unknown,numeric,scalar,23.09,Ω,4,0,0,0,1,1,0,0
+CH380,CH,ac_rlc,numeric,scalar,42.43,Ω,3,2,0,0,1,1,0,0
+CH001,CH,measurement,numeric,scalar,40,Ω,1,0,0,1,0,1,0,0
+CH199,CH,ac_rlc,numeric,scalar,3.0,-,3,0,0,0,0,1,0,1
+CH052,CH,energy_power,numeric,scalar,180,W,2,0,0,0,0,1,0,1
+CH087,CH,ac_rlc,numeric,scalar,1.32,μF,2,0,1,0,0,1,0,0
+CH341,CH,capacitor,numeric,scalar,71.18,Hz,2,0,1,0,0,1,0,0
+CH083,CH,capacitor,numeric,scalar,879.52,mH,2,0,1,0,0,1,0,0

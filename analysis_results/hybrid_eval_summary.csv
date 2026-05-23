@@ -1,0 +1,5 @@
+﻿metric,value
+rows,270.0
+answer_accuracy,0.7185185185185186
+unit_accuracy,0.9185185185185185
+pair_accuracy,0.7888888888888889

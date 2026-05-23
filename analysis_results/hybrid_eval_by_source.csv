@@ -1,0 +1,3 @@
+﻿prediction_source,rows,answer_ok,unit_ok,pair_ok,answer_ok_rate,unit_ok_rate,pair_ok_rate
+deterministic_solver,220,189,209,210,0.8590909090909091,0.95,0.9545454545454546
+qwen_fallback,50,5,39,3,0.1,0.78,0.06
