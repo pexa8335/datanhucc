@@ -18,14 +18,6 @@ Step 4: Since the triangle is equilateral, the angle between F13 and F23 is 60°
 Step 5: Combine the two equal force vectors: F_net = √(F² + F² + 2F²cos60°) = F√3.
 Step 6: Substitute F = 9 × 10^-27 N: F_net = 9√3 × 10^-27 N.
 Step 7: The direction of the net force is along the angle bisector at vertex C, pointing outward from the triangle, away from side AB.",9√3 × 10^-27,N,7.0,9.0,C,N,False,False,False
-LD008,"Two electric forces are acting in the same direction, with magnitudes of 3 N and 4 N respectively. What is the resultant force?","Step 1: Identify the magnitudes of the two forces given in the problem.
-Step 2: Note that the problem states both forces are acting in the same direction.
-Step 3: To find the resultant force of multiple forces acting in the same direction, add their magnitudes.
-Step 4: Calculate the resultant force by adding the given magnitudes: 3 N + 4 N.",7,N,4.0,7.0,N,N,False,True,False
-LD009,"Two electric forces, each with a magnitude of 5 N, act at an angle of 60° to each other. What is the resultant force?","Step 1: The magnitudes of the two electric forces are F1 = 5 N and F2 = 5 N.
-Step 2: The angle between the two forces is θ = 60°.
-Step 3: The formula for the resultant force (R) of two forces F1 and F2 with an angle θ between them is R = √(F1² + F2² + 2F1F2cosθ).
-Step 4: Substitute the given values into the formula: R = √(5² + 5² + 2 × 5 × 5 × cos(60°)).",8.66,N,60.0,8.66,N,N,False,True,False
 LD014,"Two charges separated by 15 cm exert a force of 4.8 N. Given that q1 = q2 = q, find q.","Step 1: Identify the given values: F = 4.8 N, r = 15 cm = 0.15 m, and q1 = q2 = q.
 Step 2: Use Coulomb’s law: F = k × q² / r², where k = 9 × 10^9 N·m²/C².
 Step 3: Substitute the values into the formula: 4.8 = (9 × 10^9 × q²) / (0.15)².
@@ -56,10 +48,6 @@ Step 3: Since q3 is negative and q1 is positive, q1 attracts q3. Calculate F13 =
 Step 4: Since q3 is negative and q2 is positive, q2 also attracts q3. Calculate F23 = k × |q2q3| / r23² = 9 × 10^9 × (2 × 10^-6 × 1 × 10^-6) / (0.06)² = 5 N.
 Step 5: The two forces act in opposite directions, so subtract their magnitudes: F_net = 11.25 - 5 = 6.25 N.
 Step 6: The net force is directed toward q1 because F13 is larger than F23.",6.25,N,23.0,6.25,N,N,False,True,False
-LD028,"Two point charges, q1 = 8 × 10⁻⁸ C and q2 = -8 × 10⁻⁸ C, are placed at points A and B, respectively, in air (AB = 6 cm). Determine the force acting on a third charge q3 = 8 × 10⁻⁸ C if it is placed at point C such that CA = CB = 5 cm.","Step 1: Convert all given distances to meters.
-Step 2: Identify the two electrostatic forces acting on charge q3: F13 due to q1, and F23 due to q2.
-Step 3: Calculate the magnitude of force F13 using Coulomb's Law, F = k |q1 q3| / r².
-Step 4: Calculate the magnitude of force F23 using Coulomb's Law, F = k |q2 q3| / r².",27.65 × 10^-3,N,3.0,0.02765,F,N,False,False,False
 LD041,"Two charges of the same magnitude q are placed at two adjacent vertices of an isosceles right triangle with side length a = 10 cm. Find the magnitude of the total electric force acting on a test charge q0 placed at the remaining vertex, given F0 = kqq0/a^2.","Step 1: Consider the arrangement where q0 is placed at the right-angle vertex of the isosceles right triangle, and the two equal charges q are placed at the other two vertices.
 Step 2: The distance from q0 to each charge q is a, so each force has magnitude F0 = kqq0/a².
 Step 3: The two forces act along the two legs of the isosceles right triangle, which are perpendicular to each other.
