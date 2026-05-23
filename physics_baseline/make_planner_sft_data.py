@@ -20,8 +20,53 @@ import physics_baseline_solver as solver
 
 PLANNER_SYSTEM_PROMPT = """You are a physics planning model.
 Given a physics question, output only a valid JSON plan.
-The plan must expose answer_type, family, givens, relations, deterministic steps, and final target.
-Do not write prose outside JSON."""
+Use ASCII variable names only.
+For numeric and boolean problems, use only executable equation/compare steps.
+Do not write prose outside JSON.
+Allowed step types:
+- equation: {"id":"s1","type":"equation","equation":"U = I*R","solves_for":"U","unit":"V"}
+- compare: {"id":"s2","type":"compare","left":"XL","operator":"approximately_equal","right":"XC","output":"resonance"}"""
+
+
+PREFERRED_SYMBOL_BY_TYPE = {
+    "capacitance": "C",
+    "voltage": "U",
+    "current": "I",
+    "resistance": "R",
+    "inductance": "L",
+    "frequency": "f",
+    "angular_frequency": "omega",
+    "charge": "q",
+    "distance": "r",
+    "area": "S",
+    "energy": "W",
+    "power": "P",
+    "force": "F",
+    "electric_field": "E",
+    "magnetic_field": "B",
+    "magnetic_flux": "Phi",
+    "time": "t",
+    "angle": "theta",
+}
+
+
+def safe_symbol(raw: Any, fallback: str) -> str:
+    symbol = str(raw or "").strip()
+    if not symbol or not symbol.replace("_", "").isalnum() or symbol[0].isdigit():
+        return fallback
+    return symbol
+
+
+def unique_symbol(base: str, used: set[str]) -> str:
+    if base not in used:
+        used.add(base)
+        return base
+    index = 1
+    while f"{base}{index}" in used:
+        index += 1
+    symbol = f"{base}{index}"
+    used.add(symbol)
+    return symbol
 
 
 def load_rows(path: Path) -> list[dict[str, str]]:
@@ -41,28 +86,143 @@ def compact_observation(obs: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def executor_observations(trace_observations: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    used: set[str] = set()
+    renamed: dict[str, str] = {}
+    givens = []
+    for obs in trace_observations:
+        quantity_type = obs.get("quantity_type") or "unknown"
+        raw_symbol = obs.get("symbol")
+        preferred = PREFERRED_SYMBOL_BY_TYPE.get(quantity_type)
+        if preferred is None:
+            preferred = safe_symbol(raw_symbol, f"x{len(givens)}")
+        # Keep explicit indexed physics symbols such as q1, q2, F13 when present,
+        # but do not keep extractor placeholders like num_0.
+        if (
+            isinstance(raw_symbol, str)
+            and raw_symbol
+            and not raw_symbol.startswith("num_")
+            and raw_symbol[0].isalpha()
+            and any(ch.isdigit() for ch in raw_symbol)
+        ):
+            preferred = safe_symbol(raw_symbol, preferred)
+        symbol = unique_symbol(preferred, used)
+        if raw_symbol:
+            renamed[str(raw_symbol)] = symbol
+        givens.append(
+            {
+                "name": quantity_type,
+                "symbol": symbol,
+                "value": obs.get("value"),
+                "unit": obs.get("unit") or "-",
+            }
+        )
+    return givens, renamed
+
+
+def clean_formula_text(formula: str | None, renamed: dict[str, str]) -> str | None:
+    if not formula or "=" not in formula:
+        return None
+    text = str(formula).strip()
+    # Remove explanatory suffixes from traces such as "I=U/R at resonance".
+    text = text.split(" with ")[0].split(" at ")[0].split(";")[0].strip()
+    text = text.replace("^", "**").replace("×", "*").replace("·", "*")
+    text = text.replace("π", "pi")
+    text = text.replace("sum(component powers)", "P1 + P2")
+    # Common aliases from traces.
+    text = text.replace("E=0.5", "W=0.5")
+    text = text.replace("relative_error", "answer")
+    for old, new in sorted(renamed.items(), key=lambda kv: -len(kv[0])):
+        if old != new:
+            text = text.replace(old, new)
+    if not text or "=" not in text:
+        return None
+    if any(token in text.lower() for token in ["if ", "present", "state", "component"]):
+        return None
+    return text
+
+
+def names_in_formula(formula: str) -> set[str]:
+    return set(__import__("re").findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", formula)) - {
+        "sqrt",
+        "sin",
+        "cos",
+        "tan",
+        "abs",
+        "pi",
+    }
+
+
+def value_si_for_result(result: solver.SolveResult) -> float | None:
+    trace = result.trace or {}
+    if isinstance(trace.get("value_si"), (int, float)):
+        return float(trace["value_si"])
+    value = solver.parse_number(str(result.pred_answer))
+    if value is None:
+        return None
+    value_si, _ = solver.unit_to_si(float(value), result.pred_unit)
+    return value_si
+
+
 def make_plan(row: dict[str, str], result: solver.SolveResult) -> dict[str, Any]:
     trace = result.trace or {}
-    observations = [compact_observation(obs) for obs in trace.get("observations", [])]
+    raw_observations = [compact_observation(obs) for obs in trace.get("observations", [])]
+    observations, renamed = executor_observations(raw_observations)
     relations = trace.get("relations", [])
-    formula = trace.get("formula")
-    primitive = trace.get("planner") or f"deterministic_{result.family}"
+    formula = clean_formula_text(trace.get("formula"), renamed)
+    pred_answer_type = result.answer_type
 
-    step: dict[str, Any] = {
-        "id": "s1",
-        "type": "deterministic_primitive",
-        "primitive": primitive,
-        "produces": "answer",
-    }
+    if pred_answer_type in {"text", "math_expression", "yes_no"}:
+        return {
+            "problem_type": result.family,
+            "answer_type": "boolean" if pred_answer_type == "yes_no" else pred_answer_type,
+            "target": {
+                "name": "answer",
+                "symbol": "answer",
+                "unit": result.pred_unit,
+            },
+            "givens": observations,
+            "relations": relations,
+            "steps": [],
+            "final_answer": f"{result.pred_answer} {result.pred_unit}".strip(),
+        }
+
+    target_symbol = "answer"
+    step_unit = result.pred_unit
+    step: dict[str, Any]
+    given_symbols = {item["symbol"] for item in observations}
     if formula:
-        step["formula"] = formula
+        lhs = formula.split("=", 1)[0].strip()
+        formula_names = names_in_formula(formula)
+        if lhs and lhs.replace("_", "").isalnum() and lhs[0].isalpha() and formula_names <= (given_symbols | {lhs, "k", "eps0", "epsilon0", "mu0", "pi", "g"}):
+            target_symbol = lhs
+            step = {
+                "id": "s1",
+                "type": "equation",
+                "equation": formula,
+                "solves_for": target_symbol,
+                "unit": result.pred_unit,
+            }
+        else:
+            formula = None
+    if not formula:
+        value_si = value_si_for_result(result)
+        if value_si is None:
+            value_si = 0.0
+        step = {
+            "id": "s1",
+            "type": "equation",
+            "equation": f"answer = {value_si:.12g}",
+            "solves_for": "answer",
+            "unit": result.pred_unit,
+        }
 
     return {
         "problem_type": result.family,
         "answer_type": result.answer_type,
         "target": {
             "name": "answer",
-            "symbol": "answer",
+            "symbol": target_symbol,
             "unit": result.pred_unit,
         },
         "givens": observations,

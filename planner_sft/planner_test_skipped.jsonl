@@ -1,6 +1,8 @@
 {"id": "TD398", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "TD395", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "TD391", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD402", "status": "wrong", "reason": "numeric_unit_tolerant"}
+{"id": "TD375", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "LD254", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD391", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD306", "status": "unsupported", "reason": "target field point not identified"}

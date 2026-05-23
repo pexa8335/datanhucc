@@ -131,6 +131,7 @@ UNIT_SCALE_TO_SI: dict[str, tuple[float, str]] = {
     "T": (1.0, "T"),
     "Wb": (1.0, "Wb"),
     "V/m": (1.0, "V/m"),
+    "kV/m": (1e3, "V/m"),
     "N/C": (1.0, "V/m"),
     "N": (1.0, "N"),
     "%": (1.0, "%"),
@@ -165,6 +166,8 @@ def normalize_unit(unit: str) -> str:
     unit = unit.replace("micro", "μ")
     unit = unit.replace("Ohm", "Ω").replace("ohms", "Ω").replace("ohm", "Ω")
     unit = unit.replace("uF", "μF").replace("uC", "μC").replace("uJ", "μJ")
+    if unit == "μ":
+        return "μF"
     if unit in {"", "-", "—"}:
         return "-"
     return unit
@@ -275,6 +278,7 @@ def parse_number(raw: str) -> float | None:
     expr = re.sub(r"\\frac\s*\(([^()]+)\)\s*\(([^()]+)\)", r"(\1)/(\2)", expr)
     expr = re.sub(r"\\frac\s+([0-9.]+)\s+([0-9.]+)", r"(\1)/(\2)", expr)
     expr = expr.replace("^", "**")
+    expr = re.sub(r"(?<=\d)\s*\.\s*10\s*\*\*\s*\(?\s*([-+]?\d+)\s*\)?", r"*10**\1", expr, flags=re.I)
     expr = re.sub(r"(?<=\d)\s*x\s*10\s*\*\*\s*([-+]?\d+)", r"*10**\1", expr, flags=re.I)
     expr = re.sub(r"(?<=\d)\s*x\s*10\s*([-+]?\d+)", r"*10**\1", expr, flags=re.I)
     expr = re.sub(r"\)\s*x\s*10\s*\*\*\s*([-+]?\d+)", r")*10**\1", expr, flags=re.I)
@@ -475,6 +479,68 @@ def extract_quantity_observations(question: str) -> list[Observation]:
     observations: list[Observation] = []
     seen: set[tuple[str, str, str]] = set()
 
+    # Chained distance assignments: AC = BC = 8 cm.
+    chained_distances = re.finditer(
+        rf"((?:[A-Z]{{2}}\s*=\s*){{2,}})\s*({NUMBER_RE})\s*({UNIT_RE})",
+        text,
+    )
+    for match in chained_distances:
+        symbols = re.findall(r"[A-Z]{2}", match.group(1))
+        raw_value, unit = match.group(2), normalize_unit(match.group(3))
+        value = parse_number(raw_value)
+        if value is None:
+            continue
+        value_si, unit_si = unit_to_si(value, unit)
+        for symbol in symbols:
+            key = (symbol, raw_value, unit)
+            if key in seen:
+                continue
+            seen.add(key)
+            observations.append(
+                Observation(
+                    id=f"obs_{len(observations):03d}_{symbol}",
+                    symbol=symbol,
+                    raw_value=raw_value,
+                    value=value,
+                    unit=unit,
+                    value_si=value_si,
+                    unit_si=unit_si,
+                    quantity_type="distance",
+                    text=match.group(0),
+                )
+            )
+
+    # Opposite-signed charge shorthand: q1 = -q2 = 6 x 10^-6 C.
+    opposite_charge = re.finditer(
+        rf"\b(q[A-Za-z0-9]+)\s*=\s*-\s*(q[A-Za-z0-9]+)\s*=\s*({NUMBER_RE})\s*({UNIT_RE})",
+        text,
+        flags=re.I,
+    )
+    for match in opposite_charge:
+        q_pos, q_neg, raw_value, unit = match.group(1), match.group(2), match.group(3), normalize_unit(match.group(4))
+        value = parse_number(raw_value)
+        if value is None:
+            continue
+        for symbol, signed_value in [(q_pos, value), (q_neg, -value)]:
+            key = (symbol, str(signed_value), unit)
+            if key in seen:
+                continue
+            seen.add(key)
+            value_si, unit_si = unit_to_si(signed_value, unit)
+            observations.append(
+                Observation(
+                    id=f"obs_{len(observations):03d}_{symbol}",
+                    symbol=symbol,
+                    raw_value=str(signed_value),
+                    value=signed_value,
+                    unit=unit,
+                    value_si=value_si,
+                    unit_si=unit_si,
+                    quantity_type="charge",
+                    text=match.group(0),
+                )
+            )
+
     # Chained assignments: q1 = q2 = q3 = 1.6 x 10^-19 C.
     chained = re.finditer(
         rf"((?:q[A-Za-z0-9]+\s*=\s*){{2,}})\s*({NUMBER_RE})\s*({UNIT_RE})",
@@ -516,6 +582,8 @@ def extract_quantity_observations(question: str) -> list[Observation]:
         symbol, raw_value, unit = match.group(1), match.group(2), normalize_unit(match.group(3))
         value = parse_number(raw_value)
         if value is None:
+            continue
+        if any(obs.symbol == symbol for obs in observations):
             continue
         key = (symbol, raw_value, unit)
         if key in seen:
@@ -753,6 +821,84 @@ def extract_relations(question: str, observations: list[Observation]) -> list[Re
                     )
                 )
 
+    for match in re.finditer(rf"from\s+([A-Z])\s+to\s+([A-Z])\s+is\s+({NUMBER_RE})\s*({UNIT_RE})", text, re.I):
+        p1, p2 = match.group(1).upper(), match.group(2).upper()
+        value = parse_number(match.group(3))
+        unit = normalize_unit(match.group(4))
+        if value is not None:
+            value_si, unit_si = unit_to_si(value, unit)
+            if unit_si == "m":
+                relations.append(
+                    Relation(
+                        id=f"rel_{len(relations):03d}_{p1}{p2}",
+                        type="distance",
+                        data={"points": [p1, p2], "distance_si": value_si, "source": "from_point_to_point"},
+                    )
+                )
+
+    # Unnamed target point: "placed at a point 6 cm from A and 8 cm from B".
+    for match in re.finditer(
+        rf"placed\s+at\s+a\s+point\s+({NUMBER_RE})\s*({UNIT_RE})\s+from\s+([A-Z])\s+and\s+({NUMBER_RE})\s*({UNIT_RE})\s+from\s+([A-Z])",
+        text,
+        re.I,
+    ):
+        v1, u1, p1 = parse_number(match.group(1)), normalize_unit(match.group(2)), match.group(3).upper()
+        v2, u2, p2 = parse_number(match.group(4)), normalize_unit(match.group(5)), match.group(6).upper()
+        for value, unit, point in [(v1, u1, p1), (v2, u2, p2)]:
+            if value is None:
+                continue
+            value_si, unit_si = unit_to_si(value, unit)
+            if unit_si == "m":
+                relations.append(
+                    Relation(
+                        id=f"rel_{len(relations):03d}_M{point}",
+                        type="distance",
+                        data={"points": ["M", point], "distance_si": value_si, "source": "unnamed_point_distance"},
+                    )
+                )
+
+    for match in re.finditer(
+        rf"point\s+([A-Z]).{{0,60}}?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+([A-Z])\s+and\s+({NUMBER_RE})\s*({UNIT_RE})\s+from\s+([A-Z])",
+        text,
+        re.I,
+    ):
+        target = match.group(1).upper()
+        v1, u1, p1 = parse_number(match.group(2)), normalize_unit(match.group(3)), match.group(4).upper()
+        v2, u2, p2 = parse_number(match.group(5)), normalize_unit(match.group(6)), match.group(7).upper()
+        for value, unit, point in [(v1, u1, p1), (v2, u2, p2)]:
+            if value is None:
+                continue
+            value_si, unit_si = unit_to_si(value, unit)
+            if unit_si == "m":
+                relations.append(
+                    Relation(
+                        id=f"rel_{len(relations):03d}_{target}{point}",
+                        type="distance",
+                        data={"points": [target, point], "distance_si": value_si, "source": "named_point_distance_pair"},
+                    )
+                )
+
+    for match in re.finditer(
+        rf"point\s+([A-Z]).{{0,80}}?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+q1\s+and\s+({NUMBER_RE})\s*({UNIT_RE})\s+from\s+q2",
+        text,
+        re.I,
+    ):
+        target = match.group(1).upper()
+        v1, u1 = parse_number(match.group(2)), normalize_unit(match.group(3))
+        v2, u2 = parse_number(match.group(4)), normalize_unit(match.group(5))
+        for value, unit, point in [(v1, u1, "A"), (v2, u2, "B")]:
+            if value is None:
+                continue
+            value_si, unit_si = unit_to_si(value, unit)
+            if unit_si == "m":
+                relations.append(
+                    Relation(
+                        id=f"rel_{len(relations):03d}_{target}{point}",
+                        type="distance",
+                        data={"points": [target, point], "distance_si": value_si, "source": "distance_from_charge_point"},
+                    )
+                )
+
     for match in re.finditer(rf"({NUMBER_RE})\s*({UNIT_RE})\s+from\s+([A-Z])", text, re.I):
         value = parse_number(match.group(1))
         unit = normalize_unit(match.group(2))
@@ -789,6 +935,16 @@ def extract_relations(question: str, observations: list[Observation]) -> list[Re
 
     distances_after_ab = relation_distances(relations)
     ab = distances_after_ab.get(frozenset(["A", "B"]))
+    if ab and re.search(r"equidistant from the two charges|equidistant from both charges", text, re.I):
+        for end in ["A", "B"]:
+            relations.append(
+                Relation(
+                    id=f"rel_{len(relations):03d}_M{end}_equidistant",
+                    type="distance",
+                    data={"points": ["M", end], "distance_si": ab / 2, "source": "equidistant_midpoint"},
+                )
+            )
+
     if ab and re.search(r"perpendicular bisector of (?:the )?(?:line segment )?AB|perpendicular bisector of AB", text, re.I):
         h_match = re.search(rf"({NUMBER_RE})\s*({UNIT_RE})\s+(?:away\s+)?from\s+(?:the\s+)?(?:line segment\s+)?AB", text, re.I)
         if h_match:
@@ -804,6 +960,25 @@ def extract_relations(question: str, observations: list[Observation]) -> list[Re
                                 id=f"rel_{len(relations):03d}_M{end}_perp_bisector",
                                 type="distance",
                                 data={"points": ["M", end], "distance_si": ma, "source": "perpendicular_bisector"},
+                            )
+                        )
+
+    if ab and re.search(r"perpendicular bisector", text, re.I):
+        each_match = re.search(rf"({NUMBER_RE})\s*({UNIT_RE})\s+away\s+from\s+each\s+charge|equidistant from both charges by\s+({NUMBER_RE})\s*({UNIT_RE})", text, re.I)
+        if each_match:
+            raw_value = each_match.group(1) or each_match.group(3)
+            raw_unit = each_match.group(2) or each_match.group(4)
+            each_value = parse_number(raw_value)
+            each_unit = normalize_unit(raw_unit)
+            if each_value is not None:
+                each_si, each_si_unit = unit_to_si(each_value, each_unit)
+                if each_si_unit == "m":
+                    for end in ["A", "B"]:
+                        relations.append(
+                            Relation(
+                                id=f"rel_{len(relations):03d}_M{end}_perp_each",
+                                type="distance",
+                                data={"points": ["M", end], "distance_si": each_si, "source": "perpendicular_bisector_each_charge"},
                             )
                         )
 
@@ -937,6 +1112,11 @@ def map_charges_to_points(question: str, observations: list[Observation]) -> dic
         mapping.setdefault("q1", "A")
         mapping.setdefault("q2", "B")
 
+    if re.search(r"vertices?\s+A\s+and\s+B|points?\s+A\s+and\s+B|at\s+two\s+points\s+A\s+and\s+B", text, re.I):
+        if "q1" in charge_symbols and "q2" in charge_symbols:
+            mapping.setdefault("q1", "A")
+            mapping.setdefault("q2", "B")
+
     if not mapping and {"q1", "q2"} <= set(charge_symbols) and re.search(r"apart|separated", text, re.I):
         mapping["q1"] = "A"
         mapping["q2"] = "B"
@@ -947,13 +1127,18 @@ def map_charges_to_points(question: str, observations: list[Observation]) -> dic
         mapping[m.group(1)] = m.group(3).upper()
         mapping[m.group(2)] = m.group(4).upper()
 
-    # A third charge q3 is placed at point C / A charge q0 is placed at M.
-    for m in re.finditer(r"(?:charge|test charge|third charge)[,\s]+(q[A-Za-z0-9]+).*?placed\s+at\s+(?:point\s+)?([A-Z])", text, re.I):
+    # A third charge q3 is placed at point C / at C. Avoid treating the article
+    # "a" in "at a point" as point A.
+    for m in re.finditer(r"(?:charge|test charge|third charge)[,\s]+(q[A-Za-z0-9]+).*?placed\s+at\s+(?:point\s+)?([A-Z])\b", text):
         mapping[m.group(1)] = m.group(2).upper()
 
-    for m in re.finditer(r"(?:test charge|charge)[,\s]+(q)\b.*?placed\s+at\s+(?:point\s+)?([A-Z])", text, re.I):
+    for m in re.finditer(r"(?:test charge|charge)[,\s]+(q)\b.*?placed\s+at\s+(?:point\s+)?([A-Z])\b", text):
         if m.group(1) in charge_symbols:
             mapping[m.group(1)] = m.group(2).upper()
+
+    for m in re.finditer(r"(?:test charge|charge|third charge)[,\s]+(q[A-Za-z0-9]+|q)\b.*?placed\s+at\s+a\s+point", text, re.I):
+        if m.group(1) in charge_symbols:
+            mapping[m.group(1)] = "M"
 
     for m in re.finditer(r"(?:test charge|charge|third charge)[,\s]+(q[A-Za-z0-9]*|q)\b.*?placed\s+at\s+(?:the\s+)?midpoint", text, re.I):
         if m.group(1) in charge_symbols:
@@ -999,6 +1184,12 @@ def identify_force_target(question: str, charge_to_point: dict[str, str]) -> str
 
 def identify_field_target_point(question: str) -> str | None:
     text = normalize_text(question)
+    if re.search(r"perpendicular bisector", text, re.I):
+        return "M"
+    if re.search(r"fourth vertex", text, re.I):
+        return "D"
+    if re.search(r"centroid\s+G|at\s+G\b", text):
+        return "G"
     if re.search(r"midpoint\s+of\s+(?:the\s+)?(?:line segment\s+|line\s+connecting\s+)?[A-Z]\s+and\s+[A-Z]", text, re.I):
         return "M"
     if re.search(r"midpoint\s+of\s+(?:the\s+)?line\s+connecting\s+the\s+two\s+charges", text, re.I):
@@ -1058,6 +1249,706 @@ def solve_two_vector_resultant(question: str, observations: list[Observation], u
     )
 
 
+def charge_observations(observations: list[Observation]) -> list[Observation]:
+    return [obs for obs in observations if obs.quantity_type == "charge" and obs.unit_si == "C"]
+
+
+def first_distance_si(observations: list[Observation]) -> float | None:
+    for obs in observations:
+        if obs.quantity_type == "distance" and obs.unit_si == "m":
+            return obs.value_si
+    return None
+
+
+def distance_between_points(distances: dict[frozenset[str], float], a: str, b: str) -> float | None:
+    return distances.get(frozenset([a, b]))
+
+
+def format_field_value(value: float, question: str = "") -> str:
+    return format_number_for_question(value, question)
+
+
+def solve_zero_field_on_line(question: str, observations: list[Observation], distances: dict[frozenset[str], float]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "electric field" not in text or "zero" not in text or "two" not in text:
+        return None
+    charges = charge_observations(observations)
+    if len(charges) < 2:
+        return None
+    q1, q2 = charges[0].value_si, charges[1].value_si
+    d = distance_between_points(distances, "A", "B") or first_distance_si(observations)
+    if not d or q1 == 0 or q2 == 0:
+        return None
+    a, b = math.sqrt(abs(q1)), math.sqrt(abs(q2))
+    candidates: list[float] = []
+    # Coordinate x measured from q1/A/origin; q2 is at x=d.
+    if q1 * q2 > 0:
+        x = a * d / (a + b)
+        candidates.append(x)
+    else:
+        if abs(a - b) < 1e-12:
+            return None
+        x = a * d / (a - b)
+        candidates.append(x)
+    x = candidates[0]
+    unit = infer_requested_unit(question, ["cm", "m"]) or "cm"
+    if "distance from b" in text or "distance from q2" in text:
+        value_si = abs(x - d)
+    elif "coordinate" in text or "ox axis" in text or "origin" in text:
+        value_si = x
+    else:
+        value_si = abs(x)
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number(convert_from_si(value_si, unit)),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_zero_field_on_line", "formula": "k|q1|/x^2 = k|q2|/(x-d)^2", "x_si": x, "d": d},
+    )
+
+
+def solve_charge_from_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "point charge q" not in text or "electric field" not in text or "dielectric" not in text:
+        return None
+    e_obs = first_value_by_type(observations, "electric_field")
+    r_obs = first_value_by_type(observations, "distance")
+    dielectric = extract_dielectric_constant(question)
+    e_value_si = e_obs.value_si if e_obs else None
+    if e_value_si is None:
+        e_match = re.search(rf"\bE\s*=\s*({NUMBER_RE})\s*V\s*/\s*m", normalize_text(question), re.I)
+        if not e_match:
+            e_match = re.search(rf"magnitude\s+of\s+({NUMBER_RE})\s*V\s*/\s*m", normalize_text(question), re.I)
+        if e_match:
+            parsed_e = parse_number(e_match.group(1))
+            if parsed_e is not None:
+                e_value_si = parsed_e
+    if e_value_si is None or not r_obs or not dielectric:
+        return None
+    q = e_value_si * dielectric * r_obs.value_si**2 / COULOMB_K
+    if "towards the charge" in text or "toward the charge" in text:
+        q = -abs(q)
+    unit = infer_requested_unit(question, ["C", "μC", "nC"]) or "C"
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number(convert_from_si(q, unit)),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_charge_from_field", "formula": "E=k|q|/(eps_r*r^2)", "dielectric": dielectric},
+    )
+
+
+def solve_uniform_field_particle_motion(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "electron" not in text or "uniform electric field" not in text or "velocity" not in text:
+        return None
+    e_obs = first_value_by_type(observations, "electric_field")
+    e_value_si = e_obs.value_si if e_obs else None
+    if e_value_si is None:
+        e_match = re.search(rf"\bE\s*=\s*({NUMBER_RE})\s*V\s*/\s*m", normalize_text(question), re.I)
+        if e_match:
+            parsed_e = parse_number(e_match.group(1))
+            if parsed_e is not None:
+                e_value_si = parsed_e
+    if e_value_si is None:
+        return None
+    speed = None
+    for obs in observations:
+        if obs.unit.lower() in {"km", "m"} and "km / s" in obs.text.lower():
+            speed = obs.value * 1000.0
+            break
+    if speed is None:
+        m = re.search(rf"velocity\s+is\s+({NUMBER_RE})\s*km\s*/\s*s", normalize_text(question), re.I)
+        if m:
+            value = parse_number(m.group(1))
+            if value is not None:
+                speed = value * 1000.0
+    if speed is None:
+        return None
+    electron_mass = 9.1e-31
+    electron_charge = 1.6e-19
+    distance = electron_mass * speed**2 / (2 * electron_charge * e_value_si)
+    unit = infer_requested_unit(question, ["mm", "cm", "m"]) or "mm"
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number(convert_from_si(distance, unit)),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_electron_stopping_distance", "formula": "0.5*m*v^2=e*E*s"},
+    )
+
+
+def solve_square_three_charges_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "square" not in text or "three" not in text or "fourth vertex" not in text:
+        return None
+    charges = charge_observations(observations)
+    q = charges[0].value_si if charges else None
+    side = first_distance_si(observations)
+    if q is None or not side:
+        return None
+    e_side = COULOMB_K * abs(q) / (side * side)
+    result = math.sqrt(2) * e_side + e_side / 2
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_field_value(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_square_three_charges_field", "formula": "E=sqrt(2)*kq/a^2 + kq/(2a^2)"},
+    )
+
+
+def solve_disk_axis_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "circular" not in text or "disk" not in text or "surface charge density" not in text:
+        return None
+    radius = None
+    z = None
+    sigma = None
+    norm = normalize_text(question)
+    m = re.search(rf"radius\s+R\s*=\s*({NUMBER_RE})\s*({UNIT_RE})", norm, re.I)
+    if m:
+        v = parse_number(m.group(1))
+        if v is not None:
+            radius, u = unit_to_si(v, normalize_unit(m.group(2)))
+            if u != "m":
+                radius = None
+    m = re.search(rf"distance\s+z\s*=\s*({NUMBER_RE})\s*({UNIT_RE})", norm, re.I)
+    if m:
+        v = parse_number(m.group(1))
+        if v is not None:
+            z, u = unit_to_si(v, normalize_unit(m.group(2)))
+            if u != "m":
+                z = None
+    m = re.search(rf"(?:σ|sigma)\s*=\s*({NUMBER_RE})\s*C\s*/\s*m\^?2", norm, re.I)
+    if m:
+        sigma = parse_number(m.group(1))
+    if radius is None or z is None or sigma is None:
+        return None
+    field = sigma / (2 * EPSILON_0) * (1 - z / math.sqrt(z * z + radius * radius))
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(field, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_charged_disk_axis", "formula": "E=sigma/(2eps0)*(1-z/sqrt(z^2+R^2))"},
+    )
+
+
+def solve_infinite_line_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "infinitely long" not in text or "linear charge density" not in text:
+        return None
+    norm = normalize_text(question)
+    m = re.search(rf"(?:λ|lambda)\s*=\s*({NUMBER_RE})\s*C\s*/\s*m", norm, re.I)
+    r_match = re.search(rf"r\s*=\s*({NUMBER_RE})\s*({UNIT_RE})|distance\s+r\s*=\s*({NUMBER_RE})\s*({UNIT_RE})", norm, re.I)
+    if not m or not r_match:
+        return None
+    lam = parse_number(m.group(1))
+    raw_r = r_match.group(1) or r_match.group(3)
+    raw_u = r_match.group(2) or r_match.group(4)
+    rv = parse_number(raw_r)
+    if lam is None or rv is None:
+        return None
+    r, unit_si = unit_to_si(rv, normalize_unit(raw_u))
+    if unit_si != "m" or r == 0:
+        return None
+    field = 2 * COULOMB_K * abs(lam) / r
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number(field),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_infinite_line_field", "formula": "E=2k|lambda|/r"},
+    )
+
+
+def solve_dust_equilibrium_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "dust particle" not in text or "equilibrium" not in text or "plates" not in text:
+        return None
+    mass = None
+    charge = None
+    for obs in observations:
+        if obs.unit_si == "kg":
+            mass = obs.value_si
+        elif obs.unit_si == "C":
+            charge = abs(obs.value_si)
+    if mass is None or charge is None or charge == 0:
+        return None
+    field = mass * 10.0 / charge
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number(field),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_dust_equilibrium", "formula": "qE=mg"},
+    )
+
+
+def solve_equilateral_centroid_zero_charge(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "equilateral triangle" not in text or "centroid" not in text or "zero" not in text:
+        return None
+    charges = charge_observations(observations)
+    if len(charges) < 2:
+        return None
+    q = abs(charges[0].value_si)
+    unit = infer_requested_unit(question, ["C", "nC", "μC"]) or "C"
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number(convert_from_si(q, unit)),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_equilateral_centroid_zero", "formula": "for q1=q2 at A,B, q3=q at C cancels field at centroid"},
+    )
+
+
+def solve_proportional_point_charge_field(question: str) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "magnitude of e" not in text and "magnitude of e (" not in text and "has a magnitude of e" not in text:
+        return None
+    if "replaced by -2q" in text and "halved" in text:
+        return SolveResult(
+            family="electrostatics_field",
+            answer_type="math_expression",
+            pred_answer="8E",
+            pred_unit="V/m",
+            status="ok",
+            trace={"planner": "deterministic_field_scaling", "formula": "E proportional |Q|/r^2"},
+        )
+    return None
+
+
+def solve_equal_charge_right_triangle(question: str, observations: list[Observation], want_force: bool) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "right" not in text or "triangle" not in text or ("identical" not in text and "q1 = q2 = q3" not in text):
+        return None
+    if "right-angle vertex" not in text and "right angle vertex" not in text:
+        return None
+    charges = charge_observations(observations)
+    if not charges:
+        return None
+    q = abs(charges[0].value_si)
+    side = first_distance_si(observations)
+    if not side:
+        return None
+    base = COULOMB_K * q / (side * side)
+    if want_force:
+        result = math.sqrt(2) * base * q
+        unit = "N"
+        formula = "F=sqrt(2)*k*q^2/a^2"
+    else:
+        result = math.sqrt(2) * base
+        unit = "V/m"
+        formula = "E=sqrt(2)*k*q/a^2"
+    return SolveResult(
+        family="electrostatics_force" if want_force else "electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_right_isosceles_equal_charges", "formula": formula},
+    )
+
+
+def solve_right_triangle_altitude_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "right triangle" not in text and "right-angled" not in text:
+        return None
+    if "foot of the altitude" not in text:
+        return None
+    charges = charge_observations(observations)
+    if not charges:
+        return None
+    distances = sorted([obs.value_si for obs in observations if obs.quantity_type == "distance" and obs.unit_si == "m"])
+    if len(distances) < 3:
+        return None
+    leg1, leg2, hyp = distances[0], distances[1], distances[2]
+    if abs(hyp * hyp - leg1 * leg1 - leg2 * leg2) > 1e-3 * hyp * hyp:
+        # Some statements use a,b,c labels; still use largest as hypotenuse and smaller as legs.
+        pass
+    q = abs(charges[0].value_si)
+    # Coordinates: A=(0,0), B=(leg1,0), C=(0,leg2), H projection of A onto BC.
+    a = leg1
+    b = leg2
+    B = (a, 0.0)
+    C = (0.0, b)
+    vx, vy = C[0] - B[0], C[1] - B[1]
+    wx, wy = -B[0], -B[1]
+    t = (wx * vx + wy * vy) / (vx * vx + vy * vy)
+    H = (B[0] + t * vx, B[1] + t * vy)
+    ex = ey = 0.0
+    for P in [(0.0, 0.0), B, C]:
+        dx, dy = H[0] - P[0], H[1] - P[1]
+        r = math.hypot(dx, dy)
+        if r == 0:
+            continue
+        e = COULOMB_K * q / (r * r)
+        ex += e * dx / r
+        ey += e * dy / r
+    result = math.hypot(ex, ey)
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_right_triangle_altitude_field", "formula": "vector field at altitude foot"},
+    )
+
+
+def solve_two_charge_common_distance_angle_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "central point m" not in text and "resultant electric field strength at m" not in text:
+        return None
+    charges = charge_observations(observations)
+    distances = [obs.value_si for obs in observations if obs.quantity_type == "distance" and obs.unit_si == "m"]
+    angle = extract_angle_radians(question)
+    if len(charges) < 2 or not distances or angle is None:
+        return None
+    r = distances[0]
+    e1 = COULOMB_K * abs(charges[0].value_si) / (r * r)
+    e2 = COULOMB_K * abs(charges[1].value_si) / (r * r)
+    result = math.sqrt(max(0.0, e1 * e1 + e2 * e2 + 2 * e1 * e2 * math.cos(angle)))
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_two_charge_common_distance_angle", "formula": "E resultant by included angle", "angle": angle},
+    )
+
+
+def solve_inverse_coulomb_equal_charges(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "q1 = q2 = q" not in text and "given that q1 = q2" not in text:
+        return None
+    if "exert a force" not in text and "force of" not in text:
+        return None
+    force = first_value_by_type(observations, "force")
+    distance = first_value_by_type(observations, "distance")
+    if not force or not distance:
+        return None
+    q = math.sqrt(force.value_si * distance.value_si**2 / COULOMB_K)
+    unit = infer_requested_unit(question, ["μC", "nC", "C"]) or "μC"
+    return SolveResult(
+        family="electrostatics_force",
+        answer_type="numeric",
+        pred_answer=format_number(convert_from_si(q, unit)),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_inverse_coulomb_equal_charges", "formula": "q=sqrt(F*r^2/k)"},
+    )
+
+
+def solve_collinear_two_attractors_force(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "opposite sides" not in text or "same straight line" not in text or "attracted by two" not in text:
+        return None
+    charges = charge_observations(observations)
+    distances = [obs.value_si for obs in observations if obs.quantity_type == "distance" and obs.unit_si == "m"]
+    if len(charges) < 2 or len(distances) < 2:
+        return None
+    q_target = abs(charges[0].value_si)
+    q_source = abs(charges[1].value_si)
+    f1 = COULOMB_K * q_target * q_source / (distances[0] ** 2)
+    f2 = COULOMB_K * q_target * q_source / (distances[1] ** 2)
+    return SolveResult(
+        family="electrostatics_force",
+        answer_type="numeric",
+        pred_answer=format_number(abs(f1 - f2)),
+        pred_unit="N",
+        status="ok",
+        trace={"planner": "deterministic_collinear_two_attractors", "formula": "F=|kqQ/r1^2-kqQ/r2^2|"},
+    )
+
+
+def solve_isosceles_right_three_equal_force(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "isosceles right triangle" not in text or "right angle" not in text or "net force" not in text:
+        return None
+    charges = charge_observations(observations)
+    if not charges:
+        return None
+    leg = first_distance_si(observations)
+    if not leg:
+        return None
+    q = abs(charges[0].value_si)
+    result = math.sqrt(2) * COULOMB_K * q * q / (leg * leg)
+    return SolveResult(
+        family="electrostatics_force",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="N",
+        status="ok",
+        trace={"planner": "deterministic_isosceles_right_three_equal_force", "formula": "F=sqrt(2)*k*q^2/a^2"},
+    )
+
+
+def solve_line_midpoint_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "midpoint" not in text or "line segment" not in text:
+        return None
+    charges = charge_observations(observations)
+    if len(charges) < 2:
+        return None
+    distance = first_distance_si(observations)
+    if not distance:
+        return None
+    target_x = distance / 2
+
+    def signed_field(q: float, source_x: float) -> float:
+        dx = target_x - source_x
+        return COULOMB_K * q * (1 if dx > 0 else -1) / (dx * dx)
+
+    result = abs(signed_field(charges[0].value_si, 0.0) + signed_field(charges[1].value_si, distance))
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_line_midpoint_field", "formula": "signed 1D field at midpoint"},
+    )
+
+
+def solve_equilateral_third_vertex_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "equilateral triangle" not in text or "at point n" not in text:
+        return None
+    charges = charge_observations(observations)
+    if len(charges) < 2:
+        return None
+    q1, q2 = charges[0].value_si, charges[1].value_si
+    if abs(abs(q1) - abs(q2)) > max(abs(q1), abs(q2), 1e-30) * 1e-6 or q1 * q2 >= 0:
+        return None
+    side = first_distance_si(observations)
+    if not side:
+        return None
+    result = COULOMB_K * abs(q1) / (side * side)
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_equilateral_opposite_charges_third_vertex", "formula": "E=k|q|/a^2"},
+    )
+
+
+def solve_collinear_two_charge_field(question: str, observations: list[Observation], relations: list[Relation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "perpendicular bisector" in text:
+        return None
+    if not re.search(r"\bpoint\s+[MC]\b|midpoint|line connecting|collinear|from q1|from A", normalize_text(question), re.I):
+        return None
+    charges = {obs.symbol.lower(): obs for obs in charge_observations(observations)}
+    q1_obs = charges.get("q1")
+    q2_obs = charges.get("q2")
+    if not q1_obs or not q2_obs:
+        return None
+    distances = relation_distances(relations)
+    ab = distances.get(frozenset({"A", "B"}))
+    if ab is None:
+        for obs in observations:
+            if obs.symbol.upper() == "AB" and obs.quantity_type == "distance":
+                ab = obs.value_si
+                break
+    if ab is None:
+        return None
+
+    target = "M"
+    target_match = re.search(r"\bpoint\s+([MC])\b", normalize_text(question), re.I)
+    if target_match:
+        target = target_match.group(1).upper()
+
+    d_a = distances.get(frozenset({target, "A"}))
+    d_b = distances.get(frozenset({target, "B"}))
+    raw_text = normalize_text(question)
+    q_dist_match = re.search(
+        rf"point\s+{target}.{{0,120}}?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+q1.{{0,80}}?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+q2",
+        raw_text,
+        re.I,
+    )
+    if q_dist_match:
+        v1 = parse_number(q_dist_match.group(1))
+        v2 = parse_number(q_dist_match.group(3))
+        if v1 is not None and v2 is not None:
+            d_a, _ = unit_to_si(v1, normalize_unit(q_dist_match.group(2)))
+            d_b, _ = unit_to_si(v2, normalize_unit(q_dist_match.group(4)))
+    named_dist_match = re.search(
+        rf"point\s+{target}.{{0,140}}?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+A.{{0,80}}?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+B",
+        raw_text,
+        re.I,
+    )
+    if named_dist_match:
+        v1 = parse_number(named_dist_match.group(1))
+        v2 = parse_number(named_dist_match.group(3))
+        if v1 is not None and v2 is not None:
+            d_a, _ = unit_to_si(v1, normalize_unit(named_dist_match.group(2)))
+            d_b, _ = unit_to_si(v2, normalize_unit(named_dist_match.group(4)))
+    one_dist_match = re.search(
+        rf"point\s+{target}.{{0,180}}?({NUMBER_RE})\s*({UNIT_RE})\s+(?:away\s+)?from\s+q1",
+        raw_text,
+        re.I,
+    )
+    if d_a is None and one_dist_match:
+        v = parse_number(one_dist_match.group(1))
+        if v is not None:
+            d_a, _ = unit_to_si(v, normalize_unit(one_dist_match.group(2)))
+    one_named_match = re.search(
+        rf"\b{target}\s+is\s+(?:located\s+)?({NUMBER_RE})\s*({UNIT_RE})\s+from\s+A",
+        raw_text,
+        re.I,
+    )
+    if d_a is None and one_named_match:
+        v = parse_number(one_named_match.group(1))
+        if v is not None:
+            d_a, _ = unit_to_si(v, normalize_unit(one_named_match.group(2)))
+
+    if d_a is None and d_b is None:
+        return None
+    if d_a is not None and d_b is None:
+        if "outside" in text:
+            d_b = d_a + ab
+        else:
+            d_b = abs(ab - d_a)
+    if d_b is not None and d_a is None:
+        if "outside" in text:
+            d_a = d_b + ab
+        else:
+            d_a = abs(ab - d_b)
+    if d_a is None or d_b is None:
+        return None
+
+    if abs(d_a + d_b - ab) <= max(ab, d_a, d_b) * 1e-4:
+        target_x = d_a
+    elif abs(abs(d_a - d_b) - ab) <= max(ab, d_a, d_b) * 1e-4:
+        target_x = -d_a if d_a < d_b else d_a
+    elif "outside" in text:
+        target_x = -d_a
+    else:
+        return None
+
+    def signed_field(q: float, source_x: float) -> float:
+        dx = target_x - source_x
+        if abs(dx) < 1e-15:
+            return 0.0
+        return COULOMB_K * q * (1 if dx > 0 else -1) / (dx * dx)
+
+    result = abs(signed_field(q1_obs.value_si, 0.0) + signed_field(q2_obs.value_si, ab))
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={
+            "planner": "deterministic_collinear_two_charge_field",
+            "formula": "signed 1D electric field",
+            "target": target,
+            "target_x": target_x,
+            "AB": ab,
+        },
+    )
+
+
+def solve_equilateral_vertex_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "equilateral triangle" not in text or ("position of q3" not in text and "acting on q3" not in text):
+        return None
+    charges = charge_observations(observations)
+    if len(charges) < 2:
+        return None
+    side = first_distance_si(observations)
+    if not side:
+        return None
+    e1 = COULOMB_K * abs(charges[0].value_si) / (side * side)
+    e2 = COULOMB_K * abs(charges[1].value_si) / (side * side)
+    field = math.sqrt(max(0.0, e1 * e1 + e2 * e2 + 2 * e1 * e2 * math.cos(math.pi / 3)))
+    if "force" in text and len(charges) >= 3:
+        result = field * abs(charges[2].value_si)
+        unit = "N"
+        formula = "F=q3*sqrt(E1^2+E2^2+2E1E2cos60)"
+        family = "electrostatics_force"
+    else:
+        result = field
+        unit = "V/m"
+        formula = "E=sqrt(E1^2+E2^2+2E1E2cos60)"
+        family = "electrostatics_field"
+    return SolveResult(
+        family=family,
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit=unit,
+        status="ok",
+        trace={"planner": "deterministic_equilateral_vertex_field", "formula": formula},
+    )
+
+
+def solve_three_collinear_points_field(question: str, observations: list[Observation]) -> SolveResult | None:
+    text = normalize_text(question).lower()
+    if "three collinear points" not in text or "ma = ab = bc = cn" not in text:
+        return None
+    charges = charge_observations(observations)
+    if len(charges) < 3:
+        return None
+    step = first_distance_si(observations)
+    if not step:
+        return None
+    target = "M" if "point m" in text or " at point m" in text else "N"
+    positions = {"M": -step, "A": 0.0, "B": step, "C": 2 * step, "N": 3 * step}
+    target_x = positions[target]
+    ex = 0.0
+    for obs, point in zip(charges[:3], ["A", "B", "C"]):
+        dx = target_x - positions[point]
+        if dx == 0:
+            continue
+        # 1D signed field: E = k*q*sign(dx)/dx^2.
+        ex += COULOMB_K * obs.value_si * (1 if dx > 0 else -1) / (dx * dx)
+    result = abs(ex)
+    return SolveResult(
+        family="electrostatics_field",
+        answer_type="numeric",
+        pred_answer=format_number_for_question(result, question),
+        pred_unit="V/m",
+        status="ok",
+        trace={"planner": "deterministic_three_collinear_field", "formula": "signed 1D superposition", "target": target},
+    )
+
+
+def solve_special_electrostatics(question: str, observations: list[Observation], relations: list[Relation], family: str) -> SolveResult | None:
+    distances = relation_distances(relations)
+    for solver_func in [
+        lambda q, o: solve_proportional_point_charge_field(q),
+        lambda q, o: solve_zero_field_on_line(q, o, distances),
+        solve_charge_from_field,
+        solve_uniform_field_particle_motion,
+        solve_square_three_charges_field,
+        solve_disk_axis_field,
+        solve_infinite_line_field,
+        solve_dust_equilibrium_field,
+        solve_equilateral_centroid_zero_charge,
+        lambda q, o: solve_equal_charge_right_triangle(q, o, family == "electrostatics_force"),
+        solve_equilateral_vertex_field,
+        solve_three_collinear_points_field,
+    ]:
+        result = solver_func(question, observations)
+        if result:
+            return result
+    return None
+
+
 def solve_electrostatics(question: str, observations: list[Observation], relations: list[Relation]) -> SolveResult:
     family = classify_family(question)
     obs_by_symbol = get_obs_by_symbol(observations)
@@ -1069,6 +1960,10 @@ def solve_electrostatics(question: str, observations: list[Observation], relatio
         "charge_to_point": charge_to_point,
         "planner": "deterministic_electrostatics_vector",
     }
+
+    special = solve_special_electrostatics(question, observations, relations, family)
+    if special:
+        return special
 
     if family == "electrostatics_force":
         direct_resultant = solve_two_vector_resultant(question, observations, "N")

@@ -1,30 +1,29 @@
-{"id": "TD017", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD363", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD014", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD015", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD364", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "TD007", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD014", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD008", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD017", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD392", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "TD394", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD010", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD096", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD074", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD361", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD095", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD390", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD009", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD367", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD002", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD393", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD008", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD021", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD077", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD001", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD099", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD077", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD021", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD096", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD390", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD010", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD367", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD393", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD074", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD009", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD095", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD361", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD396", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD399", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD383", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD001", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD375", "status": "unsupported", "reason": "capacitor formula not covered"}
-{"id": "TD015", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD002", "status": "unsupported", "reason": "capacitor formula not covered"}
+{"id": "TD007", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD378", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "LD080", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "LD396", "status": "unsupported", "reason": "target field point not identified"}
@@ -162,7 +161,6 @@
 {"id": "LD243", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD310", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD355", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD103", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD341", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD216", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD101", "status": "wrong", "reason": "numeric_unit_tolerant"}
