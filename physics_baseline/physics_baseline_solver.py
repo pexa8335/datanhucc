@@ -330,6 +330,9 @@ UNIT_TOKENS = [
     "µJ",
     "uJ",
     "nJ",
+    "kV/m",
+    "V/m",
+    "N/C",
     "kV",
     "mV",
     "mA",
@@ -717,6 +720,10 @@ def guess_quantity_type(symbol: str, unit: str, context: str) -> str:
         return "energy"
     if unit_si == "W":
         return "power"
+    if unit_si == "N":
+        return "force"
+    if unit_si == "V/m":
+        return "electric_field"
     if unit_si == "T":
         return "magnetic_field"
     if unit_si == "Wb":
@@ -1608,6 +1615,8 @@ def solve_right_triangle_altitude_field(question: str, observations: list[Observ
 
 def solve_two_charge_common_distance_angle_field(question: str, observations: list[Observation]) -> SolveResult | None:
     text = normalize_text(question).lower()
+    if "perpendicular bisector" in text:
+        return None
     if "central point m" not in text and "resultant electric field strength at m" not in text:
         return None
     charges = charge_observations(observations)
@@ -1699,6 +1708,8 @@ def solve_line_midpoint_field(question: str, observations: list[Observation]) ->
     text = normalize_text(question).lower()
     if "midpoint" not in text or "line segment" not in text:
         return None
+    if not re.search(r"electric field|field strength|field intensity", text):
+        return None
     charges = charge_observations(observations)
     if len(charges) < 2:
         return None
@@ -1750,9 +1761,14 @@ def solve_collinear_two_charge_field(question: str, observations: list[Observati
     text = normalize_text(question).lower()
     if "perpendicular bisector" in text:
         return None
+    if not re.search(r"electric field|field strength|field intensity", text):
+        return None
     if not re.search(r"\bpoint\s+[MC]\b|midpoint|line connecting|collinear|from q1|from A", normalize_text(question), re.I):
         return None
-    charges = {obs.symbol.lower(): obs for obs in charge_observations(observations)}
+    charge_list = charge_observations(observations)
+    if len(charge_list) != 2:
+        return None
+    charges = {obs.symbol.lower(): obs for obs in charge_list}
     q1_obs = charges.get("q1")
     q2_obs = charges.get("q2")
     if not q1_obs or not q2_obs:
@@ -1906,7 +1922,13 @@ def solve_three_collinear_points_field(question: str, observations: list[Observa
     step = first_distance_si(observations)
     if not step:
         return None
-    target = "M" if "point m" in text or " at point m" in text else "N"
+    target_mentions = re.findall(r"\bat\s+point\s+([MN])\b", normalize_text(question), re.I)
+    if target_mentions:
+        target = target_mentions[-1].upper()
+    elif re.search(r"\bpoint\s+N\b", normalize_text(question), re.I) and re.search(r"calculate|determine|find", text):
+        target = "N"
+    else:
+        target = "M" if re.search(r"\bat\s+point\s+M\b", normalize_text(question), re.I) else "N"
     positions = {"M": -step, "A": 0.0, "B": step, "C": 2 * step, "N": 3 * step}
     target_x = positions[target]
     ex = 0.0
@@ -1932,13 +1954,21 @@ def solve_special_electrostatics(question: str, observations: list[Observation],
     for solver_func in [
         lambda q, o: solve_proportional_point_charge_field(q),
         lambda q, o: solve_zero_field_on_line(q, o, distances),
+        lambda q, o: solve_collinear_two_charge_field(q, o, relations),
+        solve_line_midpoint_field,
         solve_charge_from_field,
         solve_uniform_field_particle_motion,
+        solve_isosceles_right_three_equal_force,
+        solve_right_triangle_altitude_field,
+        solve_two_charge_common_distance_angle_field,
+        solve_inverse_coulomb_equal_charges,
+        solve_collinear_two_attractors_force,
         solve_square_three_charges_field,
         solve_disk_axis_field,
         solve_infinite_line_field,
         solve_dust_equilibrium_field,
         solve_equilateral_centroid_zero_charge,
+        solve_equilateral_third_vertex_field,
         lambda q, o: solve_equal_charge_right_triangle(q, o, family == "electrostatics_force"),
         solve_equilateral_vertex_field,
         solve_three_collinear_points_field,

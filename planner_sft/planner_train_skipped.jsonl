@@ -26,164 +26,85 @@
 {"id": "TD007", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "TD378", "status": "unsupported", "reason": "capacitor formula not covered"}
 {"id": "LD080", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD396", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD043", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD344", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD382", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD399", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD338", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD016", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD397", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD314", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD116", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD079", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD397", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD034", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD104", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD078", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD092", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD299", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD295", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD059", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD075", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD026", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD329", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD265", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD096", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD047", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD308", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD031", "status": "unsupported", "reason": "no source charge distances to target"}
 {"id": "LD324", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD392", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD354", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD023", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD211", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD274", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD251", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD046", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD086", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
+{"id": "LD046", "status": "unsupported", "reason": "no source charge distances to target"}
+{"id": "LD086", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD258", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD084", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD340", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD065", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD335", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD389", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD226", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD134", "status": "unsupported", "reason": "target charge not identified"}
+{"id": "LD389", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD372", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD271", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD320", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD077", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD107", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD017", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD068", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD151", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD008", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD020", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD305", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD356", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD349", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD387", "status": "wrong", "reason": "numeric_unit_tolerant"}
+{"id": "LD292", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD062", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD081", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD285", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD112", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD018", "status": "unsupported", "reason": "no source charge distances to target"}
+{"id": "LD018", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD025", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD129", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD352", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD376", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD386", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD122", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD332", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD294", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD383", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD037", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD061", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD301", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD007", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD395", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD106", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD083", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD388", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD313", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD388", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD150", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD095", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD071", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD099", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD146", "status": "unsupported", "reason": "target charge not identified"}
+{"id": "LD099", "status": "wrong", "reason": "numeric_unit_tolerant"}
+{"id": "LD146", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD358", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD070", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD024", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD038", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD147", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD069", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD317", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD378", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD149", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD234", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD088", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
+{"id": "LD038", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD336", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD337", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD302", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD268", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD319", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD039", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD293", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD269", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD381", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD039", "status": "unsupported", "reason": "target charge not identified"}
+{"id": "LD293", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD120", "status": "unsupported", "reason": "no source charge distances to target"}
-{"id": "LD277", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD385", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD252", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD139", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD393", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD207", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD027", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD227", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD380", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD315", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD343", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD076", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD360", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD030", "status": "unsupported", "reason": "no source charge distances to target"}
+{"id": "LD030", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD085", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD330", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD256", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD136", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD290", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD045", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD067", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "LD379", "status": "wrong", "reason": "numeric_unit_tolerant"}
+{"id": "LD067", "status": "wrong", "reason": "numeric_unit_tolerant"}
+{"id": "LD379", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "LD087", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "LD036", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD351", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD098", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD052", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD243", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD310", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD029", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD355", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD341", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD216", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD101", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD063", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "LD033", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD203", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD357", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD028", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD390", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD033", "status": "unsupported", "reason": "target charge not identified"}
 {"id": "LD263", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD291", "status": "unsupported", "reason": "target charge not identified"}
+{"id": "LD291", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD339", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "LD064", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "LD066", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "LD303", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "LD303", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "LD041", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD282", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "LD345", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "DT074", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "DT034", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "DT005", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
+{"id": "DT005", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "DT020", "status": "unsupported", "reason": "target field point not identified"}
-{"id": "DT048", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "DT061", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT091", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT006", "status": "wrong", "reason": "numeric_unit_tolerant"}
@@ -191,7 +112,6 @@
 {"id": "DT028", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT045", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT075", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "DT001", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "DT087", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT088", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT081", "status": "unsupported", "reason": "field source charges not identified"}
@@ -199,22 +119,19 @@
 {"id": "DT062", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT051", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT056", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "DT037", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "DT037", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "DT073", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT053", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "DT080", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT050", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "DT029", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT096", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT060", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT004", "status": "unsupported", "reason": "target charge not identified"}
-{"id": "DT035", "status": "wrong", "reason": "numeric_unit_tolerant"}
-{"id": "DT054", "status": "unsupported", "reason": "target field point not identified"}
+{"id": "DT054", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "DT019", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT072", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT007", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT089", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "DT099", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT047", "status": "unsupported", "reason": "RLC formula not covered"}
 {"id": "DT046", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT044", "status": "unsupported", "reason": "field source charges not identified"}
@@ -222,12 +139,10 @@
 {"id": "DT052", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "DT097", "status": "wrong", "reason": "numeric_unit_tolerant"}
 {"id": "DT082", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
-{"id": "DT057", "status": "unsupported", "reason": "target field point not identified"}
 {"id": "DT049", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT063", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT085", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "DT041", "status": "unsupported", "reason": "field source charges not identified"}
-{"id": "DT003", "status": "validator_failed", "reason": "could not build field geometry coordinates"}
 {"id": "DT095", "status": "unsupported", "reason": "field source charges not identified"}
 {"id": "THCB078", "status": "unsupported", "reason": "RLC formula not covered"}
 {"id": "THCB074", "status": "unsupported", "reason": "RLC formula not covered"}

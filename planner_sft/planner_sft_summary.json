@@ -1,9 +1,9 @@
 {
   "train_source": "split_output\\80.csv",
   "test_source": "split_output\\20.csv",
-  "train_planner_records": 603,
-  "test_planner_records": 208,
-  "train_skipped": 478,
-  "test_skipped": 62,
+  "train_planner_records": 688,
+  "test_planner_records": 255,
+  "train_skipped": 393,
+  "test_skipped": 15,
   "note": "Planner data includes only rows solved correctly by deterministic baseline."
 }
