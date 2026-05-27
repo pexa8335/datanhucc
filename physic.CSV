@@ -2,13 +2,13 @@ id,question,cot,answer,unit
 TD401,Calculate the energy stored in capacitor C when C = 100 μF and U = 30 V.,"Step 1: Identify the given values for capacitance (C) and voltage (U).
 Step 2: Recall the formula for the energy (E) stored in a capacitor, which is E = 0.5 × C × U^2.
 Step 3: Convert the capacitance to Farads: C = 100 μF = 100 × 10^-6 F = 1 × 10^-4 F.
-Step 4: Substitute the values into the formula: E = 0.5 × (1 × 10^-4 F) × (30 V)^2. = 0.045 J",0.045,J
+Step 4: Substitute the values into the formula: E = 0.5 × (1 × 10^-4 F) × (30 V)^2.",0.045,J
 TD402,"Calculate the capacitance C of the capacitor, given that it stores Q = 3 mC when fully charged under U = 30 V.","Step 1: Identify the given values from the question: the charge Q = 3 mC and the voltage U = 30 V.
 Step 2: Recall the formula for capacitance: C = Q / U.
 Step 3: Convert the charge to Coulombs: Q = 3 mC = 3 × 10^-3 C.
 Step 4: Substitute the values into the formula: C = (3 × 10^-3 C) / (30 V).
 Step 5: Calculate the capacitance: C = 1 × 10^-4 F.
-Step 6: Convert to microfarads: 1 × 10^-4 F = 100 μF.",100,μ
+Step 6: Convert to microfarads: 1 × 10^-4 F = 100 μF.",100,μF
 LD001,"Two charges, q1 = 6 × 10^-8 C and q2 = -6 × 10^-8 C, are placed at points A and B in air, 8 cm apart. A third charge, q3 = 6 × 10^-8 C, is placed at point C, with CA = 5 cm and CB = 3 cm. Determine the force acting on q3.","Step 1: Since CA = 5 cm, CB = 3 cm, and AB = 8 cm, point C lies on segment AB between A and B.
 Step 2: Determine the force directions. Because q1 and q3 are both positive, q1 repels q3 toward B. Because q2 is negative and q3 is positive, q2 attracts q3 toward B. Therefore, both forces act in the same direction.
 Step 3: Calculate the force exerted by q1 on q3 using Coulomb's law: F13 = k × |q1 q3| / CA^2 = 9 × 10^9 × (6 × 10^-8 × 6 × 10^-8) / (0.05)^2 = 0.01296 N.

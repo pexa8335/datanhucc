@@ -1,2 +1,6 @@
 __pycache__/
 *.py[cod]
+/physics_baseline
+/physics_baseline
+/physics_baseline
+*.csv
