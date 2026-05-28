@@ -577,7 +577,10 @@ Step 4: Substitute the known values into the equation.
 Step 5: Simplify the equation by canceling k and taking the square root of both sides.
 Step 6: Solve the resulting linear equation for x_BC and then find x_AC.
 Step 7: The distance from A to C is 18 cm.",18,cm
-LD076,"At the three vertices A, B, and C of a square ABCD with side length 6 cm in a vacuum, three point charges are placed: q1 = q3 = 2 × 10^-7 C and q2 = -4 × 10^-7 C. Determine the charge q4 placed at D such that the net electric field strength caused by the system of charges at the center O is zero.","Step 1: Identify the charges and their positions at the vertices of the square, and the point of interest, the center O.
+LD076,"At the three vertices A, B, 
+and C of a square ABCD with side length 6 cm in a vacuum, three point charges are placed: 
+q1 = q3 = 2 × 10^-7 C and q2 = -4 × 10^-7 C. Determine the charge q4 placed at D such that th
+ net electric field strength caused by the system of charges at the center O is zero.","Step 1: Identify the charges and their positions at the vertices of the square, and the point of interest, the center O.
 Step 2: Recognize that the distance from each vertex (A, B, C, D) to the center O is the same. Let this distance be r.
 Step 3: Analyze the electric fields at O due to charges q1 at A and q3 at C. Since q1 = q3 = 2 × 10^-7 C (both positive) and their distances to O are equal, the electric field E_A from q1 points from O towards C, and the electric field E_C from q3 points from O towards A. As vectors, E_A and E_C are equal in magnitude and opposite in direction, thus their vector sum (E_A + E_C) is zero.
 Step 4: Analyze the electric field at O due to charge q2 at B. Since q2 = -4 × 10^-7 C (negative), the electric field E_B points from O towards B.
