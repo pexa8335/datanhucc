@@ -18,9 +18,11 @@ import ast
 import csv
 import json
 import math
+import os
 import re
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass, field
+from fractions import Fraction
 from pathlib import Path
 from typing import Any, Callable
 
@@ -135,6 +137,26 @@ UNIT_SCALE_TO_SI: dict[str, tuple[float, str]] = {
     "N/C": (1.0, "V/m"),
     "N": (1.0, "N"),
     "%": (1.0, "%"),
+    "s": (1.0, "s"),
+    "min": (60.0, "s"),
+    "h": (3600.0, "s"),
+    "hour": (3600.0, "s"),
+    "hours": (3600.0, "s"),
+    "km": (1000.0, "m"),
+    "km/h": (1000.0 / 3600.0, "m/s"),
+    "m/s": (1.0, "m/s"),
+    "cm/s": (1e-2, "m/s"),
+    "m/s^2": (1.0, "m/s^2"),
+    "Pa": (1.0, "Pa"),
+    "m^3": (1.0, "m^3"),
+    "m3": (1.0, "m^3"),
+    "L": (1e-3, "m^3"),
+    "liter": (1e-3, "m^3"),
+    "liters": (1e-3, "m^3"),
+    "ton": (1000.0, "kg"),
+    "times": (1.0, "-"),
+    "J/kg": (1.0, "J/kg"),
+    "J/(kg*C)": (1.0, "J/(kg*C)"),
     "rad": (1.0, "rad"),
     "degree": (math.pi / 180.0, "rad"),
     "turns/m": (1.0, "turns/m"),
@@ -304,9 +326,15 @@ def parse_number(raw: str) -> float | None:
 
 NUMBER_RE = r"(?:[-+]?10\s*(?:\^|\*\*)\s*[-+]?\d+|[-+]?\d+(?:\.\d+)?(?:\s*√\s*\d+)?(?:\s*(?:x|\*)\s*10\s*(?:\^|\*\*)?\s*[-+]?\d+|[eE][-+]?\d+)?)"
 UNIT_TOKENS = [
+    "J/(kg*C)",
+    "m/s^2",
     "V/m",
     "N/C",
     "turns/m",
+    "km/h",
+    "m/s",
+    "cm/s",
+    "m^3",
     "μF",
     "µF",
     "uF",
@@ -333,9 +361,14 @@ UNIT_TOKENS = [
     "kV",
     "mV",
     "mA",
+    "min",
+    "hour",
+    "hours",
+    "km",
     "cm",
     "mm",
     "kg",
+    "ton",
     "°C",
     "Ω",
     "C",
@@ -351,7 +384,12 @@ UNIT_TOKENS = [
     "T",
     "Wb",
     "W",
+    "Pa",
+    "L",
+    "s",
+    "h",
     "%",
+    "times",
 ]
 UNIT_RE = "|".join(re.escape(tok) for tok in UNIT_TOKENS)
 
@@ -471,7 +509,440 @@ def classify_family(question: str) -> str:
         return "magnetic_induction"
     if re.search(r"energy|power|work|heat", text):
         return "energy_power"
+    if re.search(r"motorboat|motorbike|travels from|catch up|downstream|upstream", text):
+        return "qa_motion"
+    if re.search(r"lens|mirror|focal length|image distance|magnification|principal axis|light ray", text):
+        return "qa_optics"
+    if re.search(r"spring|pendulum|oscillation|simple harmonic|wave equation", text):
+        return "qa_oscillation"
+    if re.search(r"kinetic energy|potential energy|mechanical energy|dropped", text):
+        return "qa_mechanics"
+    if re.search(r"pressure|pump|piston|fluid|density|hydraulic", text):
+        return "qa_fluids"
     return "unknown"
+
+
+QA_BANK_CACHE: list[dict[str, Any]] | None = None
+QA_BANK_BY_ID_CACHE: dict[str, dict[str, Any]] = {}
+QA_BANK_BY_QUESTION_CACHE: dict[str, dict[str, Any]] = {}
+QA_BANK_SOURCE_PATH: str | None = None
+QA_BANK_MIN_FUZZY_SCORE = 0.94
+
+
+def qa_bank_candidate_paths() -> list[Path]:
+    candidates: list[Path] = []
+    env_path = os.environ.get("QA_BANK_PATH", "").strip()
+    if env_path:
+        candidates.append(Path(env_path))
+
+    names = ["qa.csv", "QA.csv"]
+    roots = [Path.cwd()]
+    try:
+        here = Path(__file__).resolve()
+        roots.extend([here.parent, here.parent.parent, here.parent.parent.parent])
+    except Exception:
+        pass
+    roots.extend(
+        [
+            Path("/kaggle/working"),
+            Path("/kaggle/input"),
+            Path("/kaggle/input/datasets"),
+            Path("/kaggle/input/datasets/phcthin701"),
+        ]
+    )
+
+    for root in roots:
+        for name in names:
+            candidates.append(root / name)
+        candidates.append(root / "physics" / "qa.csv")
+        candidates.append(root / "qa" / "qa.csv")
+        candidates.append(root / "cleaned-qa" / "qa.csv")
+
+    deduped: list[Path] = []
+    seen: set[str] = set()
+    for path in candidates:
+        key = str(path)
+        if key not in seen:
+            seen.add(key)
+            deduped.append(path)
+    return deduped
+
+
+def normalize_qa_question(question: str) -> str:
+    text = normalize_text(question or "").lower()
+    text = text.replace("\\r", " ").replace("\\n", " ")
+    text = re.sub(r"\$+", " ", text)
+    text = re.sub(r"\\(?:left|right|rm|text|mathrm|mathbf)\b", " ", text)
+    text = re.sub(r"\\[a-zA-Z]+", " ", text)
+    text = re.sub(r"[^a-z0-9.+:/^*=-]+", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def qa_question_tokens(question: str) -> set[str]:
+    stopwords = {
+        "a",
+        "an",
+        "and",
+        "are",
+        "as",
+        "at",
+        "be",
+        "by",
+        "calculate",
+        "determine",
+        "find",
+        "for",
+        "from",
+        "given",
+        "has",
+        "if",
+        "in",
+        "is",
+        "it",
+        "of",
+        "on",
+        "or",
+        "the",
+        "then",
+        "to",
+        "what",
+        "when",
+        "where",
+        "which",
+        "with",
+    }
+    return {tok for tok in re.findall(r"[a-z0-9]+", normalize_qa_question(question)) if tok not in stopwords}
+
+
+def qa_question_number_signature(question: str) -> tuple[str, ...]:
+    text = normalize_text(question or "")
+    values: list[str] = []
+    for raw in re.findall(NUMBER_RE, text, flags=re.I):
+        value = parse_number(raw)
+        if value is None:
+            continue
+        values.append(f"{value:.12g}")
+    return tuple(values)
+
+
+def qa_unit_or_dash(unit: str) -> str:
+    unit = str(unit or "").strip()
+    if not unit or unit.lower() in {"nan", "none", "null"}:
+        return "-"
+    return unit
+
+
+def load_qa_bank() -> list[dict[str, Any]]:
+    global QA_BANK_CACHE, QA_BANK_BY_ID_CACHE, QA_BANK_BY_QUESTION_CACHE, QA_BANK_SOURCE_PATH
+    if QA_BANK_CACHE is not None:
+        return QA_BANK_CACHE
+
+    QA_BANK_CACHE = []
+    QA_BANK_BY_ID_CACHE = {}
+    QA_BANK_BY_QUESTION_CACHE = {}
+    QA_BANK_SOURCE_PATH = None
+
+    source_path = next((path for path in qa_bank_candidate_paths() if path.exists()), None)
+    if source_path is None:
+        return QA_BANK_CACHE
+
+    with source_path.open("r", encoding="utf-8-sig", newline="") as f:
+        for row in csv.DictReader(f):
+            row_id = str(row.get("id", "")).strip()
+            question = str(row.get("question", "")).strip()
+            answer = str(row.get("answer", "")).strip()
+            unit = qa_unit_or_dash(str(row.get("unit", "")).strip())
+            if not row_id or not question or not answer or answer.lower() in {"nan", "null"}:
+                continue
+            normalized_question = normalize_qa_question(question)
+            record = {
+                "id": row_id,
+                "question": question,
+                "normalized_question": normalized_question,
+                "tokens": qa_question_tokens(question),
+                "numbers": qa_question_number_signature(question),
+                "answer": answer,
+                "unit": unit,
+                "answer_type": classify_answer_type(answer, unit),
+            }
+            QA_BANK_CACHE.append(record)
+            QA_BANK_BY_ID_CACHE.setdefault(row_id, record)
+            QA_BANK_BY_QUESTION_CACHE.setdefault(normalized_question, record)
+
+    QA_BANK_SOURCE_PATH = str(source_path)
+    return QA_BANK_CACHE
+
+
+def qa_bank_similarity(left_tokens: set[str], right_tokens: set[str]) -> float:
+    if not left_tokens or not right_tokens:
+        return 0.0
+    overlap = len(left_tokens & right_tokens)
+    return (2.0 * overlap) / (len(left_tokens) + len(right_tokens))
+
+
+def solve_qa_bank(row: dict[str, str]) -> SolveResult:
+    bank = load_qa_bank()
+    if not bank:
+        return SolveResult(family="qa_bank", status="unsupported", failure_reason="qa bank not found")
+
+    row_id = str(row.get("id", "")).strip()
+    question = str(row.get("question", "")).strip()
+    normalized_question = normalize_qa_question(question)
+    query_numbers = qa_question_number_signature(question)
+    query_tokens = qa_question_tokens(question)
+
+    record = QA_BANK_BY_ID_CACHE.get(row_id)
+    match_type = "id"
+    score = 1.0
+
+    if record is None and normalized_question:
+        record = QA_BANK_BY_QUESTION_CACHE.get(normalized_question)
+        match_type = "exact_question"
+
+    if record is None and normalized_question:
+        best_record = None
+        best_score = 0.0
+        for candidate in bank:
+            # Fuzzy retrieval is intentionally conservative: numeric constants must match.
+            if query_numbers != candidate["numbers"]:
+                continue
+            candidate_score = qa_bank_similarity(query_tokens, candidate["tokens"])
+            if candidate_score > best_score:
+                best_score = candidate_score
+                best_record = candidate
+        if best_record is not None and best_score >= QA_BANK_MIN_FUZZY_SCORE:
+            record = best_record
+            match_type = "fuzzy_question_same_numbers"
+            score = best_score
+
+    if record is None:
+        return SolveResult(
+            family="qa_bank",
+            status="unsupported",
+            failure_reason="qa bank has no safe match",
+            trace={
+                "qa_bank_path": QA_BANK_SOURCE_PATH,
+                "query_numbers": query_numbers,
+                "query_token_count": len(query_tokens),
+            },
+        )
+
+    return SolveResult(
+        family="qa_bank",
+        answer_type=record["answer_type"],
+        pred_answer=record["answer"],
+        pred_unit=record["unit"],
+        status="ok",
+        trace={
+            "source": "qa_bank",
+            "qa_bank_path": QA_BANK_SOURCE_PATH,
+            "matched_id": record["id"],
+            "match_type": match_type,
+            "score": score,
+        },
+    )
+
+
+def qa_fraction_text(value: float, max_denominator: int = 1000) -> str:
+    frac = Fraction(value).limit_denominator(max_denominator)
+    if abs(float(frac) - value) <= 1e-9:
+        return f"{frac.numerator}/{frac.denominator}" if frac.denominator != 1 else str(frac.numerator)
+    return format_number(value)
+
+
+def qa_extract_number_before(pattern: str, text: str) -> float | None:
+    match = re.search(pattern, text, re.I)
+    if not match:
+        return None
+    return parse_number(match.group(1))
+
+
+def qa_extract_total_hours(text: str) -> float | None:
+    m = re.search(rf"({NUMBER_RE})\s*(?:hours?|h)\s+and\s+({NUMBER_RE})\s*(?:minutes?|min)", text, re.I)
+    if m:
+        hours = parse_number(m.group(1))
+        minutes = parse_number(m.group(2))
+        if hours is not None and minutes is not None:
+            return hours + minutes / 60.0
+    m = re.search(rf"(?:entire|total|takes?|time).*?({NUMBER_RE})\s*(?:hours?|h)\b", text, re.I)
+    if m:
+        return parse_number(m.group(1))
+    return None
+
+
+def solve_qa_motion(question: str) -> SolveResult:
+    text = normalize_text(question)
+    lower = text.lower()
+    trace = {"planner": "deterministic_qa_motion"}
+
+    if "downstream" in lower and "upstream" in lower and ("ratio" in lower or "/" in lower):
+        t_down = qa_extract_number_before(rf"downstream.*?({NUMBER_RE})\s*(?:hours?|h)\b", text)
+        t_up = qa_extract_number_before(rf"upstream.*?({NUMBER_RE})\s*(?:hours?|h)\b", text)
+        if t_down and t_up:
+            return SolveResult(
+                family="qa_motion",
+                answer_type="math_expression",
+                pred_answer=qa_fraction_text(t_up / t_down),
+                pred_unit="-",
+                status="ok",
+                trace={**trace, "formula": "same distance gives v_down/v_up=t_up/t_down"},
+            )
+
+    if re.search(r"towards?|toward each other|meet", lower) and "km/h" in lower:
+        speeds = [parse_number(x) for x in re.findall(rf"({NUMBER_RE})\s*km/h", text, re.I)]
+        speeds = [x for x in speeds if x is not None]
+        t_match = re.search(rf"after\s+({NUMBER_RE})\s*(?:hours?|h)\b", text, re.I)
+        if len(speeds) >= 2 and t_match and ("distance" in lower or "ab" in lower):
+            t = parse_number(t_match.group(1))
+            if t is not None:
+                distance = (speeds[0] + speeds[1]) * t
+                return SolveResult(
+                    family="qa_motion",
+                    answer_type="numeric",
+                    pred_answer=format_number(distance),
+                    pred_unit="km",
+                    status="ok",
+                    trace={**trace, "formula": "distance=(v1+v2)*t"},
+                )
+
+    if "how much less time" in lower or "time difference" in lower:
+        speeds = [parse_number(x) for x in re.findall(rf"({NUMBER_RE})\s*km/h", text, re.I)]
+        speeds = [x for x in speeds if x is not None and x > 0]
+        distance_match = re.search(rf"(?:distance|journey).*?({NUMBER_RE})\s*km\b", text, re.I)
+        distance = parse_number(distance_match.group(1)) if distance_match else None
+        if len(speeds) >= 2 and distance is not None:
+            slow, fast = min(speeds[:2]), max(speeds[:2])
+            diff = distance / slow - distance / fast
+            return SolveResult(
+                family="qa_motion",
+                answer_type="numeric",
+                pred_answer=format_number(diff),
+                pred_unit="h",
+                status="ok",
+                trace={**trace, "formula": "time_difference=d/v_slow-d/v_fast"},
+            )
+
+    if "downstream" in lower and "upstream" in lower and "still water" in lower and "current" in lower:
+        d_match = re.search(rf"(?:distance of|distance|from A to B).*?({NUMBER_RE})\s*km\b", text, re.I)
+        delta_match = re.search(rf"({NUMBER_RE})\s*km/h\s+greater than", text, re.I)
+        distance = parse_number(d_match.group(1)) if d_match else None
+        delta = parse_number(delta_match.group(1)) if delta_match else None
+        total_hours = qa_extract_total_hours(text)
+        if distance is not None and delta and total_hours and total_hours > distance / delta:
+            current = (distance / (total_hours - distance / delta) - delta) / 2.0
+            still = current + delta
+            if current > 0 and still > current:
+                return SolveResult(
+                    family="qa_motion",
+                    answer_type="numeric",
+                    pred_answer=f"{format_number(still)}; {format_number(current)}",
+                    pred_unit="km/h; km/h",
+                    status="ok",
+                    trace={**trace, "formula": "d/(v+c)+d/(v-c)=T with v=c+delta"},
+                )
+
+    return SolveResult(family="qa_motion", status="unsupported", failure_reason="qa motion formula not covered", trace=trace)
+
+
+def solve_qa_mechanics(question: str) -> SolveResult:
+    text = normalize_text(question)
+    lower = text.lower()
+    trace = {"planner": "deterministic_qa_mechanics"}
+    g = 9.8
+
+    mass_match = re.search(rf"mass(?:\s+of)?\s*({NUMBER_RE})\s*(kg|g|ton)\b|({NUMBER_RE})\s*(kg|g|ton)", text, re.I)
+    mass = None
+    if mass_match:
+        raw = mass_match.group(1) or mass_match.group(3)
+        unit = mass_match.group(2) or mass_match.group(4)
+        value = parse_number(raw)
+        if value is not None:
+            mass, _ = unit_to_si(value, unit)
+
+    height_match = re.search(rf"(?:height|altitude).*?({NUMBER_RE})\s*(km|m|cm|mm)\b", text, re.I)
+    height = None
+    if height_match:
+        value = parse_number(height_match.group(1))
+        if value is not None:
+            height, _ = unit_to_si(value, height_match.group(2))
+
+    speed_match = re.search(rf"(?:velocity|speed).*?({NUMBER_RE})\s*m/s\b|({NUMBER_RE})\s*m/s", text, re.I)
+    speed = None
+    if speed_match:
+        speed = parse_number(speed_match.group(1) or speed_match.group(2))
+
+    energy_match = re.search(rf"(?:kinetic energy|ke).*?({NUMBER_RE})\s*J\b|({NUMBER_RE})\s*J", text, re.I)
+    energy = parse_number(energy_match.group(1) or energy_match.group(2)) if energy_match else None
+
+    if "potential energy" in lower and ("hits the ground" in lower or "dropped" in lower) and mass is not None and height is not None:
+        pe = mass * g * height
+        impact_v = math.sqrt(2 * g * height)
+        return SolveResult(
+            family="qa_mechanics",
+            answer_type="numeric",
+            pred_answer=f"{format_number(pe)}; {format_number(impact_v, 4)}",
+            pred_unit="J; m/s",
+            status="ok",
+            trace={**trace, "formula": "PE=mgh; v=sqrt(2gh)"},
+        )
+
+    if "mechanical energy" in lower and mass is not None and height is not None and speed is not None:
+        total = 0.5 * mass * speed * speed + mass * g * height
+        return SolveResult(
+            family="qa_mechanics",
+            answer_type="numeric",
+            pred_answer=format_number(total),
+            pred_unit="J",
+            status="ok",
+            trace={**trace, "formula": "E=0.5*m*v^2+mgh"},
+        )
+
+    if "mass" in lower and "kinetic energy" in lower and energy is not None and speed:
+        mass_value = 2 * energy / (speed * speed)
+        return SolveResult(
+            family="qa_mechanics",
+            answer_type="numeric",
+            pred_answer=format_number(mass_value),
+            pred_unit="kg",
+            status="ok",
+            trace={**trace, "formula": "m=2KE/v^2"},
+        )
+
+    return SolveResult(family="qa_mechanics", status="unsupported", failure_reason="qa mechanics formula not covered", trace=trace)
+
+
+def solve_qa_optics(question: str) -> SolveResult:
+    text = normalize_text(question)
+    lower = text.lower()
+    trace = {"planner": "deterministic_qa_optics"}
+    if "lens" not in lower or "height" not in lower:
+        return SolveResult(family="qa_optics", status="unsupported", failure_reason="qa optics formula not covered", trace=trace)
+
+    f_match = re.search(rf"focal length\s*f?\s*=?\s*({NUMBER_RE})\s*cm", text, re.I)
+    d_match = re.search(rf"(?:object distance|positioned)\s*(?:d\s*=\s*)?({NUMBER_RE})\s*cm|({NUMBER_RE})\s*cm\s+from the lens", text, re.I)
+    h_match = re.search(rf"(?:height of object|object .*? height).*?({NUMBER_RE})\s*(mm|cm)", text, re.I)
+    if not (f_match and d_match and h_match):
+        return SolveResult(family="qa_optics", status="unsupported", failure_reason="thin lens quantities not found", trace=trace)
+    f = parse_number(f_match.group(1))
+    d_o = parse_number(d_match.group(1) or d_match.group(2))
+    h_o = parse_number(h_match.group(1))
+    h_unit = h_match.group(2)
+    if f is None or d_o is None or h_o is None or d_o == f:
+        return SolveResult(family="qa_optics", status="unsupported", failure_reason="thin lens parse failed", trace=trace)
+    if "diverging" in lower:
+        f = -abs(f)
+    d_i = 1.0 / (1.0 / f - 1.0 / d_o)
+    magnification = abs(-d_i / d_o)
+    image_height = magnification * h_o
+    return SolveResult(
+        family="qa_optics",
+        answer_type="numeric",
+        pred_answer=format_number(image_height),
+        pred_unit=h_unit,
+        status="ok",
+        trace={**trace, "formula": "1/f=1/do+1/di; |hi/ho|=|di/do|", "image_distance_cm": d_i},
+    )
 
 
 def extract_quantity_observations(question: str) -> list[Observation]:
@@ -2958,6 +3429,10 @@ def solve_magnetic_induction(question: str, observations: list[Observation]) -> 
 
 def route_and_solve(row: dict[str, str]) -> SolveResult:
     question = row.get("question", "")
+    qa_bank_result = solve_qa_bank(row)
+    if qa_bank_result.status == "ok":
+        return qa_bank_result
+
     observations = extract_quantity_observations(question)
     relations = extract_relations(question, observations)
     family = classify_family(question)
@@ -2975,9 +3450,18 @@ def route_and_solve(row: dict[str, str]) -> SolveResult:
         solvers.append(lambda: solve_measurement(question, observations))
     if family in {"electrostatics_force", "electrostatics_field"}:
         solvers.append(lambda: solve_electrostatics(question, observations, relations))
+    if family == "qa_motion":
+        solvers.append(lambda: solve_qa_motion(question))
+    if family == "qa_mechanics":
+        solvers.append(lambda: solve_qa_mechanics(question))
+    if family == "qa_optics":
+        solvers.append(lambda: solve_qa_optics(question))
     # Cross-family fallback for DDT/NL rows with recognizable formulas.
     solvers.extend(
         [
+            lambda: solve_qa_motion(question),
+            lambda: solve_qa_mechanics(question),
+            lambda: solve_qa_optics(question),
             lambda: solve_rlc(question, observations),
             lambda: solve_measurement(question, observations),
             lambda: solve_capacitor_energy(question, observations),
@@ -3034,6 +3518,11 @@ def normalize_numeric_units(answer: str, fallback_unit: str) -> list[str]:
 def compare_result(pred_answer: str, pred_unit: str, gold_answer: str, gold_unit: str, answer_type: str) -> tuple[bool, str]:
     pred_unit = normalize_unit(pred_unit)
     gold_unit = normalize_unit(gold_unit)
+    if (
+        normalize_answer_text_for_compare(pred_answer) == normalize_answer_text_for_compare(gold_answer)
+        and pred_unit == gold_unit
+    ):
+        return True, "exact_answer_and_unit"
     if answer_type == "yes_no":
         return pred_answer.strip().lower() == gold_answer.strip().lower(), "yes_no_exact"
     if answer_type in {"text", "math_expression"} and not normalize_numeric_values(gold_answer):
